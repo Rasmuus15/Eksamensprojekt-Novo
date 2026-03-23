@@ -1,0 +1,20 @@
+@startuml
+title Order Processing Swimlanes
+
+|#Gray|a| Afdeling
+|#Red|spm| Senior projekt manager
+|#Green|am| Administrativ medarabejder
+
+start
+:Kontakter senior projekt manager;
+|spm|
+:verificere projektetets omfang med andre projekt ledere;
+if (Projektet er godkendt?) then (ja)
+  :planlægge projektet;
+else (nej)
+  :afvise projektet;
+  backward :test;
+
+
+stop
+@enduml
