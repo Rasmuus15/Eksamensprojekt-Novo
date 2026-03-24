@@ -17,7 +17,7 @@ S --> L: System opretter projekt
 S --> L: System opretter fase
 note right: System opretter fase
 
-L -> S: TilføjRessource(initialer, rolle, antalTimer, ledighed)
+L -> S: TilføjRessource(initialer, mail, rolle, antalTimer, ledighed)
 note right: Tilføjer ressource til fase
 S --> L: System tilføjer ressource
 
