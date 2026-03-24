@@ -1,0 +1,25 @@
+@startuml
+hide empty method
+hide footbox /' Fjerner aktør og system i bunden'/
+
+
+'Aktører'
+Actor ": Projektmanager" as L
+participant ":System" as S
+
+
+'Commands'
+L -> S: OpretProjekt(initialer, startDato, slutDato)
+note right: Opretter projekt
+S --> L: System opretter projekt
+
+L -> S: OpretFase(faseNavn, startDato, slutDato)
+note right: Opretter fase
+S --> L: System opretter fase
+
+
+L -> S: TilføjMedarbejder(initialer, rolle, antalTimer, ledighed)
+note right: Tilføjer medarbejder til fase
+S --> L: System tilføjer person
+
+@enduml
