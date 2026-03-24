@@ -16,7 +16,7 @@ Fase "1..*" ---right--- "1..*" Ressource
 'Konceptuelle klasser
 Class Projektmanager
 {
-    navn
+    initialer
 }
 
 Class Ressource
