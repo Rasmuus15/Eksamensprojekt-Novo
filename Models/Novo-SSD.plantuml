@@ -18,7 +18,7 @@ note right: Opretter fase
 S --> L: System opretter fase
 
 
-L -> S: TilføjMedarbejder(initialer, rolle, antalTimer, ledighed)
+L -> S: TilføjMedarbejder(initialer, mail, rolle, antalTimer, ledighed)
 note right: Tilføjer medarbejder til fase
 S --> L: System tilføjer person
 
