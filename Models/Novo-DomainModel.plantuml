@@ -7,11 +7,8 @@ skinparam nodesep 100
 skinparam ranksep 100
 
 Projektmanager "1" ---right--- "1..*" Projekt
-Fase "1..*" ---left--- "1" Projekt
+Fase "8" ---left--- "1" Projekt
 Fase "1..*" ---right--- "1..*" Ressource
-' Kompleksitet "1" ---right--- "1..*" Pro
-' Kompleksitet "1" ---right--- "1..*" Fase
-' Kompleksitet "1" ---right--- "1..*" Bemanding
 
 'Konceptuelle klasser
 Class Projektmanager
@@ -37,14 +34,12 @@ Class Fase
 Class Projekt
 {
     projektNavn
+    kompleksitet
     startDato
     slutDato
 }
 
-' Class Kompleksitet
-' {
-'     kompleksitetsgrad
-' }
+
 
 
 @enduml
