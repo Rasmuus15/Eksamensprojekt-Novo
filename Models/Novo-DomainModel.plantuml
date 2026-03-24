@@ -1,0 +1,50 @@
+@startuml
+hide circle
+hide empty members
+
+skinparam padding 10
+skinparam nodesep 100
+skinparam ranksep 100
+
+Projektleder "1" ---right--- "1..*" Projekt
+Fase "1..*" ---left--- "1" Projekt
+Fase "1..*" ---right--- "1..*" Ressource
+' Kompleksitet "1" ---right--- "1..*" Pro
+' Kompleksitet "1" ---right--- "1..*" Fase
+' Kompleksitet "1" ---right--- "1..*" Bemanding
+
+'Konceptuelle klasser
+Class Projektleder
+{
+    navn
+}
+
+Class Ressource
+{
+    navn
+    rolle
+    antalTimer
+    ledighed
+}
+
+Class Fase
+{
+    faseNavn
+    startDato
+    slutDato
+}
+
+Class Projekt
+{
+    projektNavn
+    startDato
+    slutDato
+}
+
+' Class Kompleksitet
+' {
+'     kompleksitetsgrad
+' }
+
+
+@enduml
