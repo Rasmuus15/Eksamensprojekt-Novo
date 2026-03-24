@@ -6,7 +6,7 @@ skinparam padding 10
 skinparam nodesep 100
 skinparam ranksep 100
 
-Projektleder "1" ---right--- "1..*" Projekt
+Projektmanager "1" ---right--- "1..*" Projekt
 Fase "1..*" ---left--- "1" Projekt
 Fase "1..*" ---right--- "1..*" Ressource
 ' Kompleksitet "1" ---right--- "1..*" Pro
@@ -14,14 +14,14 @@ Fase "1..*" ---right--- "1..*" Ressource
 ' Kompleksitet "1" ---right--- "1..*" Bemanding
 
 'Konceptuelle klasser
-Class Projektleder
+Class Projektmanager
 {
-    navn
+    initialer
 }
 
 Class Ressource
 {
-    navn
+    initialer
     rolle
     antalTimer
     ledighed
