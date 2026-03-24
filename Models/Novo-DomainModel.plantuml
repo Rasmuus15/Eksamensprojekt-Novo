@@ -19,6 +19,7 @@ Class Projektmanager
 Class Ressource
 {
     initialer
+    mail
     rolle
     antalTimer
     ledighed
