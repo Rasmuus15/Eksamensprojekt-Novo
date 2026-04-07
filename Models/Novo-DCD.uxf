@@ -1,0 +1,62 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLPackage</id><coordinates><x>20</x><y>60</y><w>330</w><h>650</h></coordinates><panel_attributes>View (UI)
+lt=.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>820</x><y>60</y><w>430</w><h>650</h></coordinates><panel_attributes>Model (Domain)
+lt=.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>420</x><y>60</y><w>360</w><h>650</h></coordinates><panel_attributes>Viewmodel (Application)
+lt=.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>840</x><y>460</y><w>140</w><h>80</h></coordinates><panel_attributes>Project
+--
++ ProjectName : string
++ StartDate : DateTime
++ EndDate : DateTime
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>840</x><y>90</y><w>110</w><h>50</h></coordinates><panel_attributes>ProjectManager
+--
++ Initials : string
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>860</x><y>610</y><w>100</w><h>90</h></coordinates><panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+Complexity
+--
+Low
+Medium
+High</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1090</x><y>340</y><w>140</w><h>70</h></coordinates><panel_attributes>Phase
+--
++ StartDate : DateTime
++ EndDate : DateTime
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1100</x><y>540</y><w>120</w><h>160</h></coordinates><panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+Phases
+--
+ConceptDesign
+BasicDesign
+DetailedDesign
+Manufacturing
+Installation
+Testing
+Approval
+GoLive
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>960</x><y>190</y><w>150</w><h>110</h></coordinates><panel_attributes>Ressource
+--
++ Initials : string
++ Email : string
++ FTE : double
++ Availability : bool
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>430</x><y>90</y><w>240</w><h>70</h></coordinates><panel_attributes>ProjectManagerRepo
+--
+projectManager : List &lt;ProjectManager&gt;
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>430</x><y>460</y><w>140</w><h>80</h></coordinates><panel_attributes>ProjectRepo
+--
+project : List &lt;Project&gt;
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>430</x><y>340</y><w>140</w><h>80</h></coordinates><panel_attributes>PhaseRepo
+--
+phase : List &lt;Phase&gt;
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>430</x><y>190</y><w>170</w><h>110</h></coordinates><panel_attributes>RessourceRepo
+--
+ressource : List &lt;Ressource&gt;
+--
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>120</x><y>150</y><w>100</w><h>30</h></coordinates><panel_attributes>SimpleClass</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>120</x><y>310</y><w>100</w><h>30</h></coordinates><panel_attributes>SimpleClass</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>120</x><y>230</y><w>100</w><h>30</h></coordinates><panel_attributes>SimpleClass</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1150</x><y>400</y><w>30</w><h>160</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>900</x><y>530</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>490</y><w>300</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>280;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>590</x><y>240</y><w>390</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>370;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>370</y><w>550</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>530;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>120</y><w>200</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>180;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>890</x><y>130</y><w>40</w><h>350</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>20;330;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>900</x><y>380</y><w>210</w><h>100</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>190;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>1020</x><y>290</y><w>160</w><h>70</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;140;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>980</x><y>550</y><w>100</w><h>150</h></coordinates><panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+JobRole
+--
+Engineer
+Consultant
+ProjectManager
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>970</x><y>500</y><w>80</w><h>70</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;60;10;60;50</additional_attributes></element><element><id>Relation</id><coordinates><x>1020</x><y>290</y><w>30</w><h>280</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;260</additional_attributes></element></diagram>
