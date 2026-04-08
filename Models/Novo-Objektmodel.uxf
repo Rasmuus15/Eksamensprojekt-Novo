@@ -7,7 +7,7 @@ Lav
 FIME@novonordisk.com
 Ingeniør
 1 FTE
-Utilgænglig</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>100</x><y>0</y><w>130</w><h>70</h></coordinates><panel_attributes>**__Projektmanager__**
+Utilgænglig</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>100</x><y>0</y><w>130</w><h>70</h></coordinates><panel_attributes>**__Projektkoordinator__**
 halign=center
 style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>300</x><y>0</y><w>130</w><h>70</h></coordinates><panel_attributes>**__Projekt__**
 halign=center

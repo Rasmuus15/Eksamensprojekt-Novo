@@ -6,12 +6,12 @@ skinparam padding 10
 skinparam nodesep 100
 skinparam ranksep 100
 
-Projektmanager "1" ---right--- "1..*" Projekt
+Projektkoordinator "1" ---right--- "0..*" Projekt
 Fase "8" ---left--- "1" Projekt
 Fase "1..*" ---right--- "1..*" Ressource
 
 'Konceptuelle klasser
-Class Projektmanager
+Class Projektkoordinator
 {
     initialer
 }
