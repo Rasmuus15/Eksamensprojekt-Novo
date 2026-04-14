@@ -8,7 +8,7 @@ skinparam ranksep 100
 
 Projektkoordinator "1" ---right--- "0..*" Projekt
 Fase "8" ---left--- "1" Projekt
-Fase "1..8" ---right--- "0..*" Ressource
+Projekt "1" --- "0..*" Ressource
 
 'Konceptuelle klasser
 Class Projektkoordinator
@@ -27,17 +27,17 @@ Class Ressource
 Class Fase
 {
     faseNavn
-    startDato
-    slutDato
+    Længde
 }
 
 Class Projekt
 {
     projektNavn
     kompleksitet
-    antalTimer
     startDato
     slutDato
+    antalTimer
+    antalRessourcer
 }
 
 
