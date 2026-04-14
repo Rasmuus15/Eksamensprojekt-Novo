@@ -34,9 +34,10 @@ Class Projekt
 {
     projektNavn
     kompleksitet
-    antalTimer
     startDato
     slutDato
+    antalTimer
+    antalRessourcer
 }
 
 
