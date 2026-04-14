@@ -1,0 +1,29 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>750</x><y>410</y><w>150</w><h>110</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
+Project
+--
++ ProjectName : string
++ StartDate : DateTime
++ EndDate : DateTime
+- complexity : Complexity
+- jobRole : JobRole
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>210</x><y>110</y><w>150</w><h>80</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
+ProjectCoordinator
+--
+&lt;&lt;PK&gt;&gt; &lt;&lt;surrogate&gt;&gt; id : int
++ Initials : string
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>950</x><y>350</y><w>140</w><h>80</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
+Phase
+--
++ StartDate : DateTime
++ EndDate : DateTime
+- phase : Phase
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1020</x><y>130</y><w>150</w><h>110</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
+Ressource
+--
++ Initials : string
++ Email : string
++ FTE : double
++ Availability : bool
+- jobRole : JobRole
+--</panel_attributes><additional_attributes></additional_attributes></element></diagram>

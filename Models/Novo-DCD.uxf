@@ -1,7 +1,7 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLPackage</id><coordinates><x>30</x><y>60</y><w>330</w><h>650</h></coordinates><panel_attributes>View (UI)
-lt=.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>830</x><y>60</y><w>430</w><h>650</h></coordinates><panel_attributes>Model (Domain)
-lt=.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>380</x><y>60</y><w>430</w><h>650</h></coordinates><panel_attributes>Viewmodel (Application)
-lt=.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>850</x><y>460</y><w>150</w><h>110</h></coordinates><panel_attributes>Project
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLPackage</id><coordinates><x>40</x><y>60</y><w>330</w><h>650</h></coordinates><panel_attributes>View (UI)
+lt=.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>840</x><y>60</y><w>430</w><h>650</h></coordinates><panel_attributes>Model (Domain)
+lt=.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>390</x><y>60</y><w>430</w><h>650</h></coordinates><panel_attributes>Viewmodel (Application)
+lt=.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>860</x><y>460</y><w>150</w><h>110</h></coordinates><panel_attributes>Project
 --
 + ProjectName : string
 + StartDate : DateTime
@@ -9,20 +9,20 @@ lt=.</panel_attributes><additional_attributes></additional_attributes></element>
 - complexity : Complexity
 - jobRole : JobRole
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>860</x><y>100</y><w>110</w><h>50</h></coordinates><panel_attributes>ProjectCoordinator
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>870</x><y>100</y><w>110</w><h>50</h></coordinates><panel_attributes>ProjectCoordinator
 --
 + Initials : string
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>870</x><y>610</y><w>100</w><h>90</h></coordinates><panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>880</x><y>610</y><w>100</w><h>90</h></coordinates><panel_attributes>&lt;&lt;Enumeration&gt;&gt;
 Complexity
 --
 Low
 Medium
-High</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1100</x><y>360</y><w>140</w><h>80</h></coordinates><panel_attributes>Phase
+High</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1110</x><y>360</y><w>140</w><h>80</h></coordinates><panel_attributes>Phase
 --
 + StartDate : DateTime
 + EndDate : DateTime
 - phase : Phase
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1110</x><y>540</y><w>120</w><h>160</h></coordinates><panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1120</x><y>540</y><w>120</w><h>160</h></coordinates><panel_attributes>&lt;&lt;Enumeration&gt;&gt;
 Phase
 --
 ConceptDesign
@@ -33,85 +33,75 @@ Installation
 Testing
 Approval
 GoLive
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>970</x><y>180</y><w>150</w><h>110</h></coordinates><panel_attributes>Ressource
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>980</x><y>180</y><w>150</w><h>110</h></coordinates><panel_attributes>Ressource
 --
 + Initials : string
 + Email : string
 + FTE : double
 + Availability : bool
 - jobRole : JobRole
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>470</x><y>90</y><w>260</w><h>70</h></coordinates><panel_attributes>ProjectCoordinatorRepo
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>90</y><w>260</w><h>70</h></coordinates><panel_attributes>ProjectCoordinatorRepo
 --
 - projectCoordinator : List &lt;ProjectManager&gt;
 --
-+ GetAll()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>600</x><y>540</y><w>140</w><h>110</h></coordinates><panel_attributes>ProjectRepo
++ GetAll()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>540</y><w>140</w><h>110</h></coordinates><panel_attributes>ProjectRepo
 --
 - project : List &lt;Project&gt;
 --
 + GetAll()
 + Create()
 + Delete()
-+ Edit()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>180</y><w>170</w><h>70</h></coordinates><panel_attributes>RessourceRepo
++ Edit()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>620</x><y>180</y><w>170</w><h>70</h></coordinates><panel_attributes>RessourceRepo
 --
 - ressource : List &lt;Ressource&gt;
 --
 + GetAll()
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>120</x><y>330</y><w>100</w><h>30</h></coordinates><panel_attributes>MainWindow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>230</x><y>200</y><w>100</w><h>30</h></coordinates><panel_attributes>CreateRessource</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>120</x><y>570</y><w>100</w><h>30</h></coordinates><panel_attributes>CreateProject</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1160</x><y>430</y><w>30</w><h>130</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>910</x><y>560</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>730</x><y>490</y><w>140</w><h>110</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>120;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>770</x><y>200</y><w>220</w><h>50</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>330</y><w>100</w><h>30</h></coordinates><panel_attributes>MainWindow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>240</x><y>200</y><w>100</w><h>30</h></coordinates><panel_attributes>CreateRessource</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>570</y><w>100</w><h>30</h></coordinates><panel_attributes>CreateProject</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1170</x><y>430</y><w>30</w><h>130</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>920</x><y>560</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>740</x><y>490</y><w>140</w><h>110</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>120;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>780</x><y>200</y><w>220</w><h>50</h></coordinates><panel_attributes>lt=&lt;.
 
-</panel_attributes><additional_attributes>200;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>120</y><w>160</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>910</x><y>140</y><w>50</w><h>340</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+</panel_attributes><additional_attributes>200;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>730</x><y>120</y><w>160</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>920</x><y>140</y><w>50</w><h>340</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
 m1= 0..*
-m2= 1</panel_attributes><additional_attributes>10;320;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>980</x><y>430</y><w>140</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
+m2= 1</panel_attributes><additional_attributes>10;320;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>990</x><y>430</y><w>140</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
 m1=8
-m2=1</panel_attributes><additional_attributes>120;10;10;30</additional_attributes></element><element><id>Relation</id><coordinates><x>1110</x><y>230</y><w>100</w><h>150</h></coordinates><panel_attributes>lt=&lt;-
+m2=1</panel_attributes><additional_attributes>120;10;10;30</additional_attributes></element><element><id>Relation</id><coordinates><x>1120</x><y>230</y><w>100</w><h>150</h></coordinates><panel_attributes>lt=&lt;-
 m1=0..*
-m2=1..8</panel_attributes><additional_attributes>10;10;60;10;60;130</additional_attributes></element><element><id>UMLClass</id><coordinates><x>990</x><y>580</y><w>100</w><h>120</h></coordinates><panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+m2=1..8</panel_attributes><additional_attributes>10;10;60;10;60;130</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1000</x><y>580</y><w>100</w><h>120</h></coordinates><panel_attributes>&lt;&lt;Enumeration&gt;&gt;
 JobRole
 --
 Engineer
 Consultant
 ProjectManager
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>990</x><y>500</y><w>50</w><h>100</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;30;10;30;80</additional_attributes></element><element><id>Relation</id><coordinates><x>1030</x><y>280</y><w>30</w><h>320</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;10;300</additional_attributes></element><element><id>UMLNote</id><coordinates><x>970</x><y>730</y><w>140</w><h>70</h></coordinates><panel_attributes>Pile til Enun?!??!!
-&lt;--?
---&gt;?
----?
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>110</x><y>110</y><w>100</w><h>30</h></coordinates><panel_attributes>ProjectOverview</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>410</x><y>330</y><w>100</w><h>30</h></coordinates><panel_attributes>MainViewModel
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1000</x><y>500</y><w>50</w><h>100</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;30;10;30;80</additional_attributes></element><element><id>Relation</id><coordinates><x>1040</x><y>280</y><w>30</w><h>320</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;10;300</additional_attributes></element><element><id>UMLClass</id><coordinates><x>120</x><y>110</y><w>100</w><h>30</h></coordinates><panel_attributes>ProjectOverview</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>330</y><w>100</w><h>30</h></coordinates><panel_attributes>MainViewModel
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>410</x><y>570</y><w>110</w><h>30</h></coordinates><panel_attributes>ProjectViewModel
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>570</y><w>110</w><h>30</h></coordinates><panel_attributes>ProjectViewModel
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>510</x><y>730</y><w>160</w><h>70</h></coordinates><panel_attributes>Skal der være en kasse
-til commands og 
-navigation/store
-Navigation Service?!?!?!
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>200</y><w>130</w><h>30</h></coordinates><panel_attributes>RessourceViewModel
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>430</x><y>200</y><w>130</w><h>30</h></coordinates><panel_attributes>RessourceViewModel
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>160</x><y>350</y><w>30</w><h>240</h></coordinates><panel_attributes>lt=&lt;.
-</panel_attributes><additional_attributes>10;220;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>160</x><y>130</y><w>30</w><h>220</h></coordinates><panel_attributes>lt=&lt;.
-</panel_attributes><additional_attributes>10;10;10;200</additional_attributes></element><element><id>Relation</id><coordinates><x>160</x><y>130</y><w>140</w><h>90</h></coordinates><panel_attributes>lt=&lt;.
-</panel_attributes><additional_attributes>120;70;10;10</additional_attributes></element><element><id>UMLNote</id><coordinates><x>110</x><y>730</y><w>140</w><h>70</h></coordinates><panel_attributes>Skal "MainWindow"
-være med efter som
-den ender med at være
-tom</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>200</y><w>120</w><h>50</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>350</y><w>30</w><h>240</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes>10;220;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>130</y><w>30</w><h>220</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes>10;10;10;200</additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>130</y><w>140</w><h>90</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes>120;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>200</y><w>120</w><h>50</h></coordinates><panel_attributes>lt=&lt;.
 
-</panel_attributes><additional_attributes>100;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>330</y><w>220</w><h>50</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes>100;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>330</y><w>220</w><h>50</h></coordinates><panel_attributes>lt=&lt;.
 
-</panel_attributes><additional_attributes>200;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>570</y><w>220</w><h>50</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes>200;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>570</y><w>220</w><h>50</h></coordinates><panel_attributes>lt=&lt;.
 
-</panel_attributes><additional_attributes>200;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>570</y><w>110</w><h>50</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes>200;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>570</y><w>110</w><h>50</h></coordinates><panel_attributes>lt=&lt;.
 
-</panel_attributes><additional_attributes>90;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>200</y><w>90</w><h>50</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes>90;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>200</y><w>90</w><h>50</h></coordinates><panel_attributes>lt=&lt;.
 
-</panel_attributes><additional_attributes>70;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>620</x><y>270</y><w>100</w><h>40</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
-ICommand</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>400</y><w>230</w><h>120</h></coordinates><panel_attributes>NavigateCommand
+</panel_attributes><additional_attributes>70;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>270</y><w>100</w><h>40</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+ICommand</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>400</y><w>230</w><h>120</h></coordinates><panel_attributes>NavigateCommand
 --
 - execute : Action
 - canExecute : Func &lt;bool&gt;
 --
 + Execute(parameter : object)
-+ CanExecute(parameter : object) : bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>500</x><y>340</y><w>80</w><h>80</h></coordinates><panel_attributes>lt=&lt;.
++ CanExecute(parameter : object) : bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>340</y><w>80</w><h>80</h></coordinates><panel_attributes>lt=&lt;.
 
-</panel_attributes><additional_attributes>60;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>300</y><w>30</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-
+</panel_attributes><additional_attributes>60;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>670</x><y>300</y><w>30</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-
 
-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>UMLNote</id><coordinates><x>760</x><y>730</y><w>140</w><h>70</h></coordinates><panel_attributes>Hvor mange ting
-skal der multiplicitet
-på</panel_attributes><additional_attributes></additional_attributes></element></diagram>
+</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>UMLNote</id><coordinates><x>1080</x><y>740</y><w>160</w><h>130</h></coordinates><panel_attributes>Assiocation vs composition
+Implisit vs Attribut
+
+Peter vil vide svar</panel_attributes><additional_attributes></additional_attributes></element></diagram>
