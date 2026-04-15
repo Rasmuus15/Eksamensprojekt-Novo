@@ -27,7 +27,7 @@ Ressource
 &lt;&lt;FK&gt;&gt; ProjectId: Int
 --
 &lt;&lt;PK&gt;&gt; PK_Ressource()
-&lt;&lt;FK&gt;&gt; FK_Ressource_Project(ProjectId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>420</y><w>240</w><h>110</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
+&lt;&lt;FK&gt;&gt; FK_Ressource_Project(ProjectId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>430</y><w>240</w><h>110</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
 PhaseLength
 --
 &lt;&lt;PK&gt;&gt; &lt;&lt;FK&gt;&gt; &lt;&lt;surrogate&gt;&gt; PhaseId: Int
