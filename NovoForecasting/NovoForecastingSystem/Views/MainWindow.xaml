@@ -4,9 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NovoForecastingSystem"
+        xmlns:viewmodels="clr-namespace:NovoForecastingSystem.ViewModels"
+        xmlns:views="clr-namespace:NovoForecastingSystem.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <ContentControl Content="{Binding CurrentViewModel}">
+            <ContentControl.Resources>
 
+                <DataTemplate DataType="{x:Type viewmodels:DashBoardViewModel}">
+                    <views:DashBoardView/>
+                </DataTemplate>
+                
+                
+            </ContentControl.Resources>
+        </ContentControl>
     </Grid>
 </Window>

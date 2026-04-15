@@ -8,16 +8,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace NovoForecastingSystem.Views
 {
     /// <summary>
-    /// Interaction logic for ProjectOverview.xaml
+    /// Interaction logic for ProjectView.xaml
     /// </summary>
-    public partial class ProjectOverview : Window
+    public partial class ProjectView : UserControl
     {
-        public ProjectOverview()
+        public ProjectView()
         {
             InitializeComponent();
         }
