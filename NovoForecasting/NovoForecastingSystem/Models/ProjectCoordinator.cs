@@ -4,7 +4,8 @@ using System.Text;
 
 namespace NovoForecastingSystem.Models
 {
-    internal class ProjectCoordinator
+    public class ProjectCoordinator
     {
+        public string Initials { get; set; }
     }
 }
