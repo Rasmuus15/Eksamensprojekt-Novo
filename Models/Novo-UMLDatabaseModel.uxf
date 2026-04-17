@@ -1,10 +1,10 @@
-<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>104</x><y>240</y><w>160</w><h>152</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
+<diagram program="umletino" version="15.1"><zoom_level>11</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>55</x><y>341</y><w>220</w><h>209</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
 PROJECT_COORDINATOR
 --
 __&lt;&lt;PK&gt;&gt; CoordinatorId : Int__
 Initials : NVarChar(4)
 --
-&lt;&lt;PK&gt;&gt; PK_ProjectCoordinator()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>384</x><y>240</y><w>248</w><h>152</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
+&lt;&lt;PK&gt;&gt; PK_ProjectCoordinator()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>341</y><w>341</w><h>209</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
 PROJECT
 --
 __&lt;&lt;PK&gt;&gt; ProjectId : Int__
@@ -13,16 +13,16 @@ Complexity : NVarChar(50)
 /&lt;&lt;FK&gt;&gt; CoordinatorId/
 --
 &lt;&lt;PK&gt;&gt; PK_Project()
-&lt;&lt;FK&gt;&gt; FK_Project_ProjectCoordinator(CoordinatorId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>272</x><y>464</y><w>200</w><h>152</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
-PPROJECT_LENGTH
+&lt;&lt;FK&gt;&gt; FK_Project_ProjectCoordinator(CoordinatorId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>286</x><y>649</y><w>275</w><h>209</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
+PROJECT_LENGTH
 --
 __&lt;&lt;PK&gt;&gt; ProjectLengthId : Int__
 StartDate : Date
 EndDate : Date
 /&lt;&lt;FK&gt;&gt; ProjectId : Int /
 --
-&lt;&lt;PK&gt;&gt; PK_ProjectLengrth()
-&lt;&lt;FK&gt;&gt; FK_ProjectLengrth_Project(ProjectId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>408</x><y>0</y><w>208</w><h>152</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
+&lt;&lt;PK&gt;&gt; PK_ProjectLength()
+&lt;&lt;FK&gt;&gt; FK_ProjectLength_Project(ProjectId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>473</x><y>11</y><w>286</w><h>209</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
 RESSOURCE
 --
 __&lt;&lt;PK&gt;&gt; RessourceId: Int__
@@ -33,7 +33,7 @@ Availability : Bit
 /&lt;&lt;FK&gt;&gt; ProjectId : Int /
 --
 &lt;&lt;PK&gt;&gt; PK_Ressource()
-&lt;&lt;FK&gt;&gt; FK_Ressource_Project(ProjectId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>528</x><y>464</y><w>208</w><h>152</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
+&lt;&lt;FK&gt;&gt; FK_Ressource_Project(ProjectId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>638</x><y>649</y><w>286</w><h>209</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
 PROJECT_ROLE_REQUIREMENT
 --
 __&lt;&lt;PK&gt;&gt; ProjectRoleRequirementId: Int__
@@ -42,7 +42,7 @@ RequiredRessources : Int
 /&lt;&lt;FK&gt;&gt; ProjectId : Int /
 --
 &lt;&lt;PK&gt;&gt; PK_ProjectRoleRequirement()
-&lt;&lt;FK&gt;&gt; FK_ProjectLengrth_Project(ProjectId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>728</x><y>240</y><w>208</w><h>152</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
+&lt;&lt;FK&gt;&gt; FK_ProjectLength_Project(ProjectId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>913</x><y>341</y><w>286</w><h>209</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
 PHASE
 --
 __&lt;&lt;PK&gt;&gt; PhaseId: Int__
@@ -51,25 +51,25 @@ Phase : NVarChar(20)
 /&lt;&lt;FK&gt;&gt; ProjectId : Int /
 --
 &lt;&lt;PK&gt;&gt; PK_Phase()
-&lt;&lt;FK&gt;&gt; FK_Phase_Project(ProjectId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>256</x><y>304</y><w>144</w><h>32</h></coordinates><panel_attributes>lt=-
+&lt;&lt;FK&gt;&gt; FK_Phase_Project(ProjectId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>264</x><y>429</y><w>198</w><h>44</h></coordinates><panel_attributes>lt=-
 m1=1
-m2=*</panel_attributes><additional_attributes>10;10;160;10</additional_attributes></element><element><id>Relation</id><coordinates><x>448</x><y>384</y><w>80</w><h>96</h></coordinates><panel_attributes>lt=-
+m2=*</panel_attributes><additional_attributes>10;10;160;10</additional_attributes></element><element><id>Relation</id><coordinates><x>528</x><y>539</y><w>110</w><h>132</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=1
 m1pos=-20,-7
 m2pos=-9,-5
 
-</panel_attributes><additional_attributes>80;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>504</x><y>384</y><w>56</w><h>96</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes>80;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>605</x><y>539</y><w>77</w><h>132</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=*
 m1pos=3,-10
-</panel_attributes><additional_attributes>10;10;50;100</additional_attributes></element><element><id>Relation</id><coordinates><x>624</x><y>296</y><w>120</w><h>40</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes>10;10;50;100</additional_attributes></element><element><id>Relation</id><coordinates><x>770</x><y>418</y><w>165</w><h>55</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=*
 m1pos=-15,-14
 m2pos=10,-12
 
-</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element><element><id>Relation</id><coordinates><x>496</x><y>144</y><w>32</w><h>112</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element><element><id>Relation</id><coordinates><x>594</x><y>209</y><w>44</w><h>154</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=*
 m1pos=3,-1
