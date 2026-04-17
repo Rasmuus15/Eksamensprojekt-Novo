@@ -1,6 +1,6 @@
-<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLPackage</id><coordinates><x>90</x><y>9</y><w>279</w><h>162</h></coordinates><panel_attributes>View (UI)
-lt=.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>792</x><y>18</y><w>414</w><h>657</h></coordinates><panel_attributes>Model (Domain)
-lt=.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>810</x><y>360</y><w>135</w><h>99</h></coordinates><panel_attributes>Project
+<diagram program="umletino" version="15.1"><zoom_level>13</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLPackage</id><coordinates><x>13</x><y>13</y><w>403</w><h>234</h></coordinates><panel_attributes>View (UI)
+lt=.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1027</x><y>26</y><w>598</w><h>949</h></coordinates><panel_attributes>Model (Domain)
+lt=.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1053</x><y>520</y><w>195</w><h>143</h></coordinates><panel_attributes>Project
 --
 + ProjectName : string
 + StartDate : DateTime
@@ -8,19 +8,19 @@ lt=.</panel_attributes><additional_attributes></additional_attributes></element>
 - complexity : Complexity
 - jobRole : JobRole
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>819</x><y>54</y><w>99</w><h>45</h></coordinates><panel_attributes>ProjectCoordinator
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1066</x><y>78</y><w>143</w><h>65</h></coordinates><panel_attributes>ProjectCoordinator
 --
 + Initials : string
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>828</x><y>513</y><w>90</w><h>81</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1079</x><y>741</y><w>130</w><h>117</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
 Complexity
 --
 Low
 Medium
-High</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1071</x><y>288</y><w>126</w><h>63</h></coordinates><panel_attributes>Phase
+High</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1430</x><y>416</y><w>182</w><h>91</h></coordinates><panel_attributes>Phase
 --
 + Length : DateTime
 - phase : Phase
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1080</x><y>504</y><w>108</w><h>144</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1443</x><y>728</y><w>156</w><h>208</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
 PhaseStage
 --
 ConceptDesign
@@ -31,20 +31,20 @@ Installation
 Testing
 Approval
 GoLive
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>918</x><y>126</y><w>135</w><h>99</h></coordinates><panel_attributes>Ressource
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1209</x><y>182</y><w>195</w><h>143</h></coordinates><panel_attributes>Ressource
 --
 + Initials : string
 + Email : string
 + FTE : double
 + Availability : bool
 - jobRole : JobRole
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>117</x><y>45</y><w>90</w><h>27</h></coordinates><panel_attributes>MainWindow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>117</x><y>108</y><w>90</w><h>27</h></coordinates><panel_attributes>CreateProject</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1125</x><y>342</y><w>27</w><h>180</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;10;180</additional_attributes></element><element><id>Relation</id><coordinates><x>864</x><y>450</y><w>27</w><h>81</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>864</x><y>90</y><w>45</w><h>288</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>52</x><y>65</y><w>130</w><h>39</h></coordinates><panel_attributes>MainWindow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>52</x><y>156</y><w>130</w><h>39</h></coordinates><panel_attributes>CreateProject</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1508</x><y>494</y><w>39</w><h>260</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;10;180</additional_attributes></element><element><id>Relation</id><coordinates><x>1131</x><y>650</y><w>39</w><h>117</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>1131</x><y>130</y><w>65</w><h>416</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
 m1= 0..*
-m2= 1</panel_attributes><additional_attributes>10;300;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>936</x><y>333</y><w>153</w><h>63</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
+m2= 1</panel_attributes><additional_attributes>10;300;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1235</x><y>481</y><w>221</w><h>91</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
 m1=8
-m2=1</panel_attributes><additional_attributes>150;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>900</x><y>216</y><w>72</w><h>162</h></coordinates><panel_attributes>lt=&lt;-
+m2=1</panel_attributes><additional_attributes>150;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>1183</x><y>312</y><w>104</w><h>234</h></coordinates><panel_attributes>lt=-&gt;
 m1=1
-m2=0..*</panel_attributes><additional_attributes>10;160;50;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>936</x><y>468</y><w>126</w><h>198</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+m2=0..*</panel_attributes><additional_attributes>10;160;50;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1235</x><y>676</y><w>182</w><h>286</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
 JobRole
 --
 ProjectManager
@@ -58,87 +58,87 @@ MaintenanceEngineer
 OperationsManager
 FinancialAnalyst
 Designer
-Consultant</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>972</x><y>216</y><w>27</w><h>270</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;10;280</additional_attributes></element><element><id>UMLClass</id><coordinates><x>243</x><y>45</y><w>90</w><h>27</h></coordinates><panel_attributes>Dashboard</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>468</x><y>36</y><w>288</w><h>90</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+Consultant</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1287</x><y>312</y><w>39</w><h>390</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;10;280</additional_attributes></element><element><id>UMLClass</id><coordinates><x>234</x><y>65</y><w>130</w><h>39</h></coordinates><panel_attributes>Dashboard</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>559</x><y>52</y><w>416</w><h>130</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
 ICommand
 --
 +&lt;&lt;event&gt;&gt; CanExecuteChanged : EventHandler
 --
 +CanExecute(parameter ; Object() : bool
-+Execute(parameter : Object() void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>468</x><y>153</y><w>288</w><h>63</h></coordinates><panel_attributes>NavigateCommand
++Execute(parameter : Object() void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>559</x><y>221</y><w>416</w><h>91</h></coordinates><panel_attributes>NavigateCommand
 --
 -navigationService : NavigationSerive {readOnly}
 --
-NavigateCommand(navigationStore : NavigationStore</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>603</x><y>117</y><w>27</w><h>54</h></coordinates><panel_attributes>lt=&lt;&lt;.
+NavigateCommand(navigationStore : NavigationStore</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>754</x><y>169</y><w>39</w><h>78</h></coordinates><panel_attributes>lt=&lt;&lt;.
 
-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>81</x><y>648</y><w>261</w><h>153</h></coordinates><panel_attributes>lt=.
-Stores</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>90</x><y>684</y><w>234</w><h>90</h></coordinates><panel_attributes>NavigationStore
+</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>0</x><y>936</y><w>377</w><h>221</h></coordinates><panel_attributes>lt=.
+Stores</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>13</x><y>988</y><w>338</w><h>130</h></coordinates><panel_attributes>NavigationStore
 --
 -_currentViewModel : BaseViewModel
 + &lt;&lt;event&gt;&gt; CurrentViewModelCHange : Action
 --
 +CurrentViewModel : BaseViewModel
-+ OnCurentViewModelChanged() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>450</x><y>0</y><w>324</w><h>234</h></coordinates><panel_attributes>lt=.
-Commands</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>396</x><y>666</y><w>540</w><h>126</h></coordinates><panel_attributes>lt=.
-Services</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>423</x><y>693</y><w>504</w><h>90</h></coordinates><panel_attributes>NavigationService
++ OnCurentViewModelChanged() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>533</x><y>0</y><w>468</w><h>338</h></coordinates><panel_attributes>lt=.
+Commands</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>455</x><y>962</y><w>780</w><h>182</h></coordinates><panel_attributes>lt=.
+Services</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>494</x><y>1001</y><w>728</w><h>130</h></coordinates><panel_attributes>NavigationService
 --
 - navigationStore : NavigationStore {readOnly}
 - createViewModel : Func&lt;BaseViewModel&gt; {readOnly}
 --
 + NavigateService(navigationStore : NavigationStore, createViewModel : Func &lt;BaseViewModel&gt;)
-+ Navigate()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>90</x><y>234</y><w>684</w><h>225</h></coordinates><panel_attributes>lt=.
-ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>99</x><y>261</y><w>324</w><h>63</h></coordinates><panel_attributes>BaseViewModel
++ Navigate()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>13</x><y>338</y><w>988</w><h>325</h></coordinates><panel_attributes>lt=.
+ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>26</x><y>377</y><w>468</w><h>91</h></coordinates><panel_attributes>BaseViewModel
 --
 + &lt;&lt;event&gt;&gt; PropertyChanged : ProperttyChangedEventHandler
 --
-# OnPropertyChanged(name : string = null) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>459</x><y>261</y><w>297</w><h>72</h></coordinates><panel_attributes>DashboardViewModel
+# OnPropertyChanged(name : string = null) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>546</x><y>377</y><w>429</w><h>104</h></coordinates><panel_attributes>DashboardViewModel
 --
 +&lt;&lt;get&gt;&gt; NavigateToProjectViewModel
 +&lt;&lt;get&gt;&gt; NavigateToRessourceViewModel
 --
-+ DashnboardViewModel(navigationSotre: NavigationStore)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>459</x><y>351</y><w>297</w><h>63</h></coordinates><panel_attributes>ProjectViewModel
++ DashnboardViewModel(navigationSotre: NavigationStore)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>546</x><y>507</y><w>429</w><h>91</h></coordinates><panel_attributes>ProjectViewModel
 --
 &lt;&lt;get&gt;&gt; NavigateToDashboardViewCommand : ICommand
 --
 + ProjectViewModel(navigationStore : NavigationStore)
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>99</x><y>351</y><w>324</w><h>90</h></coordinates><panel_attributes>MainViewModel
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>26</x><y>507</y><w>468</w><h>130</h></coordinates><panel_attributes>MainViewModel
 --
 -navigationStore : NavigationStore {readOnly}
 + &lt;&lt;get&gt;&gt; CurrentViewModel : BaseViewModel
 --
 + MainViewModel(navigationStore : NavigationStore)
-+OnCurrentViewModelChanged() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>90</x><y>477</y><w>567</w><h>153</h></coordinates><panel_attributes>lt=.
-Persistence</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>99</x><y>513</y><w>234</w><h>63</h></coordinates><panel_attributes>ProjectCoordinatorRepo
++OnCurrentViewModelChanged() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>13</x><y>689</y><w>819</w><h>221</h></coordinates><panel_attributes>lt=.
+Persistence</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>26</x><y>741</y><w>338</w><h>91</h></coordinates><panel_attributes>ProjectCoordinatorRepo
 --
 - projectCoordinator : List &lt;ProjectManager&gt;
 --
-+ GetAll()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>351</x><y>513</y><w>153</w><h>63</h></coordinates><panel_attributes>RessourceRepo
++ GetAll()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>390</x><y>741</y><w>221</w><h>91</h></coordinates><panel_attributes>RessourceRepo
 --
 - ressource : List &lt;Ressource&gt;
 --
 + GetAll()
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>522</x><y>513</y><w>126</w><h>99</h></coordinates><panel_attributes>ProjectRepo
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>637</x><y>741</y><w>182</w><h>143</h></coordinates><panel_attributes>ProjectRepo
 --
 - project : List &lt;Project&gt;
 --
 + GetAll()
 + Create()
 + Delete()
-+ Edit()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>153</x><y>63</y><w>27</w><h>63</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>198</x><y>45</y><w>63</w><h>27</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>50;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>414</x><y>279</y><w>63</w><h>36</h></coordinates><panel_attributes>lt=-
-</panel_attributes><additional_attributes>10;20;50;20</additional_attributes></element><element><id>Relation</id><coordinates><x>252</x><y>315</y><w>27</w><h>54</h></coordinates><panel_attributes>lt=-
-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>414</x><y>315</y><w>63</w><h>72</h></coordinates><panel_attributes>lt=-
-</panel_attributes><additional_attributes>10;10;50;60</additional_attributes></element><element><id>Relation</id><coordinates><x>936</x><y>396</y><w>45</w><h>90</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>30;80;30;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>585</x><y>405</y><w>27</w><h>126</h></coordinates><panel_attributes>lt=.
++ Edit()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>104</x><y>91</y><w>39</w><h>91</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>169</x><y>65</y><w>91</w><h>39</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>50;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>481</x><y>403</y><w>91</w><h>52</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes>10;20;50;20</additional_attributes></element><element><id>Relation</id><coordinates><x>247</x><y>455</y><w>39</w><h>78</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>481</x><y>455</y><w>91</w><h>104</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes>10;10;50;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1235</x><y>572</y><w>65</w><h>130</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>30;80;30;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>728</x><y>585</y><w>39</w><h>182</h></coordinates><panel_attributes>lt=.
 
-</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>405</y><w>162</w><h>126</h></coordinates><panel_attributes>lt=.
+</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>533</x><y>585</y><w>234</w><h>182</h></coordinates><panel_attributes>lt=.
 
-</panel_attributes><additional_attributes>10;120;160;10</additional_attributes></element><element><id>Relation</id><coordinates><x>324</x><y>405</y><w>288</w><h>126</h></coordinates><panel_attributes>lt=.
-</panel_attributes><additional_attributes>10;120;300;10</additional_attributes></element><element><id>Relation</id><coordinates><x>639</x><y>297</y><w>162</w><h>270</h></coordinates><panel_attributes>lt=.
-</panel_attributes><additional_attributes>10;280;160;280;160;10;130;10</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>720</y><w>126</w><h>45</h></coordinates><panel_attributes>m1= 1
+</panel_attributes><additional_attributes>10;120;160;10</additional_attributes></element><element><id>Relation</id><coordinates><x>351</x><y>585</y><w>416</w><h>182</h></coordinates><panel_attributes>lt=.
+</panel_attributes><additional_attributes>10;120;300;10</additional_attributes></element><element><id>Relation</id><coordinates><x>806</x><y>429</y><w>234</w><h>390</h></coordinates><panel_attributes>lt=.
+</panel_attributes><additional_attributes>10;280;160;280;160;10;130;10</additional_attributes></element><element><id>Relation</id><coordinates><x>338</x><y>1040</y><w>182</w><h>65</h></coordinates><panel_attributes>m1= 1
 m2= *
 m1pos=5,-20
 m2pos=-15,-20
 lt=&lt;-x
 
-</panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element><element><id>UMLNote</id><coordinates><x>306</x><y>837</y><w>126</w><h>63</h></coordinates><panel_attributes>X betyder Navigation
+</panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element><element><id>UMLNote</id><coordinates><x>325</x><y>1209</y><w>182</w><h>91</h></coordinates><panel_attributes>X betyder Navigation
 Service ikke kender til
 NavigationStore.</panel_attributes><additional_attributes></additional_attributes></element></diagram>
