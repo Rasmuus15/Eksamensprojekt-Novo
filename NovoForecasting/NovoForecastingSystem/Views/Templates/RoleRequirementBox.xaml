@@ -4,28 +4,28 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NovoForecastingSystem.Views.Templates"
-             mc:Ignorable="d" d:DesignWidth="150" Height="130">
+             mc:Ignorable="d" Height="106" Width="189">
 
     <Border CornerRadius="8" BorderBrush="Black" BorderThickness="2">
         <StackPanel>
-            <Grid Height="116">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="35"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="73"/>
-                    <ColumnDefinition Width="77"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="59"/>
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Row="0" Text="Process engineer" Margin="10,10,0,0" Grid.ColumnSpan="2"/>
-                <TextBlock Grid.Row="1" Text="0/1" FontSize="20" Margin="10,0,0,40" Grid.RowSpan="2"/>
-                <TextBlock Grid.Row="1" Text="allocated / demand" Foreground="Gray" Margin="10,35,0,0" TextWrapping="Wrap"/>
+                <TextBlock Grid.Row="1" Text="0/1" FontSize="20" Margin="10,0,0,40"/>
+                <TextBlock Grid.Row="1" Text="allocated / demand" Foreground="Gray" Margin="10,25,0,10" TextWrapping="Wrap"/>
 
 
                 <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,0,0,40">
-                    <Border CornerRadius="6" Background="#2b7fff" HorizontalAlignment="Right" Margin="0,0,30,0" Width="44">
+                    <Border CornerRadius="6" Background="#2b7fff" HorizontalAlignment="Right" Margin="0,0,10,0" Width="44">
                         <TextBlock Text="👤" FontSize="30" Width="36" Foreground="Gray"/>
                     </Border>
                 </StackPanel>
