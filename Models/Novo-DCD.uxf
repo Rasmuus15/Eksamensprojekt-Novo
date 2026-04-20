@@ -31,7 +31,7 @@ Installation
 Testing
 Approval
 GoLive
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1350</x><y>180</y><w>150</w><h>110</h></coordinates><panel_attributes>Ressource
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1350</x><y>180</y><w>150</w><h>110</h></coordinates><panel_attributes>Resource
 --
 + Initials : string
 + Email : string
@@ -93,9 +93,8 @@ ViewModel</panel_attributes><additional_attributes></additional_attributes></ele
 # OnPropertyChanged(name : string = null) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>810</x><y>90</y><w>350</w><h>80</h></coordinates><panel_attributes>DashboardViewModel
 --
 +&lt;&lt;get&gt;&gt; NavigateToProjectViewModel
-+&lt;&lt;get&gt;&gt; NavigateToRessourceViewModel
 --
-+ DashboardViewModel(navigationSotre: NavigationStore)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>460</x><y>190</y><w>330</w><h>70</h></coordinates><panel_attributes>ProjectViewModel
++ DashboardViewModel(navigationStore: NavigationStore)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>460</x><y>190</y><w>330</w><h>70</h></coordinates><panel_attributes>ProjectViewModel
 --
 &lt;&lt;get&gt;&gt; NavigateToDashboardViewCommand : ICommand
 --
@@ -111,9 +110,9 @@ Persistence</panel_attributes><additional_attributes></additional_attributes></e
 --
 - projectCoordinator : List &lt;ProjectManager&gt;
 --
-+ GetAll()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>820</x><y>370</y><w>170</w><h>70</h></coordinates><panel_attributes>RessourceRepo
++ GetAll()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>820</x><y>370</y><w>170</w><h>70</h></coordinates><panel_attributes>ResourceRepo
 --
-- ressource : List &lt;Ressource&gt;
+- resource : List &lt;Resource&gt;
 --
 + GetAll()
 
