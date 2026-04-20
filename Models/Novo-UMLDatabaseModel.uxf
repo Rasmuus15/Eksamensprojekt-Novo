@@ -10,7 +10,7 @@ PROJECT
 __&lt;&lt;PK&gt;&gt; ProjectId : Int__
 ProjectName : NVarChar(255)
 Complexity : NVarChar(50)
-/&lt;&lt;FK&gt;&gt; CoordinatorId/
+/&lt;&lt;FK&gt;&gt; CoordinatorId : Int/
 --
 &lt;&lt;PK&gt;&gt; PK_Project()
 &lt;&lt;FK&gt;&gt; FK_Project_ProjectCoordinator(CoordinatorId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>286</x><y>649</y><w>275</w><h>209</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
@@ -38,7 +38,7 @@ PROJECT_ROLE_REQUIREMENT
 --
 __&lt;&lt;PK&gt;&gt; ProjectRoleRequirementId: Int__
 JobRole: NVarChar(50)
-RequiredRessources : Int
+RequiredResources : Int
 /&lt;&lt;FK&gt;&gt; ProjectId : Int /
 --
 &lt;&lt;PK&gt;&gt; PK_ProjectRoleRequirement()
