@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="313,148,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </UserControl>
