@@ -95,7 +95,7 @@ ViewModel</panel_attributes><additional_attributes></additional_attributes></ele
 +&lt;&lt;get&gt;&gt; NavigateToProjectViewModel
 +&lt;&lt;get&gt;&gt; NavigateToRessourceViewModel
 --
-+ DashnboardViewModel(navigationSotre: NavigationStore)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>460</x><y>190</y><w>330</w><h>70</h></coordinates><panel_attributes>ProjectViewModel
++ DashboardViewModel(navigationSotre: NavigationStore)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>460</x><y>190</y><w>330</w><h>70</h></coordinates><panel_attributes>ProjectViewModel
 --
 &lt;&lt;get&gt;&gt; NavigateToDashboardViewCommand : ICommand
 --
