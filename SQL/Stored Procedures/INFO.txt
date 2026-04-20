@@ -1,0 +1,17 @@
+
+
+
+SP_FindRessources 
+- Printer alle ledige medarbejdere ud
+
+SP_FindProjectPhases
+- Printer phase + faselængderne ud til ét projekt
+
+SP_CreateResource
+- Opretter ny medarbejder
+
+SP_ProjectLenght
+- Printer længden af projektet
+
+SP_CreateNewProject
+- Opretter nyt project
