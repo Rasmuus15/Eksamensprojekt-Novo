@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="NovoForecastingSystem.Views.Templates.RoleRequirementBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NovoForecastingSystem.Views.Templates"
+             mc:Ignorable="d" Height="106" Width="189">
+
+    <Border CornerRadius="8" BorderBrush="Black" BorderThickness="2">
+        <StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="59"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Text="Process engineer" Margin="10,10,0,0" Grid.ColumnSpan="2"/>
+                <TextBlock Grid.Row="1" Text="0/1" FontSize="20" Margin="10,0,0,40"/>
+                <TextBlock Grid.Row="1" Text="allocated / demand" Foreground="Gray" Margin="10,25,0,10" TextWrapping="Wrap"/>
+
+
+                <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,0,0,40">
+                    <Border CornerRadius="6" Background="#2b7fff" HorizontalAlignment="Right" Margin="0,0,10,0" Width="44">
+                        <TextBlock Text="👤" FontSize="30" Width="36" Foreground="Gray"/>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Border>
+</UserControl>

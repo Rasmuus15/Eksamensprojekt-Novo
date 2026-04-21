@@ -15,7 +15,10 @@
                 <DataTemplate DataType="{x:Type viewmodels:DashBoardViewModel}">
                     <views:DashBoardView/>
                 </DataTemplate>
-                
+
+                <DataTemplate DataType="{x:Type viewmodels:ProjectViewModel}">
+                    <views:ProjectView/>
+                </DataTemplate>
                 
             </ContentControl.Resources>
         </ContentControl>
