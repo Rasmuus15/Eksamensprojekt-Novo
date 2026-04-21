@@ -15,11 +15,16 @@ namespace NovoForecastingSystem.Views
     /// <summary>
     /// Interaction logic for CreateRessource.xaml
     /// </summary>
-    public partial class CreateRessource : Window
+    public partial class AddResourceWindow : Window
     {
-        public CreateRessource()
+        public AddResourceWindow()
         {
             InitializeComponent();
+        }
+
+        private void Close_Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

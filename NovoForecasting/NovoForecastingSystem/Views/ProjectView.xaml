@@ -54,7 +54,7 @@
                             </Button.Resources>
                         </Button>
 
-                        <Button Grid.Column="2" Margin="5,5,5,5" Content="+ Add Resources" Background="#FF0056FF" Foreground="White" Cursor="Hand">
+                        <Button Grid.Column="2" Margin="5,5,5,5" Content="+ Add Resources" Background="#FF0056FF" Foreground="White" Cursor="Hand" Command="{Binding AddResourceCommand}" CommandParameter="{Binding}">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5"/>

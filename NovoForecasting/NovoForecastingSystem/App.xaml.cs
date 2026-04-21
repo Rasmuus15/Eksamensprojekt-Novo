@@ -15,7 +15,7 @@ namespace NovoForecastingSystem
         {
             NavigationStore navigationStore = new NavigationStore();
 
-            navigationStore.CurrentViewModel = new DashBoardViewModel(navigationStore);
+            navigationStore.CurrentViewModel = new ProjectViewModel(navigationStore);
 
             MainWindow = new MainWindow()
             {

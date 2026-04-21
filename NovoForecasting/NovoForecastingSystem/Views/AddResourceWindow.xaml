@@ -1,11 +1,11 @@
-﻿<Window x:Class="NovoForecastingSystem.Views.CreateRessource"
+﻿<Window x:Class="NovoForecastingSystem.Views.AddResourceWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NovoForecastingSystem.Views"
         mc:Ignorable="d"
-        Title="Add Resources" Height="520" Width="380" Background="White" FontFamily="Segoe UI">
+        Title="Add Resources" Height="550" Width="380" Background="White" FontFamily="Segoe UI">
     <Grid Margin="25">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -64,7 +64,7 @@
                 </Button.Template>
             </Button>
 
-            <Button Grid.Column="2" Content="Close" Foreground="#334155" Background="#E2E8F0" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand">
+            <Button Grid.Column="2" Content="Close" Foreground="#334155" Background="#E2E8F0" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand" Click="Close_Button_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="8">
