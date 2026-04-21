@@ -4,11 +4,11 @@ using System.Text;
 
 namespace NovoForecastingSystem.Repos
 {
-    public class RessourceRepo
+    public class ResourceRepo
     {
         private List<Models.Ressource> ressource;
 
-        public RessourceRepo()
+        public ResourceRepo()
         {
             ressource = new List<Models.Ressource>(); 
         }
