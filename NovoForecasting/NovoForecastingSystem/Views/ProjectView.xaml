@@ -13,7 +13,7 @@
     <Grid>
         <!-- Window rows for back to project and the rest of the window-->
         <Grid.RowDefinitions>
-            <RowDefinition Height="19"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -82,7 +82,7 @@
 
                     <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
 
-                        <Border Width="282" Margin="0,0,0,0" Background="LightGray" CornerRadius="3" BorderThickness="2">
+                        <Border Width="282" Margin="0,0,0,0" Background="#f9fafb" CornerRadius="3" BorderThickness="2">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="40"/>
@@ -94,7 +94,7 @@
                             </Grid>
                         </Border>
 
-                        <Border Width="282" Margin="50,0,0,0" Background="LightGray" CornerRadius="3" BorderThickness="2">
+                        <Border Width="282" Margin="50,0,0,0" Background="#f9fafb" CornerRadius="3" BorderThickness="2">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="40"/>
@@ -106,7 +106,7 @@
                             </Grid>
                         </Border>
 
-                        <Border Width="282" Margin="50,0,0,0" Background="LightGray" CornerRadius="3" BorderThickness="2">
+                        <Border Width="282" Margin="50,0,0,0" Background="#f9fafb" CornerRadius="3" BorderThickness="2">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="40"/>
@@ -120,10 +120,18 @@
                     </StackPanel>
 
                     <Grid Margin="20" Grid.Row="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="44"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
                         <Grid.DataContext>
                             <charts:GanttViewModel/>
                         </Grid.DataContext>
-                        <Border CornerRadius="6" Background="White" Padding="12" Margin="15" BorderThickness="1" BorderBrush="Gray">
+
+                        <TextBlock Text="Project Timeline" FontSize="25" FontWeight="Bold" Margin="20,0,0,0"/>
+
+                        <Border Grid.Row="1" CornerRadius="6" Background="White" Padding="12" Margin="15,15,15,15" BorderThickness="1" BorderBrush="Gray">
 
                             <lvc:CartesianChart
         Series="{Binding Series}"
