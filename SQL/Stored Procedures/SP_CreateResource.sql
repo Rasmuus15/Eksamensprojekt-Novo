@@ -11,5 +11,5 @@ AS
 BEGIN 
 
 INSERT INTO RESSOURCE (Email, Initials, JobRole, Availability)
-Values ('@Email','@Initials', 'JobRole', @Availability);
+Values (@Email, @Initials, @JobRole, @Availability);
 END;
