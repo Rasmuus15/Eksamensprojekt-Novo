@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:NovoForecastingSystem.Views"
              xmlns:templates="clr-namespace:NovoForecastingSystem.Views.Templates"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="950" d:DesignWidth="800">
 
     <Grid>
         <!-- Window rows for back to project and the rest of the window-->
@@ -22,7 +22,9 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="52"/>
                 <RowDefinition Height="140"/>
-                <RowDefinition Height="120"/>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="300"/>
+
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
@@ -84,14 +86,42 @@
                 <Border Grid.Column="0" Margin="10,0,0,0" Background="Gray" CornerRadius="3" BorderThickness="2">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Text="Complexity"/>
+                        <TextBlock Text="Complexity" Margin="20,20,0,0"/>
+                        <TextBlock Grid.Row="1" Text="Lav" Margin="20,0,0,30" FontWeight="Bold" FontSize="18"/>
                     </Grid>
                 </Border>
-                <Border Grid.Column="1" Margin="20,0,0,0" Background="Gray" CornerRadius="3" BorderThickness="2"/>
-                <Border Grid.Column="2" Margin="20,0,0,0" Background="Gray" CornerRadius="3" BorderThickness="2"/>
+
+                <Border Grid.Column="1" Margin="20,0,0,0" Background="Gray" CornerRadius="3" BorderThickness="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="60"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Start Date" Margin="20,20,0,0"/>
+                        <TextBlock Grid.Row="1" Text="22-03-2025" Margin="20,0,0,30" FontWeight="Bold" FontSize="18"/>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Column="2" Margin="20,0,0,0" Background="Gray" CornerRadius="3" BorderThickness="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="60"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Expected End Date" Margin="20,20,0,0"/>
+                        <TextBlock Grid.Row="1" Text="10-10-2026" Margin="20,0,0,30" FontWeight="Bold" FontSize="18"/>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                
             </Grid>
 
         </Grid>
