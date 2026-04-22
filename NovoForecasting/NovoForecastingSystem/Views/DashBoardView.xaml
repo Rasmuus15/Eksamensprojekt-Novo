@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:NovoForecastingSystem.Views"
+             xmlns:local="clr-namespace:NovoForecastingSystem.Views.Charts.LineChart"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF" 
+             xmlns:charts="clr-namespace:NovoForecastingSystem.Views.Charts.LineChart"
              mc:Ignorable="d" 
              d:DesignHeight="768" d:DesignWidth="1024"
              Background="#FAFAFA" FontFamily="Segoe UI">
@@ -190,12 +192,15 @@
 
                         <!-- Chart Lines Placeholder -->
                         <Grid Grid.Row="1" Margin="0,20,0,0">
-                            <StackPanel VerticalAlignment="Stretch">
-                                <Border Height="1" Background="#E2E8F0" Margin="0,20"/>
-                                <Border Height="1" Background="#EAD8FD" Margin="0,20"/>
-                                <Border Height="1" Background="#BEE3F8" Margin="0,20"/>
-                                <Border Height="1" Background="#C6F6D5" Margin="0,20"/>
-                            </StackPanel>
+                            <Grid.DataContext>
+                                <charts:LineChartViewModel/>
+                            </Grid.DataContext>
+                            <lvc:CartesianChart
+                                    Series="{Binding Series}"
+                                    YAxes="{Binding YAxes}"
+                                    XAxes="{Binding XAxes}"
+                                    LegendPosition="Right"
+                                    TooltipPosition="Hidden"/>
                         </Grid>
                     </Grid>
                 </Border>
