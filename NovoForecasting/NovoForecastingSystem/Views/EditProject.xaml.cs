@@ -13,11 +13,11 @@ using System.Windows.Shapes;
 namespace NovoForecastingSystem.Views
 {
     /// <summary>
-    /// Interaction logic for CreateRessource.xaml
+    /// Interaction logic for EditProject.xaml
     /// </summary>
-    public partial class AddResource : Window
+    public partial class EditProject : Window
     {
-        public AddResource()
+        public EditProject()
         {
             InitializeComponent();
         }
