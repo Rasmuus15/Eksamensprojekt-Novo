@@ -5,11 +5,201 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NovoForecastingSystem.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="768" d:DesignWidth="1024"
+             Background="#FAFAFA" FontFamily="Segoe UI">
     <Grid>
-        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="313,148,0,0" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="550,276,0,0" VerticalAlignment="Top" Height="72" Width="127" Command="{Binding NavigateToProject}"/>
-        <TextBox HorizontalAlignment="Left" Margin="98,276,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="72" Width="286"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
+        <!-- Left Sidebar: Projects -->
+        <Border Grid.Column="0" Background="White" BorderBrush="#E2E8F0" BorderThickness="0,0,1,0" Padding="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Header -->
+                <StackPanel Grid.Row="0" Margin="0,0,0,20">
+                    <TextBlock Text="Projects" FontSize="20" FontWeight="Bold" Foreground="#0F172A" Margin="0,0,0,5"/>
+                    <TextBlock Text="2 Active Projects" FontSize="14" Foreground="#64748B"/>
+                </StackPanel>
+
+                <!-- Project List (Mockup) -->
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <!-- Project Card 1 (Selected) -->
+                        <Border Background="White" BorderBrush="#2563EB" BorderThickness="2" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+                            <StackPanel>
+                                <Grid Margin="0,0,0,15">
+                                    <TextBlock Text="Novopen" FontSize="16" FontWeight="Bold" Foreground="#0F172A" VerticalAlignment="Center"/>
+                                    <Border HorizontalAlignment="Right" Background="#DCFCE7" CornerRadius="4" Padding="8,4">
+                                        <TextBlock Text="Low" FontSize="12" Foreground="#166534" FontWeight="SemiBold" Height="16" VerticalAlignment="Top"/>
+                                    </Border>
+                                </Grid>
+
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                    <TextBlock Text="📋" Margin="0,0,10,0" Foreground="#64748B" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Phase 3/8" FontSize="14" Foreground="#475569" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <TextBlock Text="Detailed Design" FontSize="12" Foreground="#94A3B8" Margin="26,0,0,15"/>
+
+                                <Grid Margin="0,0,0,15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Start:" FontSize="12" Foreground="#64748B" Margin="0,0,0,5"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="2" Text="22-03-2025" FontSize="12" FontWeight="SemiBold" Foreground="#0F172A"/>
+
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="End:" FontSize="12" Foreground="#64748B"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="2" Text="10-10-2026" FontSize="12" FontWeight="SemiBold" Foreground="#0F172A"/>
+                                </Grid>
+
+                                <!-- Progress Bar -->
+                                <Border Height="6" Background="#E2E8F0" CornerRadius="3">
+                                    <Border Width="80" HorizontalAlignment="Left" Background="#2563EB" CornerRadius="3"/>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Project Card 2 -->
+                        <Border Background="White" BorderBrush="#E2E8F0" BorderThickness="1" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+                            <StackPanel>
+                                <Grid Margin="0,0,0,15">
+                                    <TextBlock Text="Wegovy" FontSize="16" FontWeight="Bold" Foreground="#0F172A" VerticalAlignment="Center"/>
+                                    <Border HorizontalAlignment="Right" Background="#FEE2E2" CornerRadius="4" Padding="8,4">
+                                        <TextBlock Text="High" FontSize="12" Foreground="#991B1B" FontWeight="SemiBold"/>
+                                    </Border>
+                                </Grid>
+
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                    <TextBlock Text="📋" Margin="0,0,10,0" Foreground="#64748B" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Phase 2/8" FontSize="14" Foreground="#475569" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <TextBlock Text="Basic Design" FontSize="12" Foreground="#94A3B8" Margin="26,0,0,15"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+
+                <!-- New Project Button -->
+                <Button Grid.Row="2" Content="+ New Project" Background="#2563EB" Foreground="White" FontSize="16" FontWeight="SemiBold" Height="45" Margin="0,15,0,0" BorderThickness="0" Cursor="Hand">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Border>
+
+        <!-- Right Main Area -->
+        <Border Grid.Column="1" Background="#FAFAFA" Padding="30">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Stats Cards -->
+                <Grid Grid.Row="0" Margin="0,0,0,30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Stats Card 1 -->
+                    <Border Grid.Column="0" Background="White" BorderBrush="#BFDBFE" BorderThickness="2" CornerRadius="12" Padding="20">
+                        <Grid>
+                            <StackPanel>
+                                <TextBlock Text="Process Engineer" FontSize="14" FontWeight="SemiBold" Foreground="#2563EB" Margin="0,0,0,10"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                    <TextBlock Text="0" FontSize="36" FontWeight="Bold" Foreground="#0F172A"/>
+                                    <TextBlock Text=" / 1" FontSize="24" FontWeight="SemiBold" Foreground="#64748B" VerticalAlignment="Bottom" Margin="5,0,0,6"/>
+                                </StackPanel>
+                                <TextBlock Text="allocated / demand (all projects)" FontSize="12" Foreground="#94A3B8" TextWrapping="Wrap"/>
+                            </StackPanel>
+                            <Border HorizontalAlignment="Right" VerticalAlignment="Center" Background="#3B82F6" Width="48" Height="48" CornerRadius="12">
+                                <TextBlock Text="👤" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <!-- Stats Card 2 -->
+                    <Border Grid.Column="2" Background="White" BorderBrush="#BBF7D0" BorderThickness="2" CornerRadius="12" Padding="20">
+                        <Grid>
+                            <StackPanel>
+                                <TextBlock Text="Chemical Engineer" FontSize="14" FontWeight="SemiBold" Foreground="#10B981" Margin="0,0,0,10"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                    <TextBlock Text="0" FontSize="36" FontWeight="Bold" Foreground="#0F172A"/>
+                                    <TextBlock Text=" / 1" FontSize="24" FontWeight="SemiBold" Foreground="#64748B" VerticalAlignment="Bottom" Margin="5,0,0,6"/>
+                                </StackPanel>
+                                <TextBlock Text="allocated / demand (all projects)" FontSize="12" Foreground="#94A3B8" TextWrapping="Wrap"/>
+                            </StackPanel>
+                            <Border HorizontalAlignment="Right" VerticalAlignment="Center" Background="#10B981" Width="48" Height="48" CornerRadius="12">
+                                <TextBlock Text="👤" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <!-- Stats Card 3 -->
+                    <Border Grid.Column="4" Background="White" BorderBrush="#E9D5FF" BorderThickness="2" CornerRadius="12" Padding="20">
+                        <Grid>
+                            <StackPanel>
+                                <TextBlock Text="Automation Engineer" FontSize="14" FontWeight="SemiBold" Foreground="#A855F7" Margin="0,0,0,10"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                    <TextBlock Text="0" FontSize="36" FontWeight="Bold" Foreground="#0F172A"/>
+                                    <TextBlock Text=" / 0" FontSize="24" FontWeight="SemiBold" Foreground="#64748B" VerticalAlignment="Bottom" Margin="5,0,0,6"/>
+                                </StackPanel>
+                                <TextBlock Text="allocated / demand (all projects)" FontSize="12" Foreground="#94A3B8" TextWrapping="Wrap"/>
+                            </StackPanel>
+                            <Border HorizontalAlignment="Right" VerticalAlignment="Center" Background="#A855F7" Width="48" Height="48" CornerRadius="12">
+                                <TextBlock Text="👤" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!-- Resource Demand Chart Area -->
+                <Border Grid.Row="1" Background="White" BorderBrush="#E2E8F0" BorderThickness="1" CornerRadius="12" Padding="30">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+                            <TextBlock Text="Resource Demand - Across All Active Projects" FontSize="24" FontWeight="Bold" Foreground="#0F172A" Margin="0,0,0,10"/>
+                            <TextBlock Text="Monthly comparison of allocated vs. demand across all projects" FontSize="14" Foreground="#64748B"/>
+                        </StackPanel>
+
+                        <!-- Chart Lines Placeholder -->
+                        <Grid Grid.Row="1" Margin="0,20,0,0">
+                            <StackPanel VerticalAlignment="Stretch">
+                                <Border Height="1" Background="#E2E8F0" Margin="0,20"/>
+                                <Border Height="1" Background="#EAD8FD" Margin="0,20"/>
+                                <Border Height="1" Background="#BEE3F8" Margin="0,20"/>
+                                <Border Height="1" Background="#C6F6D5" Margin="0,20"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

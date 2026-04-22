@@ -1,11 +1,11 @@
-﻿<Window x:Class="NovoForecastingSystem.Views.CreateProject"
+﻿<Window x:Class="NovoForecastingSystem.Views.EditProject"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NovoForecastingSystem.Views"
         mc:Ignorable="d"
-        Title="Create Project" Height="520" Width="380" Background="White" FontFamily="Segoe UI">
+        Title="Edit Project" Height="520" Width="380" Background="White" FontFamily="Segoe UI">
     <Grid Margin="25">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <!-- Title -->
-        <TextBlock Grid.Row="0" Text="Create Project" FontSize="24" FontWeight="Bold" Foreground="#0F172A" Margin="0,0,0,25"/>
+        <TextBlock Grid.Row="0" Text="Edit Project" FontSize="24" FontWeight="Bold" Foreground="#0F172A" Margin="0,0,0,25"/>
 
         <!-- Project Name -->
         <StackPanel Grid.Row="1" Margin="0,0,0,20">
@@ -43,6 +43,22 @@
             </ComboBox>
         </StackPanel>
 
+        <!-- Current Phase -->
+        <StackPanel Grid.Row="5" Margin="0,0,0,20">
+            <TextBlock Text="Current Phase:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
+            <ComboBox Height="40" VerticalContentAlignment="Center" Padding="10,0">
+                <ComboBoxItem Content="Concept Design"/>
+                <ComboBoxItem Content="Basic Design"/>
+                <ComboBoxItem Content="Detailed Design"/>
+                <ComboBoxItem Content="Manufacturing"/>
+                <ComboBoxItem Content="Installation"/>
+                <ComboBoxItem Content="Testing"/>
+                <ComboBoxItem Content="Approval"/>
+                <ComboBoxItem Content="Go Live"/>
+            </ComboBox>
+
+        </StackPanel>
+
         <!-- Buttons -->
         <Grid Grid.Row="6" Margin="0,10,0,0">
             <Grid.ColumnDefinitions>
@@ -51,7 +67,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Content="Create Project" Foreground="White" Background="#2563EB" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand">
+            <Button Grid.Column="0" Content="Save Changes" Foreground="White" Background="#2563EB" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="8">
