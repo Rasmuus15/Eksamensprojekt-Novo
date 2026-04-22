@@ -8,7 +8,7 @@
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
              xmlns:charts="clr-namespace:NovoForecastingSystem.Views.Charts"
              mc:Ignorable="d" 
-             d:DesignHeight="950" d:DesignWidth="800" Background="#f9fafb">
+             d:DesignHeight="2050" d:DesignWidth="800" Background="#f9fafb">
 
     <Grid>
         <!-- Window rows for back to project and the rest of the window-->
@@ -142,8 +142,17 @@
                         </Border>
                     </Grid>
 
-                    <Grid Grid.Row="4">
+                    <Grid Margin="20" Grid.Row="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="44"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
                         <TextBlock Text="FTE Demand By Phase and Role" FontSize="28"/>
+
+                        <DataGrid Grid.Row="1" >
+
+                        </DataGrid>
                     </Grid>
 
                 </Grid>
