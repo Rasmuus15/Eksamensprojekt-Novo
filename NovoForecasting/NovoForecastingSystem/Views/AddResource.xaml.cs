@@ -15,9 +15,9 @@ namespace NovoForecastingSystem.Views
     /// <summary>
     /// Interaction logic for CreateRessource.xaml
     /// </summary>
-    public partial class CreateRessource : Window
+    public partial class AddResource : Window
     {
-        public CreateRessource()
+        public AddResource()
         {
             InitializeComponent();
         }
