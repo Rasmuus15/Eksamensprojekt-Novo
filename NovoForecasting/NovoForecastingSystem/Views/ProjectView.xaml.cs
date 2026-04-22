@@ -23,9 +23,6 @@ namespace NovoForecastingSystem.Views
             InitializeComponent();
         }
 
-        private void RoleRequirementBox_Loaded(object sender, RoutedEventArgs e)
-        {
 
-        }
     }
 }
