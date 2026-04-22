@@ -5,8 +5,71 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NovoForecastingSystem.Views"
         mc:Ignorable="d"
-        Title="CreateProject" Height="450" Width="800">
-    <Grid>
-        
+        Title="Create Project" Height="520" Width="380" Background="White" FontFamily="Segoe UI">
+    <Grid Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title -->
+        <TextBlock Grid.Row="0" Text="Create Project" FontSize="24" FontWeight="Bold" Foreground="#0F172A" Margin="0,0,0,25"/>
+
+        <!-- Project Name -->
+        <StackPanel Grid.Row="1" Margin="0,0,0,20">
+            <TextBlock Text="Project Name:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
+            <TextBox Height="40" VerticalContentAlignment="Center" Padding="10,0"/>
+        </StackPanel>
+
+        <!-- Start Date -->
+        <StackPanel Grid.Row="2" Margin="0,0,0,15">
+            <TextBlock Text="Start Date:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
+            <DatePicker Height="40" VerticalContentAlignment="Center" Padding="10,0">
+            </DatePicker>
+        </StackPanel>
+
+        <!-- Complexity -->
+        <StackPanel Grid.Row="4" Margin="0,0,0,20">
+            <TextBlock Text="Complexity:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
+            <ComboBox Height="40" VerticalContentAlignment="Center" Padding="10,0">
+                <ComboBoxItem Content="Low"/>
+                <ComboBoxItem Content="Medium"/>
+                <ComboBoxItem Content="High"/>
+            </ComboBox>
+        </StackPanel>
+
+        <!-- Buttons -->
+        <Grid Grid.Row="6" Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Content="Create Project" Foreground="White" Background="#2563EB" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Grid.Column="2" Content="Cancel" Foreground="#334155" Background="#E2E8F0" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
     </Grid>
 </Window>
