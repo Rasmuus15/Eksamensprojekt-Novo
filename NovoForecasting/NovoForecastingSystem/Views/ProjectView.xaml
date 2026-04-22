@@ -75,9 +75,9 @@
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
 
-                        <templates:RoleRequirementBox Margin="10,0,0,0"/>
-                        <templates:RoleRequirementBox Margin="20,0,0,0"/>
-                        <templates:RoleRequirementBox Margin="20,0,0,0"/>
+                        <templates:RoleRequirementBox Margin="10,0,0,0" Tag="#2b7fff" Foreground="#2b7fff"/>
+                        <templates:RoleRequirementBox Margin="20,0,0,0" Tag="#00c950" Foreground="#00c950"/>
+                        <templates:RoleRequirementBox Margin="20,0,0,0" Tag="#ad46ff" Foreground="#ad46ff"/>
                     </ItemsControl>
                 </StackPanel>
             </Grid>
