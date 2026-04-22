@@ -16,7 +16,7 @@
                 <DataGridTemplateColumn Header="Birthday">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <DatePicker SelectedDate="{Binding Birthday}" BorderThickness="0" />
+                            <DatePicker SelectedDate="{Binding Birthday}" BorderThickness="0"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
