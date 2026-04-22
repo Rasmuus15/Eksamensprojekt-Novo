@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NovoForecastingSystem.Views.Templates"
-             mc:Ignorable="d" Height="106" Width="189">
+             mc:Ignorable="d" Height="106" Width="282">
 
-    <Border CornerRadius="8" BorderBrush="Black" BorderThickness="2">
+    <Border CornerRadius="8" BorderThickness="2">
         <StackPanel>
             <Grid>
                 <Grid.RowDefinitions>
@@ -26,7 +26,7 @@
 
                 <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,0,0,40">
                     <Border CornerRadius="6" Background="#2b7fff" HorizontalAlignment="Right" Margin="0,0,10,0" Width="44">
-                        <TextBlock Text="👤" FontSize="30" Width="36" Foreground="Gray"/>
+                        <TextBlock Text="👤" FontSize="30" Width="36" Foreground="White"/>
                     </Border>
                 </StackPanel>
             </Grid>

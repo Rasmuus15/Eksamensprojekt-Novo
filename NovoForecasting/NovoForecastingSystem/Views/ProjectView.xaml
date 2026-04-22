@@ -5,97 +5,159 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NovoForecastingSystem.Views"
              xmlns:templates="clr-namespace:NovoForecastingSystem.Views.Templates"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+             xmlns:charts="clr-namespace:NovoForecastingSystem.Views.Charts"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="2050" d:DesignWidth="800" Background="#f9fafb">
 
     <Grid>
         <!-- Window rows for back to project and the rest of the window-->
         <Grid.RowDefinitions>
-            <RowDefinition Height="19"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Button Content="← Back to projects" HorizontalAlignment="Left" Width="110" Background="Transparent" Foreground="#4a5565" BorderThickness="0" Cursor="Hand" Command="{Binding NavigateToDashboardViewCommand}"/>
 
         <!-- Rows for the rest of the window besides the back to project button-->
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="52"/>
-                <RowDefinition Height="140"/>
-                <RowDefinition Height="120"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+        <ScrollViewer Grid.Row="1">
+            <Border Grid.Row="1" CornerRadius="6" Background="White" Padding="12" Margin="15" BorderThickness="1" BorderBrush="Gray">
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="52"/>
+                        <RowDefinition Height="140"/>
+                        <RowDefinition Height="90"/>
+                        <RowDefinition Height="500"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-            <!-- Project title and buttons-->
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="113"/>
-                    <ColumnDefinition Width="125"/>
-                </Grid.ColumnDefinitions>
-
-
-                <StackPanel Grid.Column="0" Orientation="Vertical">
-                    <TextBlock Text="Novopen" FontSize="20" Margin="10,5,0,0"/>
-                    <TextBlock Text="Phase 3/8 [Detailed Design]" Margin="12,0,0,0" Foreground="Gray"/>
-                </StackPanel>
-
-                <Button Grid.Column="1" Margin="5,5,5,5" Content="📝 Edit Project" Background="#4a5565" Foreground="White" Cursor="Hand">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="5"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
-
-                <Button Grid.Column="2" Margin="5,5,5,5" Content="+ Add Resources" Background="#FF0056FF" Foreground="White" Cursor="Hand">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="5"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
-            </Grid>
+                    <!-- Project title and buttons-->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="113"/>
+                            <ColumnDefinition Width="125"/>
+                        </Grid.ColumnDefinitions>
 
 
-            <Grid Grid.Row="1">
-                <StackPanel HorizontalAlignment="Left" Margin="0,10,0,0">
-                    <ItemsControl x:Name="ResourcesNeeded">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
+                        <StackPanel Grid.Column="0" Orientation="Vertical">
+                            <TextBlock Text="Novopen" FontSize="20" Margin="10,5,0,0"/>
+                            <TextBlock Text="Phase 3/8 [Detailed Design]" Margin="12,0,0,0" Foreground="Gray"/>
+                        </StackPanel>
 
-                        <templates:RoleRequirementBox Margin="10,0,0,0"/>
-                        <templates:RoleRequirementBox Margin="20,0,0,0"/>
-                        <templates:RoleRequirementBox Margin="20,0,0,0"/>
-                    </ItemsControl>
-                </StackPanel>
-            </Grid>
+                        <Button Grid.Column="1" Margin="5,5,5,5" Content="📝 Edit Project" Background="#4a5565" Foreground="White" Cursor="Hand">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
 
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="210"/>
-                    <ColumnDefinition Width="210"/>
-                </Grid.ColumnDefinitions>
+                        <Button Grid.Column="2" Margin="5,5,5,5" Content="+ Add Resources" Background="#FF0056FF" Foreground="White" Cursor="Hand" Command="{Binding AddResourceCommand}" CommandParameter="{Binding}">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                    </Grid>
 
-                <Border Grid.Column="0" Margin="10,0,0,0" Background="Gray" CornerRadius="3" BorderThickness="2">
-                    <Grid>
+
+                    <Grid Grid.Row="1">
+                        <StackPanel HorizontalAlignment="Center" Margin="0,10,0,0">
+                            <ItemsControl x:Name="ResourcesNeeded">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <templates:RoleRequirementBox Margin="0,0,0,0" BorderBrush="Red"/>
+                                <templates:RoleRequirementBox Margin="50,0,0,0" BorderBrush="Black"/>
+                                <templates:RoleRequirementBox Margin="50,0,0,0"/>
+                            </ItemsControl>
+                        </StackPanel>
+                    </Grid>
+
+                    <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+
+                        <Border Width="282" Margin="0,0,0,0" Background="#f9fafb" CornerRadius="3" BorderThickness="2">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="60"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="Complexity" Margin="20,20,0,0"/>
+                                <TextBlock Grid.Row="1" Text="Low" Margin="20,0,0,30" FontWeight="Bold" FontSize="18"/>
+                            </Grid>
+                        </Border>
+
+                        <Border Width="282" Margin="50,0,0,0" Background="#f9fafb" CornerRadius="3" BorderThickness="2">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="60"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="Start Date" Margin="20,20,0,0"/>
+                                <TextBlock Grid.Row="1" Text="22-03-2025" Margin="20,0,0,30" FontWeight="Bold" FontSize="18"/>
+                            </Grid>
+                        </Border>
+
+                        <Border Width="282" Margin="50,0,0,0" Background="#f9fafb" CornerRadius="3" BorderThickness="2">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="60"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="Expected End Date" Margin="20,20,0,0"/>
+                                <TextBlock Grid.Row="1" Text="10-10-2026" Margin="20,0,0,30" FontWeight="Bold" FontSize="18"/>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+
+                    <Grid Margin="20" Grid.Row="3">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="44"/>
+                            <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Text="Complexity"/>
+                        <Grid.DataContext>
+                            <charts:GanttViewModel/>
+                        </Grid.DataContext>
+
+                        <TextBlock Text="Project Timeline" FontSize="25" FontWeight="Bold" Margin="20,0,0,0"/>
+
+                        <Border Grid.Row="1" CornerRadius="6" Background="White" Padding="12" Margin="15,15,15,15" BorderThickness="1" BorderBrush="Gray">
+
+                            <lvc:CartesianChart Series="{Binding Series}" YAxes="{Binding YAxes}" XAxes="{Binding XAxes}" LegendPosition="Hidden" TooltipPosition="Hidden"/>
+                        </Border>
                     </Grid>
-                </Border>
-                <Border Grid.Column="1" Margin="20,0,0,0" Background="Gray" CornerRadius="3" BorderThickness="2"/>
-                <Border Grid.Column="2" Margin="20,0,0,0" Background="Gray" CornerRadius="3" BorderThickness="2"/>
-            </Grid>
 
-        </Grid>
+                    <Grid Margin="20" Grid.Row="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="44"/>
+                            <RowDefinition Height="300"/>
+                        </Grid.RowDefinitions>
 
+                        <TextBlock Text="FTE Demand By Phase and Role" FontSize="25" FontWeight="Bold" Margin="20,0,0,0"/>
 
+                        <StackPanel Grid.Row="1" HorizontalAlignment="Left" Margin="0,10,0,0">
+                            <ItemsControl x:Name="Test">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <templates:FTEDemandByPhase_Role/>
+                            </ItemsControl>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Border>
+        </ScrollViewer>
     </Grid>
 </UserControl>
