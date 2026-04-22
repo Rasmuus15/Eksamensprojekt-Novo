@@ -28,8 +28,7 @@
                         <RowDefinition Height="140"/>
                         <RowDefinition Height="90"/>
                         <RowDefinition Height="500"/>
-
-                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
                     <!-- Project title and buttons-->
@@ -73,8 +72,8 @@
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
 
-                                <templates:RoleRequirementBox Margin="0,0,0,0"/>
-                                <templates:RoleRequirementBox Margin="50,0,0,0"/>
+                                <templates:RoleRequirementBox Margin="0,0,0,0" BorderBrush="Red"/>
+                                <templates:RoleRequirementBox Margin="50,0,0,0" BorderBrush="Black"/>
                                 <templates:RoleRequirementBox Margin="50,0,0,0"/>
                             </ItemsControl>
                         </StackPanel>
@@ -133,28 +132,30 @@
 
                         <Border Grid.Row="1" CornerRadius="6" Background="White" Padding="12" Margin="15,15,15,15" BorderThickness="1" BorderBrush="Gray">
 
-                            <lvc:CartesianChart
-        Series="{Binding Series}"
-        YAxes="{Binding YAxes}"
-        XAxes="{Binding XAxes}"
-        LegendPosition="Hidden"
-        TooltipPosition="Hidden"/>
+                            <lvc:CartesianChart Series="{Binding Series}" YAxes="{Binding YAxes}" XAxes="{Binding XAxes}" LegendPosition="Hidden" TooltipPosition="Hidden"/>
                         </Border>
                     </Grid>
 
                     <Grid Margin="20" Grid.Row="4">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="44"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="300"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Text="FTE Demand By Phase and Role" FontSize="28"/>
+                        <TextBlock Text="FTE Demand By Phase and Role" FontSize="25" FontWeight="Bold" Margin="20,0,0,0"/>
 
-                        <DataGrid Grid.Row="1" >
+                        <StackPanel Grid.Row="1" HorizontalAlignment="Left" Margin="0,10,0,0">
+                            <ItemsControl x:Name="Test">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
 
-                        </DataGrid>
+                                <templates:FTEDemandByPhase_Role/>
+                            </ItemsControl>
+                        </StackPanel>
                     </Grid>
-
                 </Grid>
             </Border>
         </ScrollViewer>
