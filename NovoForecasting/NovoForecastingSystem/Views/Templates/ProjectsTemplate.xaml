@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:NovoForecastingSystem.Views.Templates"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Width="189"
-    Height="106"
+    Height="130"
     mc:Ignorable="d">
 
     <Border
@@ -30,29 +30,50 @@
                     Grid.Row="0"
                     Grid.ColumnSpan="2"
                     Margin="10,10,0,0"
-                    Text="Projekt" />
+                    Text="Projekt" 
+                    FontWeight="Bold" />
                 <TextBlock
                     Grid.Row="1"
-                    Margin="10,0,0,0"
+                    Margin="8,1,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Foreground="Gray"
+                    Text="📋"
+                    TextWrapping="Wrap"
+                    FontSize="10"/>
+                <TextBlock
+                    Grid.Row="1"
+                    Margin="22,0,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Foreground="Gray"
                     Text="Phase"
                     TextWrapping="Wrap" />
+                <TextBlock 
+                    Grid.Row="1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Text="1 / 8"
+                    Foreground="Gray"
+                    TextWrapping="Wrap" 
+                    Margin="57,1,0,0" />
                 <TextBlock
                     Grid.Row="1"
                     Grid.ColumnSpan="2"
-                    Width="163"
-                    Margin="22,10,0,0"
+                    Width="167"
+                    Margin="10,19,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    Foreground="Gray"
-                    Text="__________________________"
+                    Foreground="#f3f4f6"
+                    Text="_________________________________"
                     TextWrapping="Wrap" />
+
+                <TextBlock Grid.Row="1" Text="Detailed Design" FontSize="8" Foreground="#94A3B8" Margin="23,19,3,49"/>
+
                 <TextBlock
                     Grid.Row="1"
                     Width="31"
-                    Margin="10,26,0,0"
+                    Margin="10,37,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Foreground="Gray"
@@ -61,7 +82,7 @@
                 <TextBlock
                     Grid.Row="1"
                     Width="31"
-                    Margin="10,42,0,0"
+                    Margin="10,51,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Foreground="Gray"
@@ -69,16 +90,9 @@
                     TextWrapping="Wrap" />
                 <TextBlock
                     Grid.Row="1"
-                    Margin="46,0,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Text="1 / 8"
-                    TextWrapping="Wrap" />
-                <TextBlock
-                    Grid.Row="1"
                     Grid.Column="1"
-                    Width="69"
-                    Margin="10,30,0,0"
+                    Width="49"
+                    Margin="10,40,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="8"
@@ -88,48 +102,48 @@
                 <TextBlock
                     Grid.Row="1"
                     Grid.Column="1"
-                    Width="69"
-                    Margin="10,46,0,0"
+                    Width="49"
+                    Margin="10,55,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="8"
                     Foreground="Black"
                     Text="01-01-2000"
                     TextWrapping="Wrap" />
-                <TextBlock
-                    Grid.Column="1"
-                    Width="31"
-                    Margin="28,5,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Foreground="Green"
-                    Text="Low"
-                    TextWrapping="Wrap" />
-
-
-                <StackPanel
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Margin="0,0,0,40">
-                    <Border
-                        Width="44"
-                        Margin="0,0,10,0"
-                        HorizontalAlignment="Right"
-                        Background="#2b7fff"
-                        CornerRadius="6" />
-                </StackPanel>
+                <Border Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Background="#DCFCE7" CornerRadius="4" Padding="8,4" Margin="8">
+                    <TextBlock Text="Low" FontSize="12" Foreground="#166534" FontWeight="SemiBold" Height="16" VerticalAlignment="Center"/>
+                </Border>
                 <ProgressBar
                     Grid.Row="1"
                     Grid.ColumnSpan="2"
-                    Width="100"
+                    Width="167"
                     Height="10"
-                    Margin="42,58,0,0"
+                    Margin="10,77,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Foreground="Blue"
                     LargeChange="0"
-                    Maximum="8"
-                    Value="7" />
+                    Maximum="167"
+                    Value="20">
+
+                    <ProgressBar.Resources>
+                        <Style TargetType="ProgressBar">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ProgressBar">
+                                        <Grid>
+                                            <!-- Baggrund -->
+                                            <Border Background="#ddd" CornerRadius="5"/>
+
+                                            <!-- Progress -->
+                                            <Border Background="Blue" CornerRadius="5" Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Value}" HorizontalAlignment="Left"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ProgressBar.Resources>
+                </ProgressBar>
             </Grid>
         </StackPanel>
     </Border>
