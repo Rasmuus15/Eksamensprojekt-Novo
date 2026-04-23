@@ -23,40 +23,21 @@
         <!-- Project Name -->
         <StackPanel Grid.Row="1" Margin="0,0,0,20">
             <TextBlock Text="Project Name:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <TextBox Height="40" VerticalContentAlignment="Center" Padding="10,0"/>
+            <TextBox x:Name="ProjectNameTextBox" Height="40" VerticalContentAlignment="Center" Padding="10,0"/>
         </StackPanel>
 
-        <!-- Start Date -->
-        <StackPanel Grid.Row="2" Margin="0,0,0,15">
-            <TextBlock Text="Start Date:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <DatePicker Height="40" VerticalContentAlignment="Center" Padding="10,0">
-            </DatePicker>
-        </StackPanel>
+      
 
         <!-- Complexity -->
         <StackPanel Grid.Row="4" Margin="0,0,0,20">
             <TextBlock Text="Complexity:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <ComboBox Height="40" VerticalContentAlignment="Center" Padding="10,0">
-                <ComboBoxItem Content="Low"/>
-                <ComboBoxItem Content="Medium"/>
-                <ComboBoxItem Content="High"/>
-            </ComboBox>
+            <ComboBox x:Name="ComplexityComboBox" Height="40" VerticalContentAlignment="Center" Padding="10,0" />
         </StackPanel>
 
         <!-- Current Phase -->
         <StackPanel Grid.Row="5" Margin="0,0,0,20">
             <TextBlock Text="Current Phase:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <ComboBox Height="40" VerticalContentAlignment="Center" Padding="10,0">
-                <ComboBoxItem Content="Concept Design"/>
-                <ComboBoxItem Content="Basic Design"/>
-                <ComboBoxItem Content="Detailed Design"/>
-                <ComboBoxItem Content="Manufacturing"/>
-                <ComboBoxItem Content="Installation"/>
-                <ComboBoxItem Content="Testing"/>
-                <ComboBoxItem Content="Approval"/>
-                <ComboBoxItem Content="Go Live"/>
-            </ComboBox>
-
+            <ComboBox x:Name="PhaseComboBox" Height="40" VerticalContentAlignment="Center" Padding="10,0" />
         </StackPanel>
 
         <!-- Buttons -->
@@ -67,7 +48,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Content="Save Changes" Foreground="White" Background="#2563EB" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand">
+            <Button Grid.Column="0" Content="Save Changes" Foreground="White" Background="#2563EB" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand" Click="Save_Button_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="8">
@@ -77,7 +58,7 @@
                 </Button.Template>
             </Button>
 
-            <Button Grid.Column="2" Content="Cancel" Foreground="#334155" Background="#E2E8F0" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand">
+            <Button Grid.Column="2" Content="Cancel" Foreground="#334155" Background="#E2E8F0" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand" Click="Close_Button_Click" >
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="8">

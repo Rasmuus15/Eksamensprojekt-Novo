@@ -11,6 +11,8 @@ namespace NovoForecastingSystem.Models
         public string ProjectName { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        public NovoForecastingSystem.Models.Enums.Complexity Complexity { get; set; }
+        public NovoForecastingSystem.Models.Enums.Phase Phase { get; set; }
         private JobRoleEnum jobRoleEnum;
         private ComplexityEnum complexityEnum;
     }
