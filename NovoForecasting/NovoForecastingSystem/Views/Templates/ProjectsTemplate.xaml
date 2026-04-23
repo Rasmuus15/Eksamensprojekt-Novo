@@ -11,7 +11,7 @@
     mc:Ignorable="d">
     <Border
         Background="White"
-        BorderBrush="Black"
+        BorderBrush="#f3f4f6"
         BorderThickness="2"
         CornerRadius="8">
         <StackPanel>

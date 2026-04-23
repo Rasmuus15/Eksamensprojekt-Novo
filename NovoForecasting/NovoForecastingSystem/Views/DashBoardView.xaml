@@ -30,8 +30,17 @@
                     <TextBlock Text="Projects" FontSize="20" FontWeight="Bold" Foreground="#0F172A" Margin="0,0,0,5"/>
                 </StackPanel>
                 
-                <templates:ProjectsTemplate Grid.Row="1" VerticalAlignment="Top"/>
-                
+                <StackPanel Grid.Row="1">
+                    <StackPanel.Resources>
+                        <Style TargetType="templates:ProjectsTemplate">
+                            <Setter Property="Margin" Value="0,0,0,10"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    
+                    <templates:ProjectsTemplate/>
+                    <templates:ProjectsTemplate/>
+                </StackPanel>
+
                 <!-- New Project Button -->
                 <Button Grid.Row="2" Content="+ New Project" Background="#2563EB" Foreground="White" FontSize="16" FontWeight="SemiBold" Height="45" Margin="0,15,0,0" BorderThickness="0" Cursor="Hand">
                     <Button.Template>
