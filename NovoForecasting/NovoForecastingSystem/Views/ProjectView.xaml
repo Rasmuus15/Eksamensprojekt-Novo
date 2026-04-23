@@ -42,11 +42,11 @@
 
 
                         <StackPanel Grid.Column="0" Orientation="Vertical">
-                            <TextBlock Text="Novopen" FontSize="20" Margin="10,5,0,0"/>
+                            <TextBlock Text="Novopen" FontSize="20" Margin="10,5,0,0" FontWeight="Bold"/>
                             <TextBlock Text="Phase 3/8 [Detailed Design]" Margin="12,0,0,0" Foreground="Gray"/>
                         </StackPanel>
 
-                        <Button Grid.Column="1" Margin="5,5,5,5" Content="📝 Edit Project" Background="#4a5565" Foreground="White" Cursor="Hand">
+                        <Button Grid.Column="1" Margin="5,5,5,5" Content="📝 Edit Project" Background="#4a5565" Foreground="White" Cursor="Hand" Command="{Binding EditProjectCommand}" CommandParameter="{Binding}">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5"/>
