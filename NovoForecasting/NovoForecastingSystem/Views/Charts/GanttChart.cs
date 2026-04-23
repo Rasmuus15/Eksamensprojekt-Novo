@@ -3,7 +3,7 @@ using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 using SkiaSharp;
 
-namespace NovoForecastingSystem.Views.Charts
+namespace NovoForecastingSystem.Views.Charts.GanttChart
 {
     public class GanttViewModel
     {
