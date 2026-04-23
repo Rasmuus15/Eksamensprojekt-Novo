@@ -139,23 +139,11 @@
 
                     <Grid Margin="20" Grid.Row="4">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="44"/>
-                            <RowDefinition Height="300"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="600"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Text="FTE Demand By Phase and Role" FontSize="25" FontWeight="Bold" Margin="20,0,0,0"/>
-
-                        <StackPanel Grid.Row="1" HorizontalAlignment="Left" Margin="0,10,0,0">
-                            <ItemsControl x:Name="Test">
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
-
-                                <templates:FTEDemandByPhase_Role/>
-                            </ItemsControl>
-                        </StackPanel>
+                        <templates:FTEDemandByPhase_Role Grid.Row="1" Margin="0,10,0,0"/>
                     </Grid>
 
                     <Grid Margin="20" Grid.Row="5">
