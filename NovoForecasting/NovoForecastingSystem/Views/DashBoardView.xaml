@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:NovoForecastingSystem.Views.Charts.LineChart"
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF" 
              xmlns:charts="clr-namespace:NovoForecastingSystem.Views.Charts.LineChart"
+             xmlns:templates="clr-namespace:NovoForecastingSystem.Views.Templates"
              mc:Ignorable="d" 
              d:DesignHeight="768" d:DesignWidth="1024"
              Background="#FAFAFA" FontFamily="Segoe UI">
@@ -24,76 +25,13 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Header -->
+                <!-- Header Skal Databindes-->
                 <StackPanel Grid.Row="0" Margin="0,0,0,20">
                     <TextBlock Text="Projects" FontSize="20" FontWeight="Bold" Foreground="#0F172A" Margin="0,0,0,5"/>
-                    <TextBlock Text="2 Active Projects" FontSize="14" Foreground="#64748B"/>
                 </StackPanel>
-
-                <!-- Project List (Mockup) -->
-                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                    <StackPanel>
-                        <!-- Project Card 1 (Selected) -->
-                        <Border Background="White" BorderBrush="#2563EB" BorderThickness="2" CornerRadius="8" Padding="15" Margin="0,0,0,15">
-                            <StackPanel>
-                                <Grid Margin="0,0,0,15">
-                                    <TextBlock Text="Novopen" FontSize="16" FontWeight="Bold" Foreground="#0F172A" VerticalAlignment="Center"/>
-                                    <Border HorizontalAlignment="Right" Background="#DCFCE7" CornerRadius="4" Padding="8,4">
-                                        <TextBlock Text="Low" FontSize="12" Foreground="#166534" FontWeight="SemiBold" Height="16" VerticalAlignment="Top"/>
-                                    </Border>
-                                </Grid>
-
-                                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                    <TextBlock Text="📋" Margin="0,0,10,0" Foreground="#64748B" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Phase 3/8" FontSize="14" Foreground="#475569" VerticalAlignment="Center"/>
-                                </StackPanel>
-                                <TextBlock Text="Detailed Design" FontSize="12" Foreground="#94A3B8" Margin="26,0,0,15"/>
-
-                                <Grid Margin="0,0,0,15">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
-
-                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Start:" FontSize="12" Foreground="#64748B" Margin="0,0,0,5"/>
-                                    <TextBlock Grid.Row="0" Grid.Column="2" Text="22-03-2025" FontSize="12" FontWeight="SemiBold" Foreground="#0F172A"/>
-
-                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="End:" FontSize="12" Foreground="#64748B"/>
-                                    <TextBlock Grid.Row="1" Grid.Column="2" Text="10-10-2026" FontSize="12" FontWeight="SemiBold" Foreground="#0F172A"/>
-                                </Grid>
-
-                                <!-- Progress Bar -->
-                                <Border Height="6" Background="#E2E8F0" CornerRadius="3">
-                                    <Border Width="80" HorizontalAlignment="Left" Background="#2563EB" CornerRadius="3"/>
-                                </Border>
-                            </StackPanel>
-                        </Border>
-
-                        <!-- Project Card 2 -->
-                        <Border Background="White" BorderBrush="#E2E8F0" BorderThickness="1" CornerRadius="8" Padding="15" Margin="0,0,0,15">
-                            <StackPanel>
-                                <Grid Margin="0,0,0,15">
-                                    <TextBlock Text="Wegovy" FontSize="16" FontWeight="Bold" Foreground="#0F172A" VerticalAlignment="Center"/>
-                                    <Border HorizontalAlignment="Right" Background="#FEE2E2" CornerRadius="4" Padding="8,4">
-                                        <TextBlock Text="High" FontSize="12" Foreground="#991B1B" FontWeight="SemiBold"/>
-                                    </Border>
-                                </Grid>
-
-                                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                    <TextBlock Text="📋" Margin="0,0,10,0" Foreground="#64748B" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Phase 2/8" FontSize="14" Foreground="#475569" VerticalAlignment="Center"/>
-                                </StackPanel>
-                                <TextBlock Text="Basic Design" FontSize="12" Foreground="#94A3B8" Margin="26,0,0,15"/>
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                </ScrollViewer>
-
+                
+                <templates:ProjectsTemplate Grid.Row="1" VerticalAlignment="Top"/>
+                
                 <!-- New Project Button -->
                 <Button Grid.Row="2" Content="+ New Project" Background="#2563EB" Foreground="White" FontSize="16" FontWeight="SemiBold" Height="45" Margin="0,15,0,0" BorderThickness="0" Cursor="Hand">
                     <Button.Template>
