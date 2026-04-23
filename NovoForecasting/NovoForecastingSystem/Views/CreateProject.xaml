@@ -23,20 +23,20 @@
         <!-- Project Name -->
         <StackPanel Grid.Row="1" Margin="0,0,0,20">
             <TextBlock Text="Project Name:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <TextBox Height="40" VerticalContentAlignment="Center" Padding="10,0"/>
+            <TextBox x:Name="ProjectNameTextBox" Height="40" VerticalContentAlignment="Center" Padding="10,0"/>
         </StackPanel>
 
         <!-- Start Date -->
         <StackPanel Grid.Row="2" Margin="0,0,0,15">
             <TextBlock Text="Start Date:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <DatePicker Height="40" VerticalContentAlignment="Center" Padding="10,0">
+            <DatePicker x:Name="StartDatePicker" Height="40" VerticalContentAlignment="Center" Padding="10,0">
             </DatePicker>
         </StackPanel>
 
         <!-- Complexity -->
         <StackPanel Grid.Row="4" Margin="0,0,0,20">
             <TextBlock Text="Complexity:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <ComboBox Height="40" VerticalContentAlignment="Center" Padding="10,0">
+            <ComboBox x:Name="ComplexityComboBox" Height="40" VerticalContentAlignment="Center" Padding="10,0">
                 <ComboBoxItem Content="Low"/>
                 <ComboBoxItem Content="Medium"/>
                 <ComboBoxItem Content="High"/>
@@ -51,7 +51,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Content="Create Project" Foreground="White" Background="#2563EB" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand">
+            <Button Grid.Column="0" Content="Create Project" Click="CreateProject_Click" Foreground="White" Background="#2563EB" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="8">
@@ -61,7 +61,7 @@
                 </Button.Template>
             </Button>
 
-            <Button Grid.Column="2" Content="Cancel" Foreground="#334155" Background="#E2E8F0" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand">
+            <Button Grid.Column="2" Content="Cancel" Click="Cancel_Click" Foreground="#334155" Background="#E2E8F0" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="8">
