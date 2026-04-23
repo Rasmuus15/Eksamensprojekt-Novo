@@ -15,9 +15,9 @@ namespace NovoForecastingSystem.Views
     /// <summary>
     /// Interaction logic for EditProject.xaml
     /// </summary>
-    public partial class EditProject : Window
+    public partial class EditProjectWindow : Window
     {
-        public EditProject()
+        public EditProjectWindow()
         {
             InitializeComponent();
         }

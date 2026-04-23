@@ -8,25 +8,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace NovoForecastingSystem.Views
 {
     /// <summary>
-    /// Interaction logic for DashBoardView.xaml
+    /// Interaction logic for CreateRessource.xaml
     /// </summary>
-    public partial class DashBoardView : UserControl
+    public partial class AddResourceWindow : Window
     {
-        public DashBoardView()
+        public AddResourceWindow()
         {
             InitializeComponent();
         }
 
-        private void CreateProject_Click(object sender, RoutedEventArgs e)
+        private void Close_Button_Click(object sender, RoutedEventArgs e)
         {
-            var createProjectWindow = new CreateProject();
-            createProjectWindow.ShowDialog();
+            this.Close();
         }
     }
 }

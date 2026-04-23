@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="NovoForecastingSystem.Views.Templates.ProjectPhasesStatus"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NovoForecastingSystem.Views.Templates"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="130">
+    <Grid>
+        <Border CornerRadius="26">
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Background" Value="#f3f4f6"/>
+
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding}" Value="Pending">
+                            <Setter Property="Background" Value="#f3f4f6"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding}" Value="In Progress">
+                            <Setter Property="Background" Value="#dbeafe"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding}" Value="Completed">
+                            <Setter Property="Background" Value="#dbfce7"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            
+            <TextBlock Text="Pending" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="19" Foreground="#464e5c"/>
+        </Border>
+    </Grid>
+</UserControl>
