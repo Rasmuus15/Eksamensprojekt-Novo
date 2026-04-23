@@ -42,7 +42,7 @@
                                         <TextBlock Text="Low" FontSize="12" Foreground="#166534" FontWeight="SemiBold" Height="16" VerticalAlignment="Top"/>
                                     </Border>
                                 </Grid>
-
+                                
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                                     <TextBlock Text="📋" Margin="0,0,10,0" Foreground="#64748B" VerticalAlignment="Center"/>
                                     <TextBlock Text="Phase 3/8" FontSize="14" Foreground="#475569" VerticalAlignment="Center"/>
