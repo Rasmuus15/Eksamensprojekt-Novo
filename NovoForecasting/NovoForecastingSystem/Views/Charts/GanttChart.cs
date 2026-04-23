@@ -87,8 +87,12 @@ namespace NovoForecastingSystem.Views.Charts
             new Axis
             {
                 MinLimit = 0,
-                MaxLimit = 85,
+                MaxLimit = 81,
                 TextSize = 12
+
+                // Low comp = 81
+                // Medium comp = 108
+                // High comp = 137
             }
         };
         }

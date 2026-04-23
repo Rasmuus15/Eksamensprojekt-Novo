@@ -8,16 +8,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NovoForecastingSystem.Views
+namespace NovoForecastingSystem.Views.Templates
 {
     /// <summary>
-    /// Interaction logic for EditProject.xaml
+    /// Interaction logic for ProjectPhasesStatus.xaml
     /// </summary>
-    public partial class EditProject : Window
+    public partial class ProjectPhasesStatus : UserControl
     {
-        public EditProject()
+        public ProjectPhasesStatus()
         {
             InitializeComponent();
         }

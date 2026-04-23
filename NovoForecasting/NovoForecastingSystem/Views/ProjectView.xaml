@@ -28,7 +28,8 @@
                         <RowDefinition Height="140"/>
                         <RowDefinition Height="90"/>
                         <RowDefinition Height="500"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="600"/>
+                        <RowDefinition Height="600"/>
                     </Grid.RowDefinitions>
 
                     <!-- Project title and buttons-->
@@ -41,11 +42,11 @@
 
 
                         <StackPanel Grid.Column="0" Orientation="Vertical">
-                            <TextBlock Text="Novopen" FontSize="20" Margin="10,5,0,0"/>
+                            <TextBlock Text="Novopen" FontSize="20" Margin="10,5,0,0" FontWeight="Bold"/>
                             <TextBlock Text="Phase 3/8 [Detailed Design]" Margin="12,0,0,0" Foreground="Gray"/>
                         </StackPanel>
 
-                        <Button Grid.Column="1" Margin="5,5,5,5" Content="📝 Edit Project" Background="#4a5565" Foreground="White" Cursor="Hand">
+                        <Button Grid.Column="1" Margin="5,5,5,5" Content="📝 Edit Project" Background="#4a5565" Foreground="White" Cursor="Hand" Command="{Binding EditProjectCommand}" CommandParameter="{Binding}">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5"/>
@@ -138,23 +139,42 @@
 
                     <Grid Margin="20" Grid.Row="4">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="44"/>
-                            <RowDefinition Height="300"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="600"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Text="FTE Demand By Phase and Role" FontSize="25" FontWeight="Bold" Margin="20,0,0,0"/>
+                        <templates:FTEDemandByPhase_Role Grid.Row="1" Margin="0,10,0,0"/>
+                    </Grid>
 
-                        <StackPanel Grid.Row="1" HorizontalAlignment="Left" Margin="0,10,0,0">
-                            <ItemsControl x:Name="Test">
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
+                    <Grid Margin="20" Grid.Row="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="44"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-                                <templates:FTEDemandByPhase_Role/>
-                            </ItemsControl>
-                        </StackPanel>
+                        <TextBlock Text="Project Phases" FontSize="25" FontWeight="Bold" Margin="20,0,0,0"/>
+
+                        <Border Grid.Row="1" CornerRadius="6" Padding="12" Margin="15,15,15,15" BorderThickness="1" BorderBrush="Gray" Background="#f9fafb">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="100"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Phase" FontSize="20" FontWeight="Bold" Margin="15,15,0,0"/>
+                                <TextBlock Grid.Row="0" Grid.Column="1" Text="Status" FontSize="20" FontWeight="Bold" Margin="15,15,0,0"/>
+                                <TextBlock Grid.Row="0" Grid.Column="2" Text="Duration (weeks)" FontSize="20" FontWeight="Bold" Margin="15,15,0,0"/>
+                                <templates:ProjectPhasesStatus Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Width="150" Height="50" Margin="15,0,0,0"/>
+                                <Separator Grid.Row="0" Margin="0,49,0,0" Grid.ColumnSpan="3"/>
+                            </Grid>
+                        </Border>
                     </Grid>
                 </Grid>
             </Border>

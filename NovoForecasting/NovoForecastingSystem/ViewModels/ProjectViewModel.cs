@@ -15,10 +15,12 @@ namespace NovoForecastingSystem.ViewModels
     {
         public ICommand NavigateToDashboardViewCommand { get; }
         public ICommand AddResourceCommand { get; }
+        public ICommand EditProjectCommand { get; }
         public ProjectViewModel(NavigationStore navigationStore)
         {
             NavigateToDashboardViewCommand = new NavigateCommand(new NavigationService(navigationStore, () => new DashBoardViewModel(navigationStore)));
             AddResourceCommand = new AddResourceCommand();
+            EditProjectCommand = new EditProjectCommand();
         }
 
         public void AddResource()
@@ -27,6 +29,12 @@ namespace NovoForecastingSystem.ViewModels
             addResourceWindow.Show();
             //ResourceRepo
             
+        }
+
+        public void EditProject()
+        {
+            EditProjectWindow editProjectWindow = new EditProjectWindow();
+            editProjectWindow.Show();
         }
     }
 }
