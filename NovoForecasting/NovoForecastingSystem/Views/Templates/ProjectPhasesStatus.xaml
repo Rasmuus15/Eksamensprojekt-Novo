@@ -7,8 +7,28 @@
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="130">
     <Grid>
-        <Border Background="#dbfce7" CornerRadius="26">
-            <TextBlock Text="Completed" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="19" Foreground="#6aad88"/>
+        <Border CornerRadius="26">
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Background" Value="#f3f4f6"/>
+
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding}" Value="Pending">
+                            <Setter Property="Background" Value="#f3f4f6"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding}" Value="In Progress">
+                            <Setter Property="Background" Value="#dbeafe"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding}" Value="Completed">
+                            <Setter Property="Background" Value="#dbfce7"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            
+            <TextBlock Text="Pending" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="19" Foreground="#464e5c"/>
         </Border>
     </Grid>
 </UserControl>
