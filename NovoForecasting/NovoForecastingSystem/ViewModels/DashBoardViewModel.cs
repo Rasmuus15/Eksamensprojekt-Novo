@@ -1,5 +1,6 @@
 ﻿using NovoForecastingSystem.Commands;
 using NovoForecastingSystem.Models;
+using NovoForecastingSystem.Repos;
 using NovoForecastingSystem.Services;
 using NovoForecastingSystem.Stores;
 using System;
@@ -14,8 +15,13 @@ namespace NovoForecastingSystem.ViewModels
     {
         public ICommand NavigateToProject { get; }
 
+        private ProjectRepo projectRepo = new ProjectRepo();
+
+        public ObservableCollection<Project> ProjectList;
+
         public DashBoardViewModel(NavigationStore navigationStore)
         {
+            projectRepo.GetAllProjects();
             NavigateToProject = new NavigateCommand(new NavigationService(navigationStore, () => new ProjectViewModel(navigationStore)));
         }
     }

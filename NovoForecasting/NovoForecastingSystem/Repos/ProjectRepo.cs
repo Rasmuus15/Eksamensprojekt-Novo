@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Data.SqlClient;
+using NovoForecastingSystem.Models;
 
 namespace NovoForecastingSystem.Repos
 {
     public class ProjectRepo : DatabaseConnector
     {
-        private List<Models.Project> project;
+        private List<Project> projects;
         public ProjectRepo()
         {
-            project = new List<Models.Project>();
+            projects = new List<Project>();
         }
 
-        public void CreateProject(string projectName, string complexity, DateTime? startDate)
+        public void CreateProject(string projectName, string complexity, DateOnly? startDate)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -44,36 +45,54 @@ namespace NovoForecastingSystem.Repos
                                 lengthCmd.ExecuteNonQuery();
                             }
                         }
-                        project.Add(new Models.Project 
+                        projects.Add(new Models.Project 
                         { 
                             ProjectName = projectName, 
-                            StartDate = startDate ?? default(DateTime) 
-                        });
-
-
-                       
-                    }
-                 
+                            StartDate = startDate ?? default(DateOnly) 
+                        });  
+                    }         
                 }
             
         
 
-        public List<Models.Project> GetAllProjects()
+        public List<Project> GetAllProjects()
         {
-            return project;
+            List<Project> projects = new List<Project>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Project INNER JOIN Project_Length ON Project.ProjectID = Project_Length.ProjectID", connection);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Project project = new Project()
+                        {
+                            Id = reader.GetInt32(0),
+                            ProjectName = (string)reader["ProjectName"],
+                            StartDate = DateOnly.FromDateTime((DateTime)reader["StartDate"]),
+                            EndDate = DateOnly.FromDateTime((DateTime)reader["EndDate"])
+                        };
+                    }
+                }
+            }
+            return projects;
         }
 
-        public void DeleteProject(Models.Project projectToDelete)
+        public void DeleteProject(Project projectToDelete)
         {
-            project.Remove(projectToDelete);
+            projects.Remove(projectToDelete);
         }
 
         public void EditProject(Models.Project oldProject, Models.Project newProject)
         {
-            int index = project.IndexOf(oldProject);
+            int index = projects.IndexOf(oldProject);
             if (index != -1)
             {
-                project[index] = newProject;
+                projects[index] = newProject;
             }
         }
 

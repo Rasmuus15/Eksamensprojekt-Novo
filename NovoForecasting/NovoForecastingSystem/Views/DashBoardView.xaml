@@ -37,7 +37,7 @@
                         </Style>
                     </StackPanel.Resources>
                     <ItemsControl x:Name="Projects"
-                                ItemsSource="{Binding Projects}"
+                                ItemsSource="{Binding ProjectList}"
                                 Margin="10">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>

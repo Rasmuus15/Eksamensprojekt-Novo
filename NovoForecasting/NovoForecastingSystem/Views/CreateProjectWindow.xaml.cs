@@ -30,7 +30,7 @@ namespace NovoForecastingSystem.Views
             try
             {
                 string projectName = ProjectNameTextBox.Text;
-                DateTime? startDate = StartDatePicker.SelectedDate;
+                DateOnly? startDate = DateOnly.FromDateTime((DateTime)StartDatePicker.SelectedDate);
                 string complexity = (ComplexityComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();
 
                 if (string.IsNullOrWhiteSpace(projectName))
