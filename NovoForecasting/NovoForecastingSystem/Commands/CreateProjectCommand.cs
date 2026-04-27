@@ -6,15 +6,13 @@ namespace NovoForecastingSystem.Commands
     public class CreateProjectCommand : ICommand
     {
         private readonly Action<object?> _execute;
-        private readonly Predicate<object?>? _canExecute;
 
-        public CreateProjectCommand(Action<object?> execute, Predicate<object?>? canExecute = null)
+        public CreateProjectCommand(Action<object?> execute)
         {
             _execute = execute ?? throw new ArgumentNullException(nameof(execute));
-            _canExecute = canExecute;
         }
 
-        public bool CanExecute(object? parameter) => _canExecute == null || _canExecute(parameter);
+        public bool CanExecute(object? parameter) => true;
 
         public void Execute(object? parameter) => _execute(parameter);
 
