@@ -20,11 +20,6 @@ namespace NovoForecastingSystem.Views
     /// </summary>
     public partial class CreateProject : Window
     {
-        private class DbConnector : DatabaseConnector
-        {
-            public string ConnectionString => connectionString;
-        }
-
         public CreateProject()
         {
             InitializeComponent();
@@ -44,54 +39,11 @@ namespace NovoForecastingSystem.Views
                     return;
                 }
 
-                var dbConnector = new DbConnector();
-                string connectionString = dbConnector.ConnectionString;
+                var repo = new Repos.ProjectRepo();
+                repo.CreateProjectToDatabase(projectName, complexity, startDate);
 
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlTransaction transaction = connection.BeginTransaction())
-                    {
-                        try
-                        {
-                            string insertProjectQuery = "INSERT INTO PROJECT (ProjectName, Complexity) VALUES (@ProjectName, @Complexity); SELECT SCOPE_IDENTITY();";
-                            int projectId = 0;
-
-                            using (SqlCommand cmd = new SqlCommand(insertProjectQuery, connection, transaction))
-                            {
-                                cmd.Parameters.AddWithValue("@ProjectName", projectName);
-                                cmd.Parameters.AddWithValue("@Complexity", (object)complexity ?? DBNull.Value);
-
-                                object result = cmd.ExecuteScalar();
-                                if (result != null)
-                                {
-                                    projectId = Convert.ToInt32(result);
-                                }
-                            }
-
-                            if (startDate.HasValue && projectId > 0)
-                            {
-                                string insertLengthQuery = "INSERT INTO PROJECT_LENGTH (StartDate, ProjectId) VALUES (@StartDate, @ProjectId);";
-                                using (SqlCommand lengthCmd = new SqlCommand(insertLengthQuery, connection, transaction))
-                                {
-                                    lengthCmd.Parameters.AddWithValue("@StartDate", startDate.Value);
-                                    lengthCmd.Parameters.AddWithValue("@ProjectId", projectId);
-                                    lengthCmd.ExecuteNonQuery();
-                                }
-                            }
-
-                            transaction.Commit();
-                            MessageBox.Show("Project successfully created in database!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                            this.Close();
-                        }
-                        catch (Exception ex)
-                        {
-                            transaction.Rollback();
-                            MessageBox.Show("Error saving project: " + ex.Message);
-                        }
-                    }
-                }
+                MessageBox.Show("Project successfully created in database!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
             }
             catch (Exception ex)
             {

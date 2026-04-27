@@ -53,7 +53,7 @@
                 </StackPanel>
 
                 <!-- New Project Button -->
-                <Button Grid.Row="2" Content="+ New Project" Background="#2563EB" Foreground="White" FontSize="16" FontWeight="SemiBold" Height="45" Margin="0,15,0,0" BorderThickness="0" Cursor="Hand">
+                <Button Grid.Row="2" Content="+ New Project" Click="CreateProject_Click" Background="#2563EB" Foreground="White" FontSize="16" FontWeight="SemiBold" Height="45" Margin="0,15,0,0" BorderThickness="0" Cursor="Hand">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" CornerRadius="8">
