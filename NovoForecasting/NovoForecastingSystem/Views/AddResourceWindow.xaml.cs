@@ -31,7 +31,6 @@ namespace NovoForecastingSystem.Views
             ResourceRepo ResourceRepo = new ResourceRepo();
             Phase_ComboBox.ItemsSource = Enum.GetValues(typeof(Phase));
             Role_ComboBox.ItemsSource = Enum.GetValues(typeof(JobRole));
-            Email_ComboBox.ItemsSource = ResourceRepo.PrintEmail();
         }
 
 
@@ -45,16 +44,24 @@ namespace NovoForecastingSystem.Views
         {
             try
             {
-                Object Phase = Phase_ComboBox.SelectedItem;
-                Object Role = Role_ComboBox.SelectedItem;
-
-
+                //Object Phase = Phase_ComboBox.SelectedItem;
+                //Object Role = Role_ComboBox.SelectedItem;
             }
-            catch 
+            catch
             {
                 
             }
 
+        }
+
+        private void Role_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Role_ComboBox.SelectedItem != null)
+            {
+                JobRole SelectedRole = (JobRole)Role_ComboBox.SelectedItem; // (JobRole) siger, at fordi ComboBox kan tage forskellige værdier, så den er specific, den tager "JobRole" enum værdien
+                ResourceRepo repo = new ResourceRepo();
+                Email_ComboBox.ItemsSource = repo.PrintEmail(SelectedRole.ToString());
+            }
         }
     }
 }

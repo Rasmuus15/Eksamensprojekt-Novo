@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
 using NovoForecastingSystem.Models;
+using NovoForecastingSystem.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,15 +29,18 @@ namespace NovoForecastingSystem.Repos
         //private JobRoleEnum jobRoleEnum;
 
 
-        public List<string> PrintEmail()
+        public List<string> PrintEmail(string jobRole)
         {
             List<string> EmailList = new List<string>();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT Email FROM RESOURCE";
-                SqlCommand cmd = new SqlCommand(query, connection);
+                //string query = "SELECT Email FROM RESOURCE";
+                SqlCommand cmd = new SqlCommand("FindEmails", connection);
+
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("JobRole", jobRole);
 
                 try
                 {
@@ -44,7 +48,7 @@ namespace NovoForecastingSystem.Repos
                     while (reader.Read())
                     {
                         {
-                            EmailList.Add(reader.GetString(0));
+                            EmailList.Add(reader["Email"].ToString()); //Tilføjer en ny kolonne (Email) til EmailListe
                         }
                         
                     }

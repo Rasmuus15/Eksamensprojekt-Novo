@@ -29,7 +29,7 @@
         <!-- Role -->
         <StackPanel Grid.Row="2" Margin="0,0,0,15">
             <TextBlock Text="Role:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <ComboBox x:Name="Role_ComboBox" Height="40" VerticalContentAlignment="Center" Padding="10,0"/>
+            <ComboBox x:Name="Role_ComboBox" Height="40" VerticalContentAlignment="Center" Padding="10,0" SelectionChanged="Role_ComboBox_SelectionChanged"/>
         </StackPanel>
 
         <!-- Allocation Status -->
