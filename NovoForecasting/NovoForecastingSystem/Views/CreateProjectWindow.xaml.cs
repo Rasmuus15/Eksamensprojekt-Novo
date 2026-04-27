@@ -25,7 +25,6 @@ namespace NovoForecastingSystem.Views
         public CreateProjectWindow()
         {
             InitializeComponent();
-            DataContext = new ProjectViewModel();
             ComplexityComboBox.ItemsSource = Enum.GetValues(typeof(Complexity));
         }
 

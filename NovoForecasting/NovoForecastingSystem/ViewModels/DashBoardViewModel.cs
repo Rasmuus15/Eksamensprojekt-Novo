@@ -52,9 +52,9 @@ namespace NovoForecastingSystem.ViewModels
 
         public void CreateProject()
         {
+            DateOnly? endDate = null;
             try
             {
-                DateOnly? endDate = null;
                 if (StartDate.HasValue && !string.IsNullOrEmpty(Complexity))
                 {
                     if (Complexity == "Low") endDate = StartDate.Value.AddDays(81 * 7);
@@ -68,8 +68,8 @@ namespace NovoForecastingSystem.ViewModels
                     return;
                 }
 
-                var repo = new ProjectRepo();
-                repo.CreateProject(ProjectName, Complexity, StartDate, endDate);
+                ProjectRepo projectRepo = new ProjectRepo();
+                projectRepo.CreateProject(ProjectName, Complexity, StartDate, endDate);
 
                 MessageBox.Show("Project successfully created in database!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
