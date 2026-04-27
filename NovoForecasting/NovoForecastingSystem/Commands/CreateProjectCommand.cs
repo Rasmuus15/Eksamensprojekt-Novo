@@ -1,3 +1,4 @@
+using NovoForecastingSystem.ViewModels;
 using System;
 using System.Windows.Input;
 
@@ -5,21 +6,17 @@ namespace NovoForecastingSystem.Commands
 {
     public class CreateProjectCommand : ICommand
     {
-        private readonly Action<object?> _execute;
 
-        public CreateProjectCommand(Action<object?> execute)
-        {
-            _execute = execute ?? throw new ArgumentNullException(nameof(execute));
-        }
+
+      
 
         public bool CanExecute(object? parameter) => true;
 
-        public void Execute(object? parameter) => _execute(parameter);
-
-        public event EventHandler? CanExecuteChanged
+        public void Execute(object? parameter)
         {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
+            if (parameter is ProjectViewModel pvm)
+                pvm.CreateProject(null);
         }
+        public event EventHandler? CanExecuteChanged;
     }
 }

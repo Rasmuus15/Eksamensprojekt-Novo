@@ -48,11 +48,12 @@ namespace NovoForecastingSystem.ViewModels
             }
             AddResourceCommand = new AddResourceCommand();
             EditProjectCommand = new EditProjectCommand();
-            CreateProjectCommand = new CreateProjectCommand(ExecuteCreateProject);
+            CreateProjectCommand = new CreateProjectCommand();
         }
 
-        private void ExecuteCreateProject(object? parameter)
+        public void CreateProject(object? parameter)
         {
+
             try
             {
                 DateTime? endDate = null;
