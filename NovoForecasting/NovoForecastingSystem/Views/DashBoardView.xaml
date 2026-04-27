@@ -3,13 +3,166 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:NovoForecastingSystem.Views"
+             xmlns:local="clr-namespace:NovoForecastingSystem.Views.Charts.LineChart"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF" 
+             xmlns:charts="clr-namespace:NovoForecastingSystem.Views.Charts.LineChart"
+             xmlns:templates="clr-namespace:NovoForecastingSystem.Views.Templates"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="768" d:DesignWidth="1024"
+             Background="#FAFAFA" FontFamily="Segoe UI">
     <Grid>
-        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="313,148,0,0" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="550,276,0,0" VerticalAlignment="Top" Height="72" Width="127" Command="{Binding NavigateToProject}"/>
-        <TextBox HorizontalAlignment="Left" Margin="98,276,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="72" Width="286"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
+        <!-- Left Sidebar: Projects -->
+        <Border Grid.Column="0" Background="White" BorderBrush="#E2E8F0" BorderThickness="0,0,1,0" Padding="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Header Skal Databindes-->
+                <StackPanel Grid.Row="0" Margin="0,0,0,20">
+                    <TextBlock Text="Projects" FontSize="20" FontWeight="Bold" Foreground="#0F172A" Margin="0,0,0,5"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Row="1">
+                    <StackPanel.Resources>
+                        <Style TargetType="templates:ProjectsTemplate">
+                            <Setter Property="Margin" Value="0,0,0,10"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <ItemsControl x:Name="Projects"
+                                ItemsSource="{Binding Projects}"
+                                Margin="10">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <templates:ProjectsTemplate DataContext="{Binding}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+
+                <!-- New Project Button -->
+                <Button Grid.Row="2" Content="+ New Project" Click="CreateProject_Click" Background="#2563EB" Foreground="White" FontSize="16" FontWeight="SemiBold" Height="45" Margin="0,15,0,0" BorderThickness="0" Cursor="Hand">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Border>
+
+        <!-- Right Main Area -->
+        <Border Grid.Column="1" Background="#FAFAFA" Padding="30">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Stats Cards -->
+                <Grid Grid.Row="0" Margin="0,0,0,30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Stats Card 1 -->
+                    <Border Grid.Column="0" Background="White" BorderBrush="#BFDBFE" BorderThickness="2" CornerRadius="12" Padding="20">
+                        <Grid>
+                            <StackPanel>
+                                <TextBlock Text="Process Engineer" FontSize="14" FontWeight="SemiBold" Foreground="#2563EB" Margin="0,0,0,10"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                    <TextBlock Text="0" FontSize="36" FontWeight="Bold" Foreground="#0F172A"/>
+                                    <TextBlock Text=" / 1" FontSize="24" FontWeight="SemiBold" Foreground="#64748B" VerticalAlignment="Bottom" Margin="5,0,0,6"/>
+                                </StackPanel>
+                                <TextBlock Text="allocated / demand (all projects)" FontSize="12" Foreground="#94A3B8" TextWrapping="Wrap"/>
+                            </StackPanel>
+                            <Border HorizontalAlignment="Right" VerticalAlignment="Center" Background="#3B82F6" Width="48" Height="48" CornerRadius="12">
+                                <TextBlock Text="👤" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <!-- Stats Card 2 -->
+                    <Border Grid.Column="2" Background="White" BorderBrush="#BBF7D0" BorderThickness="2" CornerRadius="12" Padding="20">
+                        <Grid>
+                            <StackPanel>
+                                <TextBlock Text="Chemical Engineer" FontSize="14" FontWeight="SemiBold" Foreground="#10B981" Margin="0,0,0,10"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                    <TextBlock Text="0" FontSize="36" FontWeight="Bold" Foreground="#0F172A"/>
+                                    <TextBlock Text=" / 1" FontSize="24" FontWeight="SemiBold" Foreground="#64748B" VerticalAlignment="Bottom" Margin="5,0,0,6"/>
+                                </StackPanel>
+                                <TextBlock Text="allocated / demand (all projects)" FontSize="12" Foreground="#94A3B8" TextWrapping="Wrap"/>
+                            </StackPanel>
+                            <Border HorizontalAlignment="Right" VerticalAlignment="Center" Background="#10B981" Width="48" Height="48" CornerRadius="12">
+                                <TextBlock Text="👤" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <!-- Stats Card 3 -->
+                    <Border Grid.Column="4" Background="White" BorderBrush="#E9D5FF" BorderThickness="2" CornerRadius="12" Padding="20">
+                        <Grid>
+                            <StackPanel>
+                                <TextBlock Text="Automation Engineer" FontSize="14" FontWeight="SemiBold" Foreground="#A855F7" Margin="0,0,0,10"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                    <TextBlock Text="0" FontSize="36" FontWeight="Bold" Foreground="#0F172A"/>
+                                    <TextBlock Text=" / 0" FontSize="24" FontWeight="SemiBold" Foreground="#64748B" VerticalAlignment="Bottom" Margin="5,0,0,6"/>
+                                </StackPanel>
+                                <TextBlock Text="allocated / demand (all projects)" FontSize="12" Foreground="#94A3B8" TextWrapping="Wrap"/>
+                            </StackPanel>
+                            <Border HorizontalAlignment="Right" VerticalAlignment="Center" Background="#A855F7" Width="48" Height="48" CornerRadius="12">
+                                <TextBlock Text="👤" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!-- Resource Demand Chart Area -->
+                <Border Grid.Row="1" Background="White" BorderBrush="#E2E8F0" BorderThickness="1" CornerRadius="12" Padding="30">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+                            <TextBlock Text="Resource Demand - Across All Active Projects" FontSize="24" FontWeight="Bold" Foreground="#0F172A" Margin="0,0,0,10"/>
+                            <TextBlock Text="Monthly comparison of allocated vs. demand across all projects" FontSize="14" Foreground="#64748B"/>
+                        </StackPanel>
+
+                        <!-- Chart Lines Placeholder -->
+                        <Grid Grid.Row="1" Margin="0,20,0,0">
+                            <Grid.DataContext>
+                                <charts:LineChartViewModel/>
+                            </Grid.DataContext>
+                            <lvc:CartesianChart
+                                    Series="{Binding Series}"
+                                    YAxes="{Binding YAxes}"
+                                    XAxes="{Binding XAxes}"
+                                    LegendPosition="Right"
+                                    TooltipPosition="Hidden"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

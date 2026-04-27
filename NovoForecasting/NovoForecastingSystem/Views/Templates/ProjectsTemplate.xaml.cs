@@ -21,5 +21,7 @@ namespace NovoForecastingSystem.Views.Templates
         {
             InitializeComponent();
         }
+
+
     }
 }

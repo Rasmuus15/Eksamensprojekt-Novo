@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:NovoForecastingSystem.Views.Templates"
              mc:Ignorable="d" Height="106" Width="282">
 
-    <Border CornerRadius="8" BorderThickness="2">
+    <Border CornerRadius="8"  BorderThickness="2" BorderBrush="{Binding Tag, RelativeSource={RelativeSource AncestorType=UserControl}}">
         <StackPanel>
             <Grid>
                 <Grid.RowDefinitions>
@@ -25,8 +25,8 @@
 
 
                 <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,0,0,40">
-                    <Border CornerRadius="6" Background="#2b7fff" HorizontalAlignment="Right" Margin="0,0,10,0" Width="44">
-                        <TextBlock Text="👤" FontSize="30" Width="36" Foreground="White"/>
+                    <Border CornerRadius="6" Background="{Binding Tag, RelativeSource={RelativeSource AncestorType=UserControl}}" HorizontalAlignment="Right" Margin="0,0,10,0" Width="44" Height="44">
+                        <TextBlock Text="👤" FontSize="20" Width="28" Foreground="White" Background="{Binding Tag, RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center"/>
                     </Border>
                 </StackPanel>
             </Grid>

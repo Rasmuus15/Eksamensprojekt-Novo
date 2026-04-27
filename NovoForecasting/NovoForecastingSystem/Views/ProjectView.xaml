@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:NovoForecastingSystem.Views"
+             xmlns:local="clr-namespace:NovoForecastingSystem.Views.Charts.GanttChart"
              xmlns:templates="clr-namespace:NovoForecastingSystem.Views.Templates"
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
-             xmlns:charts="clr-namespace:NovoForecastingSystem.Views.Charts"
+             xmlns:charts="clr-namespace:NovoForecastingSystem.Views.Charts.GanttChart"
              mc:Ignorable="d" 
              d:DesignHeight="2050" d:DesignWidth="800" Background="#f9fafb">
 
@@ -17,7 +17,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Button Content="← Back to projects" HorizontalAlignment="Left" Width="110" Background="Transparent" Foreground="#4a5565" BorderThickness="0" Cursor="Hand" Command="{Binding NavigateToDashboardViewCommand}"/>
+        <Button Content="← Back to projects" HorizontalAlignment="Left" Width="120" Background="Transparent" Foreground="#4a5565" BorderThickness="0" Cursor="Hand" Command="{Binding NavigateToDashboardViewCommand}"/>
 
         <!-- Rows for the rest of the window besides the back to project button-->
         <ScrollViewer Grid.Row="1">
@@ -73,12 +73,12 @@
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
 
-                                <templates:RoleRequirementBox Margin="0,0,0,0" BorderBrush="Red"/>
-                                <templates:RoleRequirementBox Margin="50,0,0,0" BorderBrush="Black"/>
-                                <templates:RoleRequirementBox Margin="50,0,0,0"/>
-                            </ItemsControl>
-                        </StackPanel>
-                    </Grid>
+                        <templates:RoleRequirementBox Margin="10,0,0,0" Tag="#2b7fff" Foreground="#2b7fff"/>
+                        <templates:RoleRequirementBox Margin="20,0,0,0" Tag="#00c950" Foreground="#00c950"/>
+                        <templates:RoleRequirementBox Margin="20,0,0,0" Tag="#ad46ff" Foreground="#ad46ff"/>
+                    </ItemsControl>
+                </StackPanel>
+            </Grid>
 
                     <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
 
@@ -158,7 +158,7 @@
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="50"/>
-                                    <RowDefinition Height="100"/>
+                                    <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
 
                                 <Grid.ColumnDefinitions>
@@ -167,12 +167,69 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-
                                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Phase" FontSize="20" FontWeight="Bold" Margin="15,15,0,0"/>
                                 <TextBlock Grid.Row="0" Grid.Column="1" Text="Status" FontSize="20" FontWeight="Bold" Margin="15,15,0,0"/>
                                 <TextBlock Grid.Row="0" Grid.Column="2" Text="Duration (weeks)" FontSize="20" FontWeight="Bold" Margin="15,15,0,0"/>
-                                <templates:ProjectPhasesStatus Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Width="150" Height="50" Margin="15,0,0,0"/>
-                                <Separator Grid.Row="0" Margin="0,49,0,0" Grid.ColumnSpan="3"/>
+                                <Separator Grid.Row="0" Margin="0,49,0,0" Grid.ColumnSpan="3" Foreground="#f4f5f7" Opacity="7"/>
+
+                                <Grid Grid.Row="2" Grid.ColumnSpan="3">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="Concept Design" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,0,0,0"/>
+                                    <templates:ProjectPhasesStatus Grid.Row="0" Grid.Column="1" Width="150" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,1,0,0"/>
+                                    <Separator Grid.Row="1" Margin="0,-40,0,0" Grid.ColumnSpan="3" Foreground="#f4f5f7" Opacity="7"/>
+                                    <TextBlock Grid.Column="2" Text="8 Weeks" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,0,0,0"/>
+
+                                    <TextBlock Grid.Row="1" Text="Basic Design" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,15,0,0"/>
+                                    <templates:ProjectPhasesStatus Grid.Row="1" Grid.Column="1" Width="150" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,15,0,0"/>
+                                    <Separator Grid.Row="2" Margin="0,-40,0,0" Grid.ColumnSpan="3" Foreground="#f4f5f7" Opacity="7"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="2" Text="5 weeks" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,15,0,0"/>
+
+                                    <TextBlock Grid.Row="1" Text="Basic Design" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,15,0,0"/>
+                                    <templates:ProjectPhasesStatus Grid.Row="2" Grid.Column="1" Width="150" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,15,0,0"/>
+                                    <Separator Grid.Row="3" Margin="0,-40,0,0" Grid.ColumnSpan="3" Foreground="#f4f5f7" Opacity="7"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="2" Text="8 Weeks" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,15,0,0"/>
+
+                                    <TextBlock Grid.Row="2" Text="Detailed Design" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,15,0,0"/>
+                                    <templates:ProjectPhasesStatus Grid.Row="3" Grid.Column="1" Width="150" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,15,0,0"/>
+                                    <Separator Grid.Row="4" Margin="0,-40,0,0" Grid.ColumnSpan="3" Foreground="#f4f5f7" Opacity="7"/>
+                                    <TextBlock Grid.Row="3" Grid.Column="2" Text="31 Weeks" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,15,0,0"/>
+
+                                    <TextBlock Grid.Row="3" Text="Manufacturing" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,15,0,0"/>
+                                    <templates:ProjectPhasesStatus Grid.Row="4" Grid.Column="1" Width="150" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,15,0,0"/>
+                                    <Separator Grid.Row="5" Margin="0,-40,0,0" Grid.ColumnSpan="3" Foreground="#f4f5f7" Opacity="7"/>
+                                    <TextBlock Grid.Row="4" Grid.Column="2" Text="5 Weeks" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,15,0,0"/>
+
+                                    <TextBlock Grid.Row="4" Text="Installation" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,15,0,0"/>
+                                    <templates:ProjectPhasesStatus Grid.Row="5" Grid.Column="1" Width="150" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,15,0,0"/>
+                                    <Separator Grid.Row="6" Margin="0,-40,0,0" Grid.ColumnSpan="3" Foreground="#f4f5f7" Opacity="7"/>
+                                    <TextBlock Grid.Row="5" Grid.Column="2" Text="5 Weeks" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,15,0,0"/>
+
+                                    <TextBlock Grid.Row="5" Text="Testing" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,15,0,0"/>
+                                    <templates:ProjectPhasesStatus Grid.Row="6" Grid.Column="1" Width="150" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,15,0,0"/>
+                                    <Separator Grid.Row="7" Margin="0,-40,0,0" Grid.ColumnSpan="3" Foreground="#f4f5f7" Opacity="7"/>
+                                    <TextBlock Grid.Row="6" Grid.Column="2" Text="14 Weeks" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,15,0,0"/>
+
+                                    <TextBlock Grid.Row="6" Text="Approval" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,15,0,0"/>
+                                    <templates:ProjectPhasesStatus Grid.Row="7" Grid.Column="1" Width="150" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,15,0,0"/>
+                                    <TextBlock Grid.Row="7" Text="Go Live" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,15,0,0"/>
+                                    <TextBlock Grid.Row="7" Grid.Column="2" Text="5 Weeks" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,15,0,0"/>
+                                </Grid>
                             </Grid>
                         </Border>
                     </Grid>

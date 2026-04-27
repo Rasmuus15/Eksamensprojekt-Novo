@@ -20,6 +20,7 @@ namespace NovoForecastingSystem.Views
         public AddResourceWindow()
         {
             InitializeComponent();
+            PhaseComboBox.ItemsSource = Enum.GetValues(typeof(Models.Enums.Phase));
         }
 
         private void Close_Button_Click(object sender, RoutedEventArgs e)
