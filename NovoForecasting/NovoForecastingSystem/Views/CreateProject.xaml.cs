@@ -40,7 +40,7 @@ namespace NovoForecastingSystem.Views
                 }
 
                 var repo = new Repos.ProjectRepo();
-                repo.CreateProjectToDatabase(projectName, complexity, startDate);
+                repo.CreateProject(projectName, complexity, startDate);
 
                 MessageBox.Show("Project successfully created in database!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();

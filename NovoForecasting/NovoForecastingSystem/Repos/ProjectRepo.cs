@@ -13,7 +13,7 @@ namespace NovoForecastingSystem.Repos
             project = new List<Models.Project>();
         }
 
-        public void CreateProjectToDatabase(string projectName, string complexity, DateTime? startDate)
+        public void CreateProject(string projectName, string complexity, DateTime? startDate)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -50,6 +50,13 @@ namespace NovoForecastingSystem.Repos
                         }
 
                         transaction.Commit();
+
+                        // Update local cache
+                        project.Add(new Models.Project 
+                        { 
+                            ProjectName = projectName, 
+                            StartDate = startDate ?? default(DateTime) 
+                        });
                     }
                     catch
                     {
@@ -64,10 +71,7 @@ namespace NovoForecastingSystem.Repos
         {
             return project;
         }
-        public void CreateProject(Models.Project newProject)
-        {
-            project.Add(newProject);
-        }
+
         public void DeleteProject(Models.Project projectToDelete)
         {
             project.Remove(projectToDelete);
