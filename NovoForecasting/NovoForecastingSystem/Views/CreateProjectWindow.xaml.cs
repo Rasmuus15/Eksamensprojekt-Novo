@@ -18,9 +18,9 @@ namespace NovoForecastingSystem.Views
     /// <summary>
     /// Interaction logic for CreateProject.xaml
     /// </summary>
-    public partial class CreateProject : Window
+    public partial class CreateProjectWindow : Window
     {
-        public CreateProject()
+        public CreateProjectWindow()
         {
             InitializeComponent();
             DataContext = new ViewModels.ProjectViewModel();
