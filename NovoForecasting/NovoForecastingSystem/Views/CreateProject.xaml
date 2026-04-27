@@ -36,10 +36,7 @@
         <!-- Complexity -->
         <StackPanel Grid.Row="4" Margin="0,0,0,20">
             <TextBlock Text="Complexity:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <ComboBox x:Name="ComplexityComboBox" SelectedValue="{Binding Complexity}" SelectedValuePath="Content" Height="40" VerticalContentAlignment="Center" Padding="10,0">
-                <ComboBoxItem Content="Low"/>
-                <ComboBoxItem Content="Medium"/>
-                <ComboBoxItem Content="High"/>
+            <ComboBox x:Name="ComplexityComboBox" SelectedValue="{Binding Complexity}" Height="40" VerticalContentAlignment="Center" Padding="10,0">
             </ComboBox>
         </StackPanel>
 

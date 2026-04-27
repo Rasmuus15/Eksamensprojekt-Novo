@@ -23,7 +23,7 @@
         <!-- Phase -->
         <StackPanel Grid.Row="1" Margin="0,0,0,20">
             <TextBlock Text="Phase:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <ComboBox Height="40" VerticalContentAlignment="Center" Padding="10,0"/>
+            <ComboBox x:Name="PhaseComboBox" Height="40" VerticalContentAlignment="Center" Padding="10,0"/>
         </StackPanel>
 
         <!-- Role -->

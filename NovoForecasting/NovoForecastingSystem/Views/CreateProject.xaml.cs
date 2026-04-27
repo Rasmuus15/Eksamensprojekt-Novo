@@ -24,6 +24,7 @@ namespace NovoForecastingSystem.Views
         {
             InitializeComponent();
             DataContext = new ViewModels.ProjectViewModel();
+            ComplexityComboBox.ItemsSource = Enum.GetValues(typeof(Models.Enums.Complexity));
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
