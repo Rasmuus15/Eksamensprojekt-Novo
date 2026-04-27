@@ -14,7 +14,7 @@ namespace NovoForecastingSystem.Repos
             projects = new List<Project>();
         }
 
-        public void CreateProject(string projectName, string complexity, DateOnly? startDate)
+        public void CreateProject(string projectName, string complexity, DateOnly startDate, DateOnly endDate)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -22,38 +22,36 @@ namespace NovoForecastingSystem.Repos
 
 
 
-                        string insertProjectQuery = "INSERT INTO PROJECT (ProjectName, Complexity) VALUES (@ProjectName, @Complexity); SELECT SCOPE_IDENTITY();";
-                        int projectId = 0;
+                string insertProjectQuery = "INSERT INTO PROJECT (ProjectName, Complexity) VALUES (@ProjectName, @Complexity); SELECT SCOPE_IDENTITY();";
+                int projectId = 0;
 
-                        using (SqlCommand cmd = new SqlCommand(insertProjectQuery, connection))
-                        {
-                            cmd.Parameters.Add("@ProjectName", System.Data.SqlDbType.NVarChar, 255).Value = projectName;
-                            cmd.Parameters.Add("@Complexity", System.Data.SqlDbType.NVarChar, 50).Value = (object)complexity ?? DBNull.Value;
+                using (SqlCommand cmd = new SqlCommand(insertProjectQuery, connection))
+                {
+                    cmd.Parameters.Add("@ProjectName", System.Data.SqlDbType.NVarChar, 255).Value = projectName;
+                    cmd.Parameters.Add("@Complexity", System.Data.SqlDbType.NVarChar, 50).Value = (object)complexity ?? DBNull.Value;
 
-                            object result = cmd.ExecuteScalar();
-                            if (result != null)
-                            {
-                                projectId = Convert.ToInt32(result);
-                            }
-                        }
-
-                        if (startDate.HasValue && projectId > 0)
-                        {
-                            string insertLengthQuery = "INSERT INTO PROJECT_LENGTH (StartDate, ProjectId, EndDate) VALUES (@StartDate, @ProjectId, @EndDate);";
-                            using (SqlCommand lengthCmd = new SqlCommand(insertLengthQuery, connection))
-                            {
-                                lengthCmd.Parameters.Add("@StartDate", System.Data.SqlDbType.Date).Value = startDate.Value;
-                                lengthCmd.Parameters.Add("@ProjectId", System.Data.SqlDbType.Int).Value = projectId;
-                                lengthCmd.Parameters.Add("@EndDate", System.Data.SqlDbType.Date).Value = (object)endDate ?? DBNull.Value;
-                                lengthCmd.ExecuteNonQuery();
-                            }
-                        }
-                        projects.Add(new Models.Project 
-                        { 
-                            ProjectName = projectName, 
-                            StartDate = startDate ?? default(DateOnly) 
-                        });  
-                    }         
+                    object result = cmd.ExecuteScalar();
+                    if (result != null)
+                    {
+                        projectId = Convert.ToInt32(result);
+                    }
+                }
+                
+                string insertLengthQuery = "INSERT INTO PROJECT_LENGTH (StartDate, ProjectId, EndDate) VALUES (@StartDate, @ProjectId, @EndDate);";
+                using (SqlCommand lengthCmd = new SqlCommand(insertLengthQuery, connection))
+                {
+                    lengthCmd.Parameters.Add("@StartDate", System.Data.SqlDbType.Date).Value = startDate.Value;
+                    lengthCmd.Parameters.Add("@ProjectId", System.Data.SqlDbType.Int).Value = projectId;
+                    lengthCmd.Parameters.Add("@EndDate", System.Data.SqlDbType.Date).Value = (object)endDate ?? DBNull.Value;
+                    lengthCmd.ExecuteNonQuery();
+                }
+            }
+            projects.Add(new Models.Project
+            {
+                ProjectName = projectName,
+                StartDate = startDate ?? default(DateOnly)
+            });
+        }         
                 }
             
         

@@ -22,8 +22,8 @@ namespace NovoForecastingSystem.ViewModels
             set { _projectName = value; OnPropertyChanged(); }
         }
 
-        private DateTime? _startDate;
-        public DateTime? StartDate
+        private DateOnly? _startDate;
+        public DateOnly? StartDate
         {
             get => _startDate;
             set { _startDate = value; OnPropertyChanged(); }
@@ -54,7 +54,7 @@ namespace NovoForecastingSystem.ViewModels
         {
             try
             {
-                DateTime? endDate = null;
+                DateOnly? endDate = null;
                 if (StartDate.HasValue && !string.IsNullOrEmpty(Complexity))
                 {
                     if (Complexity == "Low") endDate = StartDate.Value.AddDays(81 * 7);
