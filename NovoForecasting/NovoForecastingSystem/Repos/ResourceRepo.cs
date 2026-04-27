@@ -22,13 +22,6 @@ namespace NovoForecastingSystem.Repos
 
 
 
-        //public string Initials { get; set; }
-        //public string Email { get; set; }
-        //public double FTE { get; set; }
-        //public bool Availability { get; set; }
-        //private JobRoleEnum jobRoleEnum;
-
-
         public List<string> PrintEmail(string jobRole)
         {
             List<string> EmailList = new List<string>();
@@ -36,7 +29,6 @@ namespace NovoForecastingSystem.Repos
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                //string query = "SELECT Email FROM RESOURCE";
                 SqlCommand cmd = new SqlCommand("FindEmails", connection);
 
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
