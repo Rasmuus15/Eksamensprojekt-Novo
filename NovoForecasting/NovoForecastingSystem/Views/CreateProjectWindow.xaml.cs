@@ -16,39 +16,15 @@ using Microsoft.Data.SqlClient;
 namespace NovoForecastingSystem.Views
 {
     /// <summary>
-    /// Interaction logic for CreateProjectWindow.xaml
+    /// Interaction logic for CreateProject.xaml
     /// </summary>
-    public partial class CreateProjectWindow : Window
+    public partial class CreateProject : Window
     {
-
-        public CreateProjectWindow()
+        public CreateProject()
         {
             InitializeComponent();
-        }
-        private void CreateProject_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                string projectName = ProjectNameTextBox.Text;
-                DateTime? startDate = StartDatePicker.SelectedDate;
-                string complexity = (ComplexityComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();
-
-                if (string.IsNullOrWhiteSpace(projectName))
-                {
-                    MessageBox.Show("Please enter a project name.");
-                    return;
-                }
-
-                var repo = new Repos.ProjectRepo();
-                repo.CreateProject(projectName, complexity, startDate);
-
-                MessageBox.Show("Project successfully created in database!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred: " + ex.Message);
-            }
+            DataContext = new ViewModels.ProjectViewModel();
+            ComplexityComboBox.ItemsSource = Enum.GetValues(typeof(Models.Enums.Complexity));
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

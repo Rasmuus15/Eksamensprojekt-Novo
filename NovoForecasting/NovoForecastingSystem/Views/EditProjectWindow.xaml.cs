@@ -20,6 +20,8 @@ namespace NovoForecastingSystem.Views
         public EditProjectWindow()
         {
             InitializeComponent();
+            PhaseComboBox.ItemsSource = Enum.GetValues(typeof(Models.Enums.Phase));
+            ComplexityComboBox.ItemsSource = Enum.GetValues(typeof(Models.Enums.Complexity));
         }
     }
 }

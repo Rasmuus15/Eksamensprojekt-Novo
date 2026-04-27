@@ -13,19 +13,21 @@ namespace NovoForecastingSystem.Repos
             project = new List<Models.Project>();
         }
 
-        public void CreateProject(string projectName, string complexity, DateTime? startDate)
+        public void CreateProject(string projectName, string complexity, DateTime? startDate, DateTime? endDate)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
+
+
 
                         string insertProjectQuery = "INSERT INTO PROJECT (ProjectName, Complexity) VALUES (@ProjectName, @Complexity); SELECT SCOPE_IDENTITY();";
                         int projectId = 0;
 
                         using (SqlCommand cmd = new SqlCommand(insertProjectQuery, connection))
                         {
-                            cmd.Parameters.AddWithValue("@ProjectName", projectName);
-                            cmd.Parameters.AddWithValue("@Complexity", (object)complexity ?? DBNull.Value);
+                            cmd.Parameters.Add("@ProjectName", System.Data.SqlDbType.NVarChar, 255).Value = projectName;
+                            cmd.Parameters.Add("@Complexity", System.Data.SqlDbType.NVarChar, 50).Value = (object)complexity ?? DBNull.Value;
 
                             object result = cmd.ExecuteScalar();
                             if (result != null)
@@ -36,26 +38,24 @@ namespace NovoForecastingSystem.Repos
 
                         if (startDate.HasValue && projectId > 0)
                         {
-                            string insertLengthQuery = "INSERT INTO PROJECT_LENGTH (StartDate, ProjectId) VALUES (@StartDate, @ProjectId);";
+                            string insertLengthQuery = "INSERT INTO PROJECT_LENGTH (StartDate, ProjectId, EndDate) VALUES (@StartDate, @ProjectId, @EndDate);";
                             using (SqlCommand lengthCmd = new SqlCommand(insertLengthQuery, connection))
                             {
-                                lengthCmd.Parameters.AddWithValue("@StartDate", startDate.Value);
-                                lengthCmd.Parameters.AddWithValue("@ProjectId", projectId);
+                                lengthCmd.Parameters.Add("@StartDate", System.Data.SqlDbType.Date).Value = startDate.Value;
+                                lengthCmd.Parameters.Add("@ProjectId", System.Data.SqlDbType.Int).Value = projectId;
+                                lengthCmd.Parameters.Add("@EndDate", System.Data.SqlDbType.Date).Value = (object)endDate ?? DBNull.Value;
                                 lengthCmd.ExecuteNonQuery();
                             }
                         }
                         project.Add(new Models.Project 
                         { 
                             ProjectName = projectName, 
-                            StartDate = startDate ?? default(DateTime) 
+                            StartDate = startDate ?? default(DateTime),
+                            EndDate = endDate ?? default(DateTime)
                         });
 
-
-                       
-                    }
-                 
                 }
-            
+            }
         
 
         public List<Models.Project> GetAllProjects()
