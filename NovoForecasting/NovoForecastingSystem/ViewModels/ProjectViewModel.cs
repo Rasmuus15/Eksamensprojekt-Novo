@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 
 namespace NovoForecastingSystem.ViewModels
@@ -16,7 +17,8 @@ namespace NovoForecastingSystem.ViewModels
         public ICommand NavigateToDashboardViewCommand { get; }
         public ICommand AddResourceCommand { get; }
         public ICommand EditProjectCommand { get; }
-        public ProjectViewModel(NavigationStore navigationStore)
+
+        public ProjectViewModel(NavigationStore? navigationStore = null)
         {
             NavigateToDashboardViewCommand = new NavigateCommand(new NavigationService(navigationStore, () => new DashBoardViewModel(navigationStore)));
             AddResourceCommand = new AddResourceCommand();
@@ -27,8 +29,6 @@ namespace NovoForecastingSystem.ViewModels
         {
             AddResourceWindow addResourceWindow = new AddResourceWindow();
             addResourceWindow.Show();
-            //ResourceRepo
-            
         }
 
         public void EditProject()

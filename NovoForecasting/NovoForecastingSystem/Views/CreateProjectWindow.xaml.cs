@@ -10,45 +10,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Data.SqlClient;
+using NovoForecastingSystem.Models.Enums;
+using NovoForecastingSystem.ViewModels;
 
 
 
 namespace NovoForecastingSystem.Views
 {
     /// <summary>
-    /// Interaction logic for CreateProjectWindow.xaml
+    /// Interaction logic for CreateProject.xaml
     /// </summary>
     public partial class CreateProjectWindow : Window
     {
-
         public CreateProjectWindow()
         {
             InitializeComponent();
-        }
-        private void CreateProject_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                string projectName = ProjectNameTextBox.Text;
-                DateOnly? startDate = DateOnly.FromDateTime((DateTime)StartDatePicker.SelectedDate);
-                string complexity = (ComplexityComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();
-
-                if (string.IsNullOrWhiteSpace(projectName))
-                {
-                    MessageBox.Show("Please enter a project name.");
-                    return;
-                }
-
-                var repo = new Repos.ProjectRepo();
-                repo.CreateProject(projectName, complexity, startDate);
-
-                MessageBox.Show("Project successfully created in database!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred: " + ex.Message);
-            }
+            DataContext = new ProjectViewModel();
+            ComplexityComboBox.ItemsSource = Enum.GetValues(typeof(Complexity));
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

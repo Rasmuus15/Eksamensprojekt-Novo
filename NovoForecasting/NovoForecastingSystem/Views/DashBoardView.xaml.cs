@@ -25,7 +25,7 @@ namespace NovoForecastingSystem.Views
 
         private void CreateProject_Click(object sender, RoutedEventArgs e)
         {
-            var createProjectWindow = new CreateProjectWindow();
+            CreateProjectWindow createProjectWindow = new CreateProjectWindow();
             createProjectWindow.ShowDialog();
         }
     }
