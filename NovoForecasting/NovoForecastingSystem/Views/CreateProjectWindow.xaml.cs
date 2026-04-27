@@ -10,6 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Data.SqlClient;
+using NovoForecastingSystem.Models.Enums;
+using NovoForecastingSystem.ViewModels;
 
 
 
@@ -23,8 +25,8 @@ namespace NovoForecastingSystem.Views
         public CreateProjectWindow()
         {
             InitializeComponent();
-            DataContext = new ViewModels.ProjectViewModel();
-            ComplexityComboBox.ItemsSource = Enum.GetValues(typeof(Models.Enums.Complexity));
+            DataContext = new ProjectViewModel();
+            ComplexityComboBox.ItemsSource = Enum.GetValues(typeof(Complexity));
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
