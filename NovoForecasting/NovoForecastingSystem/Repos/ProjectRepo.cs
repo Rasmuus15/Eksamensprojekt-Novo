@@ -19,14 +19,10 @@ namespace NovoForecastingSystem.Repos
             {
                 connection.Open();
 
-                using (SqlTransaction transaction = connection.BeginTransaction())
-                {
-                    try
-                    {
                         string insertProjectQuery = "INSERT INTO PROJECT (ProjectName, Complexity) VALUES (@ProjectName, @Complexity); SELECT SCOPE_IDENTITY();";
                         int projectId = 0;
 
-                        using (SqlCommand cmd = new SqlCommand(insertProjectQuery, connection, transaction))
+                        using (SqlCommand cmd = new SqlCommand(insertProjectQuery, connection))
                         {
                             cmd.Parameters.AddWithValue("@ProjectName", projectName);
                             cmd.Parameters.AddWithValue("@Complexity", (object)complexity ?? DBNull.Value);
@@ -41,31 +37,26 @@ namespace NovoForecastingSystem.Repos
                         if (startDate.HasValue && projectId > 0)
                         {
                             string insertLengthQuery = "INSERT INTO PROJECT_LENGTH (StartDate, ProjectId) VALUES (@StartDate, @ProjectId);";
-                            using (SqlCommand lengthCmd = new SqlCommand(insertLengthQuery, connection, transaction))
+                            using (SqlCommand lengthCmd = new SqlCommand(insertLengthQuery, connection))
                             {
                                 lengthCmd.Parameters.AddWithValue("@StartDate", startDate.Value);
                                 lengthCmd.Parameters.AddWithValue("@ProjectId", projectId);
                                 lengthCmd.ExecuteNonQuery();
                             }
                         }
-
-                        transaction.Commit();
-
-                        // Update local cache
                         project.Add(new Models.Project 
                         { 
                             ProjectName = projectName, 
                             StartDate = startDate ?? default(DateTime) 
                         });
+
+
+                       
                     }
-                    catch
-                    {
-                        transaction.Rollback();
-                        throw; 
-                    }
+                 
                 }
-            }
-        }
+            
+        
 
         public List<Models.Project> GetAllProjects()
         {
