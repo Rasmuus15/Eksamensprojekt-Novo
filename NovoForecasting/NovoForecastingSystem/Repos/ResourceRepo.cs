@@ -1,10 +1,16 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Json;
+using NovoForecastingSystem.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 
 namespace NovoForecastingSystem.Repos
 {
-    public class ResourceRepo
+    public class ResourceRepo : DatabaseConnector
     {
         private List<Models.Ressource> ressource;
 
@@ -14,7 +20,95 @@ namespace NovoForecastingSystem.Repos
         }
 
 
-         public List<Models.Ressource> GetAllRessources()
+
+        //public string Initials { get; set; }
+        //public string Email { get; set; }
+        //public double FTE { get; set; }
+        //public bool Availability { get; set; }
+        //private JobRoleEnum jobRoleEnum;
+
+
+        public List<string> PrintEmail()
+        {
+            List<string> EmailList = new List<string>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT Email FROM RESOURCE";
+                SqlCommand cmd = new SqlCommand(query, connection);
+
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        {
+                            EmailList.Add(reader.GetString(0));
+                        }
+                        
+                    }
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("An error occurred while retrieving waste data: " + ex.Message);
+                }
+            }
+                return EmailList;
+         }
+
+        
+
+
+
+
+
+        //public void AddResource(Object Phase, Object JobRole)
+        //{
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        connection.Open();
+
+        //        string insertProjectQuery = "";
+        //        int projectId = 0;
+
+        //        using (SqlCommand cmd = new SqlCommand(insertProjectQuery, connection))
+        //        {
+        //            cmd.Parameters.AddWithValue("@ProjectName", projectName);
+        //            cmd.Parameters.AddWithValue("@Complexity", (object)complexity ?? DBNull.Value);
+
+        //            object result = cmd.ExecuteScalar();
+        //            if (result != null)
+        //            {
+        //                projectId = Convert.ToInt32(result);
+        //            }
+        //        }
+
+        //        if (startDate.HasValue && projectId > 0)
+        //        {
+        //            string insertLengthQuery = "INSERT INTO PROJECT_LENGTH (StartDate, ProjectId) VALUES (@StartDate, @ProjectId);";
+        //            using (SqlCommand lengthCmd = new SqlCommand(insertLengthQuery, connection))
+        //            {
+        //                lengthCmd.Parameters.AddWithValue("@StartDate", startDate.Value);
+        //                lengthCmd.Parameters.AddWithValue("@ProjectId", projectId);
+        //                lengthCmd.ExecuteNonQuery();
+        //            }
+        //        }
+        //        project.Add(new Models.Project
+        //        {
+        //            ProjectName = projectName,
+        //            StartDate = startDate ?? default(DateTime)
+        //        });
+
+
+
+        //    }
+
+        //}
+
+
+        public List<Models.Ressource> GetAllRessources()
         {
             return ressource;
         }
