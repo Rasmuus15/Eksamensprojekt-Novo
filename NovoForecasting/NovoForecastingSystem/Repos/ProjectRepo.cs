@@ -26,8 +26,8 @@ namespace NovoForecastingSystem.Repos
 
                         using (SqlCommand cmd = new SqlCommand(insertProjectQuery, connection))
                         {
-                            cmd.Parameters.AddWithValue("@ProjectName", projectName);
-                            cmd.Parameters.AddWithValue("@Complexity", (object)complexity ?? DBNull.Value);
+                            cmd.Parameters.Add("@ProjectName", System.Data.SqlDbType.NVarChar, 255).Value = projectName;
+                            cmd.Parameters.Add("@Complexity", System.Data.SqlDbType.NVarChar, 50).Value = (object)complexity ?? DBNull.Value;
 
                             object result = cmd.ExecuteScalar();
                             if (result != null)
@@ -41,9 +41,9 @@ namespace NovoForecastingSystem.Repos
                             string insertLengthQuery = "INSERT INTO PROJECT_LENGTH (StartDate, ProjectId, EndDate) VALUES (@StartDate, @ProjectId, @EndDate);";
                             using (SqlCommand lengthCmd = new SqlCommand(insertLengthQuery, connection))
                             {
-                                lengthCmd.Parameters.AddWithValue("@StartDate", startDate.Value);
-                                lengthCmd.Parameters.AddWithValue("@ProjectId", projectId);
-                                lengthCmd.Parameters.AddWithValue("@EndDate", (object)endDate ?? DBNull.Value);
+                                lengthCmd.Parameters.Add("@StartDate", System.Data.SqlDbType.Date).Value = startDate.Value;
+                                lengthCmd.Parameters.Add("@ProjectId", System.Data.SqlDbType.Int).Value = projectId;
+                                lengthCmd.Parameters.Add("@EndDate", System.Data.SqlDbType.Date).Value = (object)endDate ?? DBNull.Value;
                                 lengthCmd.ExecuteNonQuery();
                             }
                         }
