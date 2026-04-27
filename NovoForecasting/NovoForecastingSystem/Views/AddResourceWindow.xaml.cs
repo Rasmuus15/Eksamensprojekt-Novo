@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using NovoForecastingSystem.Models.Enums;
 
 namespace NovoForecastingSystem.Views
 {
@@ -20,7 +21,15 @@ namespace NovoForecastingSystem.Views
         public AddResourceWindow()
         {
             InitializeComponent();
+            LoadEnum();
         }
+
+        private void LoadEnum()
+        {
+            Phase_ComboBox.ItemsSource = Enum.GetValues(typeof(Phase));
+            Role_ComboBox.ItemsSource = Enum.GetValues(typeof(JobRole));
+        }
+
 
         private void Close_Button_Click(object sender, RoutedEventArgs e)
         {

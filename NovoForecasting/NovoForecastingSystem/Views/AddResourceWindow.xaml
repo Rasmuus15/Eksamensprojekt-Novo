@@ -23,13 +23,13 @@
         <!-- Phase -->
         <StackPanel Grid.Row="1" Margin="0,0,0,20">
             <TextBlock Text="Phase:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <ComboBox Height="40" VerticalContentAlignment="Center" Padding="10,0"/>
+            <ComboBox x:Name="Phase_ComboBox" Height="40" VerticalContentAlignment="Center" Padding="10,0"/>
         </StackPanel>
 
         <!-- Role -->
         <StackPanel Grid.Row="2" Margin="0,0,0,15">
             <TextBlock Text="Role:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <ComboBox Height="40" VerticalContentAlignment="Center" Padding="10,0"/>
+            <ComboBox x:Name="Role_ComboBox" Height="40" VerticalContentAlignment="Center" Padding="10,0"/>
         </StackPanel>
 
         <!-- Allocation Status -->
