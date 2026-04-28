@@ -10,6 +10,14 @@ namespace NovoForecastingSystem.Models
     {
         public DateTime Lenght { get; set; }
         public PhaseEnum phaseEnum { get; set; }
+
+        public string DisplayPhaseStage
+        {
+            get
+            {
+                int currentPhase = (int)phaseEnum + 1;
+                return $"{currentPhase}/8";
+            }
+        }
     }
 }
- 

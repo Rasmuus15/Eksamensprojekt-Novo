@@ -21,10 +21,6 @@ namespace NovoForecastingSystem.Views.Templates
         public ProjectsTemplate()
         {
             InitializeComponent();
-            PhaseStage currentStageNumber;
-            Enum.TryParse<PhaseStage>(PhaseTxt.Text, out currentStageNumber);
-            
-            string txt = (int)currentStageNumber.ToString();
         }
 
 
