@@ -23,13 +23,13 @@
         <!-- Phase -->
         <StackPanel Grid.Row="1" Margin="0,0,0,20">
             <TextBlock Text="Phase:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <ComboBox x:Name="PhaseComboBox" Height="40" VerticalContentAlignment="Center" Padding="10,0"/>
+            <ComboBox x:Name="Phase_ComboBox" Height="40" VerticalContentAlignment="Center" Padding="10,0"/>
         </StackPanel>
 
         <!-- Role -->
         <StackPanel Grid.Row="2" Margin="0,0,0,15">
             <TextBlock Text="Role:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <ComboBox Height="40" VerticalContentAlignment="Center" Padding="10,0"/>
+            <ComboBox x:Name="Role_ComboBox" Height="40" VerticalContentAlignment="Center" Padding="10,0" SelectionChanged="Role_ComboBox_SelectionChanged"/>
         </StackPanel>
 
         <!-- Allocation Status -->
@@ -43,7 +43,7 @@
         <!-- Email -->
         <StackPanel Grid.Row="4" Margin="0,0,0,20">
             <TextBlock Text="Email:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <ComboBox Height="40" VerticalContentAlignment="Center" Padding="10,0"/>
+            <ComboBox x:Name="Email_ComboBox" Height="40" VerticalContentAlignment="Center" Padding="10,0"/>
         </StackPanel>
 
         <!-- Buttons -->
@@ -54,7 +54,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Content="Add" Foreground="White" Background="#2563EB" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand">
+            <Button x:Name="Add_Button" Grid.Column="0" Content="Add" Foreground="White" Background="#2563EB" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand" Click="Add_Button_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="8">
