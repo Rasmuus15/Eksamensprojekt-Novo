@@ -85,6 +85,7 @@ namespace NovoForecastingSystem.Views.Charts.GanttChart
         };
 
             int _maxlimit = 81;
+            /*
             if(Complexity == Complexity.Medium)
             {
                 _maxlimit = 108;
@@ -93,7 +94,7 @@ namespace NovoForecastingSystem.Views.Charts.GanttChart
             {
                 _maxlimit = 137;
             }
-
+            */
             XAxes = new[]
             {
             new Axis
