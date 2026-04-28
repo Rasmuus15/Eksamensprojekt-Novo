@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using Microsoft.Data.SqlClient;
 using NovoForecastingSystem.Models;
+
 
 namespace NovoForecastingSystem.Repos
 {
