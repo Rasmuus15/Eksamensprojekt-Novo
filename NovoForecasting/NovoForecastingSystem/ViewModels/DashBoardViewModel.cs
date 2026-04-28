@@ -22,8 +22,8 @@ namespace NovoForecastingSystem.ViewModels
             set { _projectName = value; OnPropertyChanged(); }
         }
 
-        private DateOnly? _startDate;
-        public DateOnly? StartDate
+        private DateTime? _startDate;
+        public DateTime? StartDate
         {
             get => _startDate;
             set { _startDate = value; OnPropertyChanged(); }
@@ -53,23 +53,24 @@ namespace NovoForecastingSystem.ViewModels
         public void CreateProject()
         {
             DateOnly? endDate = null;
+            DateOnly? startDate = StartDate.HasValue ? DateOnly.FromDateTime(StartDate.Value) : null;
             try
             {
-                if (StartDate.HasValue && !string.IsNullOrEmpty(Complexity))
-                {
-                    if (Complexity == "Low") endDate = StartDate.Value.AddDays(81 * 7);
-                    else if (Complexity == "Medium") endDate = StartDate.Value.AddDays(108 * 7);
-                    else if (Complexity == "High") endDate = StartDate.Value.AddDays(137 * 7);
-                }
-
                 if (string.IsNullOrWhiteSpace(ProjectName))
                 {
                     MessageBox.Show("Please enter a project name.");
                     return;
                 }
 
+                if (StartDate.HasValue && !string.IsNullOrEmpty(Complexity))
+                {
+                    if (Complexity == "Low") endDate = startDate.Value.AddDays(81 * 7);
+                    else if (Complexity == "Medium") endDate = startDate.Value.AddDays(108 * 7);
+                    else if (Complexity == "High") endDate = startDate.Value.AddDays(137 * 7);
+                }
+
                 ProjectRepo projectRepo = new ProjectRepo();
-                projectRepo.CreateProject(ProjectName, Complexity, StartDate, endDate);
+                projectRepo.CreateProject(ProjectName, Complexity, startDate, endDate);
 
                 MessageBox.Show("Project successfully created in database!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
