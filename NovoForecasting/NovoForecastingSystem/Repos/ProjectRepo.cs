@@ -3,7 +3,9 @@ using NovoForecastingSystem.Models;
 using NovoForecastingSystem.Models.Enums;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
+
 
 namespace NovoForecastingSystem.Repos
 {
