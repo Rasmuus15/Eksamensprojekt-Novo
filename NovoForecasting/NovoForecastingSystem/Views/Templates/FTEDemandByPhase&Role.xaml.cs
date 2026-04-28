@@ -60,7 +60,7 @@ namespace NovoForecastingSystem.Views.Templates
             }
 
             // Create columns based on the Phase enum
-            foreach (Phase phase in Enum.GetValues(typeof(Phase)))
+            foreach (PhaseStage phase in Enum.GetValues(typeof(PhaseStage)))
             {
                 string phaseName = phase.ToString();
                 string headerName = FormatCamelCase(phaseName);

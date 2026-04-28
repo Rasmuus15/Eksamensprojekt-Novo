@@ -54,7 +54,7 @@
                     Grid.Row="1"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    Text="{Binding}"
+                    Text="{Binding }"
                     Foreground="Gray"
                     TextWrapping="Wrap" 
                     Margin="57,1,0,0" />
@@ -113,8 +113,8 @@
                     Foreground="Black"
                     Text="{Binding EndDate}"
                     TextWrapping="Wrap" />
-                <Border Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Background="#DCFCE7" CornerRadius="4" Padding="8,4" Margin="8">
-                    <TextBlock Text="{Binding}" FontSize="12" Foreground="#166534" FontWeight="SemiBold" Height="16" VerticalAlignment="Center"/>
+                <Border Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Background="#DCFCE7" CornerRadius="4" Padding="8,4" Margin="8">
+                    <TextBlock x:Name="ComplexityTxtBx" Text="{Binding ComplexityEnum}" FontSize="12" Foreground="#166534" FontWeight="SemiBold" Height="16" VerticalAlignment="Center"/>
                 </Border>
                 <ProgressBar
                     Grid.Row="1"
