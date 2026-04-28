@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using Microsoft.Data.SqlClient;
+
 
 namespace NovoForecastingSystem.Repos
 {
@@ -24,8 +26,8 @@ namespace NovoForecastingSystem.Repos
 
                         using (SqlCommand cmd = new SqlCommand(insertProjectQuery, connection))
                         {
-                            cmd.Parameters.AddWithValue("@ProjectName", projectName);
-                            cmd.Parameters.AddWithValue("@Complexity", (object)complexity ?? DBNull.Value);
+                            cmd.Parameters.Add("@ProjectName", SqlDbType.NVarChar).Value = projectName;
+                            cmd.Parameters.Add("@Complexity", SqlDbType.NVarChar).Value = complexity;
 
                             object result = cmd.ExecuteScalar();
                             if (result != null)
@@ -39,7 +41,7 @@ namespace NovoForecastingSystem.Repos
                             string insertLengthQuery = "INSERT INTO PROJECT_LENGTH (StartDate, ProjectId) VALUES (@StartDate, @ProjectId);";
                             using (SqlCommand lengthCmd = new SqlCommand(insertLengthQuery, connection))
                             {
-                                lengthCmd.Parameters.AddWithValue("@StartDate", startDate.Value);
+                                lengthCmd.Parameters.Add("@StartDate", SqlDbType.DateTime).Value = startDate;
                                 lengthCmd.Parameters.AddWithValue("@ProjectId", projectId);
                                 lengthCmd.ExecuteNonQuery();
                             }

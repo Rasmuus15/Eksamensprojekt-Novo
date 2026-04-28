@@ -20,7 +20,7 @@ namespace NovoForecastingSystem.Views.Charts.LineChart
             { 2, null, 2, 2, null, 4, 4, 4, 4, 4, 4, 4, 4, null, 2, null, null, null, 2, null, 2 };
 
         private static readonly double?[] GreenValues =
-            { 1, null, null, null, 3, null, 3, 3, null, 3, 3, 3, null, null, 1, 1, null, 1, 1, 1, 1 };
+            { 1, null, null, null, 3, null, 3, 67, null, 3, 3, 3, null, null, 1, 1, null, 1, 1, 1, 1 };
 
         private static readonly double?[] RedValues =
             { 0, null, null, null, null, null, null, null, null, null, null, null, null, null, 0, null, 0, 0, null, 0, 0 };
