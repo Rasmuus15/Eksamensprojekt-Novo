@@ -29,28 +29,30 @@
                 <StackPanel Grid.Row="0" Margin="0,0,0,20">
                     <TextBlock Text="Projects" FontSize="20" FontWeight="Bold" Foreground="#0F172A" Margin="0,0,0,5"/>
                 </StackPanel>
-                
-                <StackPanel Grid.Row="1">
-                    <StackPanel.Resources>
-                        <Style TargetType="templates:ProjectsTemplate">
-                            <Setter Property="Margin" Value="0,0,0,10"/>
-                        </Style>
-                    </StackPanel.Resources>
-                    <ItemsControl x:Name="Projects"
+
+                <ScrollViewer Grid.Row="1">
+                    <StackPanel Grid.Row="1">
+                        <StackPanel.Resources>
+                            <Style TargetType="templates:ProjectsTemplate">
+                                <Setter Property="Margin" Value="0,0,0,10"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <ItemsControl x:Name="Projects"
                                 ItemsSource="{Binding ProjectList}"
                                 Margin="10">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel Orientation="Vertical"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <templates:ProjectsTemplate DataContext="{Binding}"/>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </StackPanel>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Vertical"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <templates:ProjectsTemplate DataContext="{Binding}"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ScrollViewer>
 
                 <!-- New Project Button -->
                 <Button Grid.Row="2" Content="+ New Project" Click="CreateProject_Click" Background="#2563EB" Foreground="White" FontSize="16" FontWeight="SemiBold" Height="45" Margin="0,15,0,0" BorderThickness="0" Cursor="Hand">

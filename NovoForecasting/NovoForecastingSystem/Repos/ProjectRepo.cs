@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using NovoForecastingSystem.Models;
+using NovoForecastingSystem.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.Data.SqlClient;
-using NovoForecastingSystem.Models;
 
 namespace NovoForecastingSystem.Repos
 {
@@ -14,44 +15,50 @@ namespace NovoForecastingSystem.Repos
             projects = new List<Project>();
         }
 
-        public void CreateProject(string projectName, string complexity, DateOnly? startDate, DateOnly? endDate)
+        public Project CreateProject(string projectName, string complexity, DateOnly startDate, DateOnly endDate)
         {
+            int projectId = 0;
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
                 string insertProjectQuery = "INSERT INTO PROJECT (ProjectName, Complexity) VALUES (@ProjectName, @Complexity); SELECT SCOPE_IDENTITY();";
-                int projectId = 0;
 
                 using (SqlCommand cmd = new SqlCommand(insertProjectQuery, connection))
                 {
                     cmd.Parameters.Add("@ProjectName", System.Data.SqlDbType.NVarChar, 255).Value = projectName;
-                    cmd.Parameters.Add("@Complexity", System.Data.SqlDbType.NVarChar, 50).Value = (object)complexity ?? DBNull.Value;
+                    cmd.Parameters.Add("@Complexity", System.Data.SqlDbType.NVarChar, 50).Value = complexity;
 
-                    object result = cmd.ExecuteScalar();
-                    if (result != null)
-                    {
-                        projectId = Convert.ToInt32(result);
-                    }
+                    projectId = Convert.ToInt32(cmd.ExecuteScalar());
                 }
-                
+
                 string insertLengthQuery = "INSERT INTO PROJECT_LENGTH (StartDate, ProjectId, EndDate) VALUES (@StartDate, @ProjectId, @EndDate);";
                 using (SqlCommand lengthCmd = new SqlCommand(insertLengthQuery, connection))
                 {
                     lengthCmd.Parameters.Add("@StartDate", System.Data.SqlDbType.Date).Value = startDate;
                     lengthCmd.Parameters.Add("@ProjectId", System.Data.SqlDbType.Int).Value = projectId;
-                    lengthCmd.Parameters.Add("@EndDate", System.Data.SqlDbType.Date).Value = (object)endDate ?? DBNull.Value;
+                    lengthCmd.Parameters.Add("@EndDate", System.Data.SqlDbType.Date).Value = endDate;
                     lengthCmd.ExecuteNonQuery();
                 }
             }
-            projects.Add(new Models.Project
+            Enum.TryParse<Complexity>(complexity, out Complexity complexityEnum);
+
+            Project project = (new Project
             {
+                Id = projectId,
                 ProjectName = projectName,
-                StartDate = startDate ?? default(DateOnly)
+                ComplexityEnum = complexityEnum,
+                StartDate = startDate,
+                EndDate = endDate
             });
-        }
             
-        
+            projects.Add(project);
+
+            return project;
+        }
+
+
 
         public List<Project> GetAllProjects()
         {
@@ -74,6 +81,7 @@ namespace NovoForecastingSystem.Repos
                             StartDate = DateOnly.FromDateTime((DateTime)reader["StartDate"]),
                             EndDate = DateOnly.FromDateTime((DateTime)reader["EndDate"])
                         };
+                        projects.Add(project);
                     }
                 }
             }
