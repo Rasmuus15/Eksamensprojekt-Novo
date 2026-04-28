@@ -8,8 +8,8 @@ namespace NovoForecastingSystem.Models
 {
     public class Phase
     {
-        public DateTime Length { get; set; }
-        private PhaseEnum phaseEnum;
+        public DateTime Lenght { get; set; }
+        public PhaseEnum phaseEnum { get; set; }
     }
 }
  

@@ -51,10 +51,11 @@
                     TextWrapping="Wrap" />
                 <!--Phase nr.-->
                 <TextBlock 
+                    x:Name="PhaseStageNumberTxt"
                     Grid.Row="1"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    Text="{Binding }"
+                    Text="{Binding Phase.phaseEnum}"
                     Foreground="Gray"
                     TextWrapping="Wrap" 
                     Margin="57,1,0,0" />
@@ -69,7 +70,7 @@
                     Text="_________________________________"
                     TextWrapping="Wrap" />
 
-                <TextBlock Grid.Row="1" Text="Detailed Design" FontSize="8" Foreground="#94A3B8" Margin="23,19,3,49"/>
+                <TextBlock x:Name="PhaseTxt" Grid.Row="1" Text="{Binding Phase.phaseEnum}" FontSize="8" Foreground="#94A3B8" Margin="23,19,3,49"/>
 
                 <TextBlock
                     Grid.Row="1"
@@ -113,7 +114,7 @@
                     Foreground="Black"
                     Text="{Binding EndDate}"
                     TextWrapping="Wrap" />
-                <Border Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Background="#DCFCE7" CornerRadius="4" Padding="8,4" Margin="8">
+                <Border Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Background="#DCFCE7" CornerRadius="4" Padding="8,4" Margin="8">
                     <TextBlock x:Name="ComplexityTxtBx" Text="{Binding ComplexityEnum}" FontSize="12" Foreground="#166534" FontWeight="SemiBold" Height="16" VerticalAlignment="Center"/>
                 </Border>
                 <ProgressBar

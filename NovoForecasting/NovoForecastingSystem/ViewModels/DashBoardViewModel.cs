@@ -36,6 +36,8 @@ namespace NovoForecastingSystem.ViewModels
             set { _complexity = value; OnPropertyChanged(); }
         }
 
+        public Phase testPhase { get; set; }
+
         public ICommand NavigateToProject { get; }
         public ICommand CreateProjectCommand { get; }
 
