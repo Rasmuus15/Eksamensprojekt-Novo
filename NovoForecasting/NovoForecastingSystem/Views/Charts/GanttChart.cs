@@ -1,7 +1,9 @@
 ﻿using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
+using NovoForecastingSystem.Models.Enums;
 using SkiaSharp;
+using NovoForecastingSystem.Models;
 
 namespace NovoForecastingSystem.Views.Charts.GanttChart
 {
@@ -82,14 +84,23 @@ namespace NovoForecastingSystem.Views.Charts.GanttChart
             }
         };
 
+            int _maxlimit = 81;
+            if(Complexity == Complexity.Medium)
+            {
+                _maxlimit = 108;
+            }
+            else if (Complexity == Complexity.High)
+            {
+                _maxlimit = 137;
+            }
+
             XAxes = new[]
             {
             new Axis
             {
                 MinLimit = 0,
-                MaxLimit = 81,
+                MaxLimit = _maxlimit,
                 TextSize = 12
-
                 // Low comp = 81
                 // Medium comp = 108
                 // High comp = 137
