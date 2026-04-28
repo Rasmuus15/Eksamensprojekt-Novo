@@ -76,12 +76,15 @@ namespace NovoForecastingSystem.Repos
                 {
                     while (reader.Read())
                     {
+                        Enum.TryParse<Complexity>((string)reader["Complexity"], out Complexity complexityEnum);
+
                         Project project = new Project()
                         {
                             Id = reader.GetInt32(0),
                             ProjectName = (string)reader["ProjectName"],
                             StartDate = DateOnly.FromDateTime((DateTime)reader["StartDate"]),
-                            EndDate = DateOnly.FromDateTime((DateTime)reader["EndDate"])
+                            EndDate = DateOnly.FromDateTime((DateTime)reader["EndDate"]),
+                            ComplexityEnum = complexityEnum
                         };
                         projects.Add(project);
                     }

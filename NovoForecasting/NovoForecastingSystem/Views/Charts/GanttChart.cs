@@ -97,7 +97,7 @@ namespace NovoForecastingSystem.Views.Charts.GanttChart
             {
                 _maxlimit = 137;
             }
-
+            */
             XAxes = new[]
             {
             new Axis
