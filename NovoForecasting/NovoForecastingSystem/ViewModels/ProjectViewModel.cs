@@ -36,5 +36,10 @@ namespace NovoForecastingSystem.ViewModels
             EditProjectWindow editProjectWindow = new EditProjectWindow();
             editProjectWindow.Show();
         }
+
+        public void AddProjectCoordinator()
+        {
+
+        }
     }
 }

@@ -41,19 +41,19 @@ namespace NovoForecastingSystem.ViewModels
 
         private ProjectRepo projectRepo = new ProjectRepo();
 
-        public ObservableCollection<Project> ProjectList;
+        public ObservableCollection<Project> ProjectList { get; set; }
 
         public DashBoardViewModel(NavigationStore navigationStore)
         {
-            projectRepo.GetAllProjects();
+            ProjectList = new ObservableCollection<Project>(projectRepo.GetAllProjects());
             NavigateToProject = new NavigateCommand(new NavigationService(navigationStore, () => new ProjectViewModel(navigationStore)));
             CreateProjectCommand = new CreateProjectCommand();
         }
 
         public void CreateProject()
         {
-            DateOnly? endDate = null;
-            DateOnly? startDate = StartDate.HasValue ? DateOnly.FromDateTime(StartDate.Value) : null;
+            DateOnly endDate = DateOnly.MinValue;
+            DateOnly startDate = StartDate.HasValue ? DateOnly.FromDateTime(StartDate.Value) : DateOnly.MinValue;
             try
             {
                 if (string.IsNullOrWhiteSpace(ProjectName))
@@ -64,15 +64,17 @@ namespace NovoForecastingSystem.ViewModels
 
                 if (StartDate.HasValue && !string.IsNullOrEmpty(Complexity))
                 {
-                    if (Complexity == "Low") endDate = startDate.Value.AddDays(81 * 7);
-                    else if (Complexity == "Medium") endDate = startDate.Value.AddDays(108 * 7);
-                    else if (Complexity == "High") endDate = startDate.Value.AddDays(137 * 7);
+                    if (Complexity == "Low") endDate = startDate.AddDays(81 * 7);
+                    else if (Complexity == "Medium") endDate = startDate.AddDays(108 * 7);
+                    else if (Complexity == "High") endDate = startDate.AddDays(137 * 7);
                 }
 
                 ProjectRepo projectRepo = new ProjectRepo();
-                projectRepo.CreateProject(ProjectName, Complexity, startDate, endDate);
+                Project project = projectRepo.CreateProject(ProjectName, Complexity, startDate, endDate);
 
                 MessageBox.Show("Project successfully created in database!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                
+                ProjectList.Add(project);
             }
             catch (Exception ex)
             {
