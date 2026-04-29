@@ -13,11 +13,11 @@ namespace NovoForecastingSystem.Repos
 {
     public class ResourceRepo : DatabaseConnector
     {
-        private List<Models.Ressource> ressource;
+        private List<Models.Resource> resource;
 
         public ResourceRepo()
         {
-            ressource = new List<Models.Ressource>(); 
+            resource = new List<Models.Resource>(); 
         }
 
 
@@ -104,9 +104,9 @@ namespace NovoForecastingSystem.Repos
         //}
 
 
-        public List<Models.Ressource> GetAllRessources()
+        public List<Models.Resource> GetAllResources()
         {
-            return ressource;
+            return resource;
         }
     }
 }

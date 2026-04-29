@@ -42,8 +42,14 @@
 
 
                         <StackPanel Grid.Column="0" Orientation="Vertical">
-                            <TextBlock Text="Novopen" FontSize="20" Margin="10,5,0,0" FontWeight="Bold"/>
-                            <TextBlock Text="Phase 3/8 [Detailed Design]" Margin="12,0,0,0" Foreground="Gray"/>
+                            <TextBlock Text="{Binding CurrentProject.ProjectName}" FontSize="20" Margin="10,5,0,0" FontWeight="Bold"/>
+                            <TextBlock Margin="12,0,0,0" Foreground="Gray">
+                                <Run Text="Phase "/>
+                                <Run Text="{Binding CurrentProject.Phase.DisplayPhaseStage, Mode=OneWay}"/>
+                                <Run Text=" ["/>
+                                <Run Text="{Binding CurrentProject.Phase.phaseStage, Mode=OneWay}"/>
+                                <Run Text="]"/>
+                            </TextBlock>
                         </StackPanel>
 
                         <Button Grid.Column="1" Margin="5,5,5,5" Content="📝 Edit Project" Background="#4a5565" Foreground="White" Cursor="Hand" Command="{Binding EditProjectCommand}" CommandParameter="{Binding}">
@@ -90,7 +96,7 @@
                                 </Grid.RowDefinitions>
 
                                 <TextBlock Text="Complexity" Margin="20,20,0,0"/>
-                                <TextBlock Grid.Row="1" Text="Low" Margin="20,0,0,30" FontWeight="Bold" FontSize="18"/>
+                                <TextBlock Grid.Row="1" Text="{Binding CurrentProject.ComplexityEnum}" Margin="20,0,0,30" FontWeight="Bold" FontSize="18"/>
                             </Grid>
                         </Border>
 
@@ -102,7 +108,7 @@
                                 </Grid.RowDefinitions>
 
                                 <TextBlock Text="Start Date" Margin="20,20,0,0"/>
-                                <TextBlock Grid.Row="1" Text="22-03-2025" Margin="20,0,0,30" FontWeight="Bold" FontSize="18"/>
+                                <TextBlock Grid.Row="1" Text="{Binding CurrentProject.StartDate, StringFormat=dd-MM-yyyy}" Margin="20,0,0,30" FontWeight="Bold" FontSize="18"/>
                             </Grid>
                         </Border>
 
@@ -114,7 +120,7 @@
                                 </Grid.RowDefinitions>
 
                                 <TextBlock Text="Expected End Date" Margin="20,20,0,0"/>
-                                <TextBlock Grid.Row="1" Text="10-10-2026" Margin="20,0,0,30" FontWeight="Bold" FontSize="18"/>
+                                <TextBlock Grid.Row="1" Text="{Binding CurrentProject.EndDate, StringFormat=dd-MM-yyyy}" Margin="20,0,0,30" FontWeight="Bold" FontSize="18"/>
                             </Grid>
                         </Border>
                     </StackPanel>

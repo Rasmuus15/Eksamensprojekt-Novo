@@ -40,10 +40,11 @@ namespace NovoForecastingSystem.ViewModels
 
         public Phase testPhase { get; set; }
 
-        public ICommand NavigateToProject { get; }
+        public ICommand OpenProjectCommand { get; }
         public ICommand CreateProjectCommand { get; }
         public ICommand SelectProjectCoordinatorCommand { get; }
 
+        private readonly NavigationStore _navigationStore;
         private ProjectRepo projectRepo = new ProjectRepo();
 
         public ObservableCollection<Project> ProjectList { get; set; }
@@ -63,11 +64,12 @@ namespace NovoForecastingSystem.ViewModels
 
         public DashBoardViewModel(NavigationStore navigationStore)
         {
+            _navigationStore = navigationStore;
 
             ProjectList = new ObservableCollection<Project>(projectRepo.GetAllProjects());
 
-            
-           
+
+
             foreach (ProjectCoordinator pc in projectCoordinatorRepo.GetAllProjectCoordinators())
             {
                 ProjectCoordinatorList.Add(pc);
@@ -75,11 +77,12 @@ namespace NovoForecastingSystem.ViewModels
 
 
             ProjectList = new ObservableCollection<Project>(projectRepo.GetAllProjects());
-            NavigateToProject = new NavigateCommand(new NavigationService(navigationStore, () => new ProjectViewModel(navigationStore)));
             CreateProjectCommand = new CreateProjectCommand();
-           
-           
-           
+        }
+
+        public void OpenProject(Project project)
+        {
+            _navigationStore.CurrentViewModel = new ProjectViewModel(project, _navigationStore);
         }
 
        

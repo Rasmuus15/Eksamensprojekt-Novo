@@ -20,9 +20,16 @@ namespace NovoForecastingSystem.ViewModels
         public ICommand AddResourceCommand { get; }
         public ICommand EditProjectCommand { get; }
 
-
-        public ProjectViewModel(NavigationStore? navigationStore = null)
+        private Project _currentProject;
+        public Project CurrentProject
         {
+            get => _currentProject;
+            set { _currentProject = value; OnPropertyChanged(); }
+        }
+
+        public ProjectViewModel(Project project, NavigationStore? navigationStore = null)
+        {
+            CurrentProject = project;
             NavigateToDashboardViewCommand = new NavigateCommand(new NavigationService(navigationStore, () => new DashBoardViewModel(navigationStore)));
             AddResourceCommand = new AddResourceCommand();
             EditProjectCommand = new EditProjectCommand();

@@ -47,7 +47,13 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <templates:ProjectsTemplate DataContext="{Binding}"/>
+                                    <Button Click="ProjectButton_Click" 
+                                            Background="Transparent" 
+                                            BorderThickness="0" 
+                                            Padding="0" 
+                                            HorizontalContentAlignment="Stretch">
+                                        <templates:ProjectsTemplate DataContext="{Binding}"/>
+                                    </Button>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
