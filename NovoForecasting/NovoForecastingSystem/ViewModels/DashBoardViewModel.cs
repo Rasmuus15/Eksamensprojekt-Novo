@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
+using ComplexityEnum = NovoForecastingSystem.Models.Enums.Complexity;
 
 namespace NovoForecastingSystem.ViewModels
 {
@@ -64,9 +65,9 @@ namespace NovoForecastingSystem.ViewModels
 
                 if (StartDate.HasValue && !string.IsNullOrEmpty(Complexity))
                 {
-                    if (Complexity == "Low") endDate = startDate.AddDays(81 * 7);
-                    else if (Complexity == "Medium") endDate = startDate.AddDays(108 * 7);
-                    else if (Complexity == "High") endDate = startDate.AddDays(137 * 7);
+                    Enum.TryParse(Complexity, out ComplexityEnum complexityEnum);
+                    Project temp = new Project { StartDate = startDate, ComplexityEnum = complexityEnum };
+                    endDate = temp.EndDate;
                 }
 
                 ProjectRepo projectRepo = new ProjectRepo();
