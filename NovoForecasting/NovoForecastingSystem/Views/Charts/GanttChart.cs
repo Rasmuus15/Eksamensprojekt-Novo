@@ -36,7 +36,11 @@ namespace NovoForecastingSystem.Views.Charts.GanttChart
         public Axis[] YAxes { get; }
         public Axis[] XAxes { get; }
 
-        public GanttViewModel()
+        public GanttViewModel() : this(Complexity.Low)
+        {
+        }
+
+        public GanttViewModel(Complexity complexity)
         {
             int count = TaskNames.Length;
             var seriesList = new List<ISeries>();
@@ -85,16 +89,15 @@ namespace NovoForecastingSystem.Views.Charts.GanttChart
         };
 
             int _maxlimit = 81;
-            /*
-            if(Complexity == Complexity.Medium)
+            if (complexity == Complexity.Medium)
             {
                 _maxlimit = 108;
             }
-            else if (Complexity == Complexity.High)
+            else if (complexity == Complexity.High)
             {
                 _maxlimit = 137;
             }
-            */
+            
             XAxes = new[]
             {
             new Axis
