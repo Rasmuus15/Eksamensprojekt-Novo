@@ -38,20 +38,17 @@ namespace NovoForecastingSystem.ViewModels
             set { _complexity = value; OnPropertyChanged(); }
         }
 
-        public Phase testPhase { get; set; }
-
         public ICommand CreateProjectCommand { get; }
-        public ICommand SelectProjectCoordinatorCommand { get; }
 
         private readonly NavigationStore _navigationStore;
-        private ProjectRepo projectRepo = new ProjectRepo();
 
+        private ProjectRepo projectRepo = new ProjectRepo();
         public ObservableCollection<Project> ProjectList { get; set; }
 
         //ProjectCoordinator repository instans
         private ProjectCoordinatorRepo projectCoordinatorRepo = new ProjectCoordinatorRepo();
         //Den collection UI binder til med alle Project Coordinators
-        public ObservableCollection<ProjectCoordinator> ProjectCoordinatorList { get; } = new ObservableCollection<ProjectCoordinator>();
+        public ObservableCollection<ProjectCoordinator> ProjectCoordinatorList { get; set; }
 
         private ProjectCoordinator _selectedProjectCoordinator;
         public ProjectCoordinator SelectedProjectCoordinator
@@ -66,16 +63,7 @@ namespace NovoForecastingSystem.ViewModels
             _navigationStore = navigationStore;
 
             ProjectList = new ObservableCollection<Project>(projectRepo.GetAllProjects());
-
-
-
-            foreach (ProjectCoordinator pc in projectCoordinatorRepo.GetAllProjectCoordinators())
-            {
-                ProjectCoordinatorList.Add(pc);
-            }
-
-
-            ProjectList = new ObservableCollection<Project>(projectRepo.GetAllProjects());
+            ProjectCoordinatorList = new ObservableCollection<ProjectCoordinator>(projectCoordinatorRepo.GetAllProjectCoordinators());
             CreateProjectCommand = new CreateProjectCommand();
         }
 
@@ -84,13 +72,12 @@ namespace NovoForecastingSystem.ViewModels
             _navigationStore.CurrentViewModel = new ProjectViewModel(project, _navigationStore);
         }
 
-       
 
         public void CreateProject()
         {
             DateOnly endDate = DateOnly.MinValue;
             DateOnly startDate = StartDate.HasValue ? DateOnly.FromDateTime(StartDate.Value) : DateOnly.MinValue;
-            if(SelectedProjectCoordinator == null)
+            if (SelectedProjectCoordinator == null)
             {
                 MessageBox.Show("Please select a project coordinator");
                 return;
@@ -115,7 +102,7 @@ namespace NovoForecastingSystem.ViewModels
                 Project project = projectRepo.CreateProject(ProjectName, Complexity, startDate, endDate, projectCoordinator);
 
                 MessageBox.Show("Project successfully created in database!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                
+
 
                 ProjectList.Add(project);
 
@@ -124,10 +111,10 @@ namespace NovoForecastingSystem.ViewModels
             {
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
-            
+
         }
 
-        
+
 
     }
 }
