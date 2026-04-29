@@ -51,10 +51,11 @@
                     TextWrapping="Wrap" />
                 <!--Phase nr.-->
                 <TextBlock 
+                    x:Name="PhaseStageNumberTxt"
                     Grid.Row="1"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    Text="{Binding}"
+                    Text="{Binding Phase.DisplayPhaseStage}"
                     Foreground="Gray"
                     TextWrapping="Wrap" 
                     Margin="57,1,0,0" />
@@ -69,7 +70,7 @@
                     Text="_________________________________"
                     TextWrapping="Wrap" />
 
-                <TextBlock Grid.Row="1" Text="Detailed Design" FontSize="8" Foreground="#94A3B8" Margin="23,19,3,49"/>
+                <TextBlock x:Name="PhaseTxt" Grid.Row="1" Text="{Binding Phase.phaseStage}" FontSize="8" Foreground="#94A3B8" Margin="23,19,3,49"/>
 
                 <TextBlock
                     Grid.Row="1"
@@ -113,8 +114,48 @@
                     Foreground="Black"
                     Text="{Binding EndDate}"
                     TextWrapping="Wrap" />
-                <Border Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Background="#DCFCE7" CornerRadius="4" Padding="8,4" Margin="8">
-                    <TextBlock Text="{Binding}" FontSize="12" Foreground="#166534" FontWeight="SemiBold" Height="16" VerticalAlignment="Center"/>
+                <Border Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" CornerRadius="4" Margin="0,8,0,8" Width="50">
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Background" Value="Transparent"/>
+
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ComplexityEnum}" Value="Low">
+                                    <Setter Property="Background" Value="#dbfce7"/>
+                                </DataTrigger>
+
+                                <DataTrigger Binding="{Binding ComplexityEnum}" Value="Medium">
+                                    <Setter Property="Background" Value="#fef9c2"/>
+                                </DataTrigger>
+
+                                <DataTrigger Binding="{Binding ComplexityEnum}" Value="High">
+                                    <Setter Property="Background" Value="#ffe2e2"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+
+                    <TextBlock x:Name="ComplexityTxtBx" Text="{Binding ComplexityEnum}" FontSize="11" FontWeight="SemiBold" Height="16" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="Transparent"/>
+
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ComplexityEnum}" Value="Low">
+                                        <Setter Property="Foreground" Value="#108b43"/>
+                                    </DataTrigger>
+
+                                    <DataTrigger Binding="{Binding ComplexityEnum}" Value="Medium">
+                                        <Setter Property="Foreground" Value="#a96508"/>
+                                    </DataTrigger>
+
+                                    <DataTrigger Binding="{Binding ComplexityEnum}" Value="High">
+                                        <Setter Property="Foreground" Value="#c10007"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
                 </Border>
                 <ProgressBar
                     Grid.Row="1"

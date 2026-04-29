@@ -32,5 +32,12 @@ namespace NovoForecastingSystem.Views
         {
             this.Close();
         }
+
+        private void CreateProject_Click(object sender, RoutedEventArgs e)
+        {
+            //lukker vindue efter projekt er oprettet
+            this.Close();
+        }
+
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NovoForecastingSystem.Models.Enums
 {
-    public enum Phase
+    public enum PhaseStage
     {
         ConceptDesign,
         BasicDesign,

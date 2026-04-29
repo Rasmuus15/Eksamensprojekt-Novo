@@ -11,8 +11,27 @@ namespace NovoForecastingSystem.Models
         public int Id { get; set; }
         public string ProjectName { get; set; }
         public DateOnly StartDate { get; set; }
-        public DateOnly EndDate { get; set; }
+
+        private DateOnly _endDate;
+        public DateOnly EndDate
+        {
+            get
+            {
+                if (_endDate == DateOnly.MinValue && StartDate != DateOnly.MinValue)
+                {
+                    if (ComplexityEnum == ComplexityEnum.Low) return StartDate.AddDays(81 * 7);
+                    else if (ComplexityEnum == ComplexityEnum.Medium) return StartDate.AddDays(108 * 7);
+                    else if (ComplexityEnum == ComplexityEnum.High) return StartDate.AddDays(137 * 7);
+                }
+                return _endDate;
+            }
+            set { _endDate = value; }
+        }
+
         public ComplexityEnum ComplexityEnum { get; set; }
+        public Phase Phase { get; set; }
         private JobRoleEnum jobRoleEnum;
+        public ProjectCoordinator ProjectCoordinator { get; set; } = new ProjectCoordinator();
+        
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NovoForecastingSystem.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,7 +22,5 @@ namespace NovoForecastingSystem.Views.Templates
         {
             InitializeComponent();
         }
-
-
     }
 }

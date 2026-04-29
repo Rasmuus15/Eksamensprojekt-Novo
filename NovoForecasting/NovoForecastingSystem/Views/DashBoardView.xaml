@@ -12,8 +12,8 @@
              Background="#FAFAFA" FontFamily="Segoe UI">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="533"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <!-- Left Sidebar: Projects -->

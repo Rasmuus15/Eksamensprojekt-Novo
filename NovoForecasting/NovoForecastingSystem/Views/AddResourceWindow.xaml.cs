@@ -29,7 +29,7 @@ namespace NovoForecastingSystem.Views
         private void LoadEnum()
         {
             ResourceRepo ResourceRepo = new ResourceRepo();
-            Phase_ComboBox.ItemsSource = Enum.GetValues(typeof(Phase));
+            Phase_ComboBox.ItemsSource = Enum.GetValues(typeof(PhaseStage));
             Role_ComboBox.ItemsSource = Enum.GetValues(typeof(JobRole));
         }
 
