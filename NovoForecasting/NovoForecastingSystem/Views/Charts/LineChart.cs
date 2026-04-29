@@ -14,16 +14,13 @@ namespace NovoForecastingSystem.Views.Charts.LineChart
     {
         // Dato-punkter pr. serie (21 Mandage)
         private static readonly double?[] BlueValues =
-            { null, 3, 3, null, null, null, null, null, null, null, null, null, null, null, 3, null, 2, null, null, null, null };
+            { null, 3, 3, null, null, null, null, null, null, null, null};
 
         private static readonly double?[] PurpleValues =
-            { 2, null, 2, 2, null, 4, 4, 4, 4, 4, 4, 4, 4, null, 2, null, null, null, 2, null, 2 };
+            { 2, null, 2, 2, null, 4, 4, 4, 4, 4, 4, 4};
 
         private static readonly double?[] GreenValues =
-            { 1, null, null, null, 3, null, 3, 67, null, 3, 3, 3, null, null, 1, 1, null, 1, 1, 1, 1 };
-
-        private static readonly double?[] RedValues =
-            { 0, null, null, null, null, null, null, null, null, null, null, null, null, null, 0, null, 0, 0, null, 0, 0 };
+            { 1, null, null, null, 3, null, 3, 3, null};
 
         public ISeries[] Series { get; set; }
         public Axis[] XAxes { get; set; }
@@ -33,15 +30,14 @@ namespace NovoForecastingSystem.Views.Charts.LineChart
         public LineChartViewModel()
         {
             // Ugedage som X-labels
-            var labels = new string[21];
-            for (int i = 0; i < 21; i++) labels[i] = "Mon";
+            string[] labels = { "Jan", "Feb", "Mar",  "Apr",  "May",  "Jun",  "Jul",  "Aug",  "Sep",  "Oct",  "Nov",  "Dec"};
+            for (int i = 0; i < 12; i++) ;
 
             Series = new ISeries[]
             {
-                MakeLineSeries("Blå",    BlueValues,   SKColors.CornflowerBlue),
-                MakeLineSeries("Lilla",  PurpleValues, SKColors.MediumPurple),
-                MakeLineSeries("Grøn",   GreenValues,  SKColors.MediumSeaGreen),
-                MakeLineSeries("Rød",    RedValues,    SKColors.Crimson),
+                MakeLineSeries("Process Engineer",    BlueValues,   SKColors.CornflowerBlue),
+                MakeLineSeries("Automation Engineer",  PurpleValues, SKColors.MediumPurple),
+                MakeLineSeries("Chemical Engineer",   GreenValues,  SKColors.MediumSeaGreen)
             };
 
             XAxes = new[]
@@ -49,7 +45,7 @@ namespace NovoForecastingSystem.Views.Charts.LineChart
                 new Axis
                 {
                     Labels = labels,
-                    TextSize = 11,
+                    TextSize = 12
                 }
             };
 
@@ -57,9 +53,8 @@ namespace NovoForecastingSystem.Views.Charts.LineChart
             {
                 new Axis
                 {
-                    MinLimit = -1,
-                    MaxLimit = 8,
-                    IsVisible = false  // Skjul Y-akse som i billedet
+                    MinLimit = 0,
+                    MaxLimit = 20
                 }
             };
 
