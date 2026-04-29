@@ -40,7 +40,6 @@ namespace NovoForecastingSystem.ViewModels
 
         public Phase testPhase { get; set; }
 
-        public ICommand OpenProjectCommand { get; }
         public ICommand CreateProjectCommand { get; }
         public ICommand SelectProjectCoordinatorCommand { get; }
 
