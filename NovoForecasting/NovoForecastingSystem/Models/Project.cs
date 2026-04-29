@@ -31,6 +31,7 @@ namespace NovoForecastingSystem.Models
         public ComplexityEnum ComplexityEnum { get; set; }
         public Phase Phase { get; set; }
         private JobRoleEnum jobRoleEnum;
-       public ProjectCoordinator projectCoordinator   { get; set; }
+        public ProjectCoordinator ProjectCoordinator { get; set; } = new ProjectCoordinator();
+        
     }
 }

@@ -88,7 +88,12 @@ namespace NovoForecastingSystem.ViewModels
         {
             DateOnly endDate = DateOnly.MinValue;
             DateOnly startDate = StartDate.HasValue ? DateOnly.FromDateTime(StartDate.Value) : DateOnly.MinValue;
-            ProjectCoordinator projectCoordinator = new ProjectCoordinator();
+            if(SelectedProjectCoordinator == null)
+            {
+                MessageBox.Show("Please select a project coordinator");
+                return;
+            }
+            ProjectCoordinator projectCoordinator = SelectedProjectCoordinator;
             try
             {
                 if (string.IsNullOrWhiteSpace(ProjectName))
