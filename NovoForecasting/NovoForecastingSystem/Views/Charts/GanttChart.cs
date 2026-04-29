@@ -11,63 +11,91 @@ namespace NovoForecastingSystem.Views.Charts.GanttChart
     {
         private static readonly string[] TaskNames =
         {
-        "Go Live", "Approval", "Testing", "Installation",
-        "Manufacturing", "Detailed Design", "Basic Design", "Concept Design"
-    };
+            "Go Live", "Approval", "Testing", "Installation",
+            "Manufacturing", "Detailed Design", "Basic Design", "Concept Design"
+        };
 
-        // start-uge per opgave (index 0 = Go Live, index 7 = Concept Design)
-        private static readonly double[] Starts = { 76, 62, 57, 52, 21, 13, 5, 0 };
-        private static readonly double[] Durations = { 5, 14, 5, 5, 31, 8, 8, 5 };
+        private static readonly double[] StartsLow = { 76, 62, 57, 52, 21, 13, 5, 0 };
+        private static readonly double[] StartsMedium = { 101, 82, 75, 69, 27, 17, 7, 0 };
+        private static readonly double[] StartsHigh = { 128, 104, 95, 87, 35, 22, 9, 0 };
 
+        private static readonly int[] DurationsLow = { 5, 14, 5, 5, 31, 8, 8, 5 };
+        private static readonly int[] DurationsMedium = { 7, 19, 7, 6, 42, 10, 10, 7 };
+        private static readonly int[] DurationsHigh = { 9, 24, 9, 8, 52, 13, 13, 9 };
+
+        private static readonly int MaxLimitLow = 81;
+        private static readonly int MaxLimitMedium = 108;
+        private static readonly int MaxLimitHigh = 137;
 
         private static readonly SKColor[] Colors =
         {
-        SKColor.Parse("#FF0000"), // Go Live        - rød
-        SKColor.Parse("#00BFA5"), // Approval       - teal
-        SKColor.Parse("#7C4DFF"), // Testing        - lilla/blå
-        SKColor.Parse("#FF4081"), // Installation   - pink
-        SKColor.Parse("#FF6D00"), // Manufacturing  - orange
-        SKColor.Parse("#AA00FF"), // Detailed Design- lilla
-        SKColor.Parse("#00C853"), // Basic Design   - grøn
-        SKColor.Parse("#2979FF"), // Concept Design - blå
-    };
+            SKColor.Parse("#FF0000"), // Go Live         - rød
+            SKColor.Parse("#00BFA5"), // Approval        - teal
+            SKColor.Parse("#7C4DFF"), // Testing         - lilla/blå
+            SKColor.Parse("#FF4081"), // Installation    - pink
+            SKColor.Parse("#FF6D00"), // Manufacturing   - orange
+            SKColor.Parse("#AA00FF"), // Detailed Design - lilla
+            SKColor.Parse("#00C853"), // Basic Design    - grøn
+            SKColor.Parse("#2979FF"), // Concept Design  - blå
+        };
 
         public ISeries[] Series { get; }
         public Axis[] YAxes { get; }
         public Axis[] XAxes { get; }
 
-        public GanttViewModel() : this(Complexity.Low)
-        {
-        }
+        public GanttViewModel() : this(Complexity.Low) { }
 
         public GanttViewModel(Complexity complexity)
         {
+            double[] starts;
+            int[] durations;
+            int maxLimit;
+
+            if (complexity == Complexity.Low)
+            {
+                starts = StartsLow;
+                durations = DurationsLow;
+                maxLimit = MaxLimitLow;
+            }
+            else if (complexity == Complexity.Medium)
+            {
+                starts = StartsMedium;
+                durations = DurationsMedium;
+                maxLimit = MaxLimitMedium;
+            }
+            else
+            {
+                starts = StartsHigh;
+                durations = DurationsHigh;
+                maxLimit = MaxLimitHigh;
+            }
+
             int count = TaskNames.Length;
             var seriesList = new List<ISeries>();
 
-            // 1) Fælles transparent offset-serie
+            // 1) Transparent offset series to push bars to their start positions
             seriesList.Add(new StackedRowSeries<double>
             {
-                Values = Starts,
+                Values = starts,
                 Fill = new SolidColorPaint(SKColors.Transparent),
                 Stroke = null,
                 DataLabelsPaint = null,
                 IsHoverable = false
             });
 
-            // 2) Én farvet serie per opgave
+            // 2) One colored series per task
             for (int i = 0; i < count; i++)
             {
-                int taskIndex = i; // lokal kopi til closure
+                int taskIndex = i;
                 double[] values = new double[count];
-                values[taskIndex] = Durations[taskIndex];
+                values[taskIndex] = durations[taskIndex];
 
                 seriesList.Add(new StackedRowSeries<double>
                 {
                     Values = values,
                     Name = TaskNames[taskIndex],
                     Fill = new SolidColorPaint(Colors[taskIndex]),
-                    //Stroke = null,
+                    Stroke = null,
                     DataLabelsPaint = new SolidColorPaint(SKColors.White),
                     DataLabelsSize = 13,
                     DataLabelsPosition = LiveChartsCore.Measure.DataLabelsPosition.Middle,
@@ -80,13 +108,13 @@ namespace NovoForecastingSystem.Views.Charts.GanttChart
 
             YAxes = new[]
             {
-            new Axis
-            {
-                Labels = TaskNames,
-                TextSize = 14,
-                ShowSeparatorLines = false
-            }
-        };
+                new Axis
+                {
+                    Labels = TaskNames,
+                    TextSize = 14,
+                    ShowSeparatorLines = false
+                }
+            };
 
             int _maxlimit = 81;
             if (complexity == Complexity.Medium)
@@ -100,16 +128,13 @@ namespace NovoForecastingSystem.Views.Charts.GanttChart
             
             XAxes = new[]
             {
-            new Axis
-            {
-                MinLimit = 0,
-                MaxLimit = _maxlimit,
-                TextSize = 12
-                // Low comp = 81
-                // Medium comp = 108
-                // High comp = 137
-            }
-        };
+                new Axis
+                {
+                    MinLimit = 0,
+                    MaxLimit = maxLimit,
+                    TextSize = 12
+                }
+            };
         }
     }
 }
