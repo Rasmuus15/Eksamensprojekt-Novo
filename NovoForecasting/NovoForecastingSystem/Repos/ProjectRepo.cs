@@ -25,13 +25,13 @@ namespace NovoForecastingSystem.Repos
             {
                 connection.Open();
 
-                string insertProjectQuery = "INSERT INTO PROJECT (ProjectName, Complexity) VALUES (@ProjectName, @Complexity); SELECT SCOPE_IDENTITY();";
+                string insertProjectQuery = "INSERT INTO PROJECT (ProjectName, Complexity) VALUES (@ProjectName, @Complexity, @ProjectCoordinator); SELECT SCOPE_IDENTITY();";
 
                 using (SqlCommand cmd = new SqlCommand(insertProjectQuery, connection))
                 {
                     cmd.Parameters.Add("@ProjectName", System.Data.SqlDbType.NVarChar, 255).Value = projectName;
                     cmd.Parameters.Add("@Complexity", System.Data.SqlDbType.NVarChar, 50).Value = complexity;
-
+                    cmd.Parameters.Add("@ProjectCoordinator", System.Data.SqlDbType.NVarChar, 4).Value = projectCoordinator;
                     projectId = Convert.ToInt32(cmd.ExecuteScalar());
                 }
 
@@ -43,12 +43,12 @@ namespace NovoForecastingSystem.Repos
                     lengthCmd.Parameters.Add("@EndDate", System.Data.SqlDbType.Date).Value = endDate;
                     lengthCmd.ExecuteNonQuery();
                 }
-                string insertProjectCoordinatorIntoProjectQuery = "INSERT INTO PROJECT (ProjectCoordinator) VALUES (@ProjectCoordinator);";
-                using (SqlCommand pcCmd = new SqlCommand(insertProjectCoordinatorIntoProjectQuery, connection))
-                {
-                    pcCmd.Parameters.Add("@ProjectCoordinator", System.Data.SqlDbType.NVarChar, 4).Value = projectCoordinator;
-                    pcCmd.ExecuteNonQuery ();
-                }
+                  
+                //using (SqlCommand pcCmd = new SqlCommand("INSERT INTO PROJECT (ProjectCoordinator) VALUES (@ProjectCoordinator);", connection))
+                //{
+                //    pcCmd.Parameters.Add("@ProjectCoordinator", System.Data.SqlDbType.NVarChar, 4).Value = projectCoordinator;
+                //    pcCmd.ExecuteNonQuery ();
+                //}
 
             }
             Enum.TryParse<Complexity>(complexity, out Complexity complexityEnum);
@@ -60,6 +60,7 @@ namespace NovoForecastingSystem.Repos
                 ComplexityEnum = complexityEnum,
                 StartDate = startDate,
                 EndDate = endDate
+                
             });
             
             projects.Add(project);

@@ -60,13 +60,18 @@ namespace NovoForecastingSystem.ViewModels
 
         public DashBoardViewModel(NavigationStore navigationStore)
         {
-            //projectRepo.GetAllProjects();
+
+            ProjectList = new ObservableCollection<Project>(projectRepo.GetAllProjects());
+
+            
            
             foreach (ProjectCoordinator pc in projectCoordinatorRepo.GetAllProjectCoordinators())
             {
                 ProjectCoordinatorList.Add(pc);
             }
 
+
+            ProjectList = new ObservableCollection<Project>(projectRepo.GetAllProjects());
             NavigateToProject = new NavigateCommand(new NavigationService(navigationStore, () => new ProjectViewModel(navigationStore)));
             CreateProjectCommand = new CreateProjectCommand();
            
@@ -101,7 +106,9 @@ namespace NovoForecastingSystem.ViewModels
 
                 MessageBox.Show("Project successfully created in database!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 
+
                 ProjectList.Add(project);
+
             }
             catch (Exception ex)
             {

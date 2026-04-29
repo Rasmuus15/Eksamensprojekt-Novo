@@ -39,30 +39,30 @@ namespace NovoForecastingSystem.Repos
         }
 
 
-        public ProjectCoordinator? GetPCById( int coordinatorId)
-        {
-            ProjectCoordinator? PC = null;
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open ();
-                SqlCommand cmd = new SqlCommand("SELECT CoordinatorId, Initials FROM PROJECT_COORDINATOR WHERE CoordinatorId = @CoordinatorId", connection);
-                cmd.Parameters.AddWithValue("@CoordinatorId", coordinatorId);
+        //public ProjectCoordinator? GetPCById( int coordinatorId)
+        //{
+        //    ProjectCoordinator? PC = null;
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        connection.Open ();
+        //        SqlCommand cmd = new SqlCommand("SELECT CoordinatorId, Initials FROM PROJECT_COORDINATOR WHERE CoordinatorId = @CoordinatorId", connection);
+        //        cmd.Parameters.AddWithValue("@CoordinatorId", coordinatorId);
 
-                using (SqlDataReader dataReader = cmd.ExecuteReader())
-                {
-                    if (dataReader.Read())
-                    {
-                        ProjectCoordinator pc = new ProjectCoordinator
-                        {
-                            CoordinatorId = dataReader.GetInt32(0),
-                            Initials = dataReader.GetString("Initials")
-                        };
-                    }
-                }
+        //        using (SqlDataReader dataReader = cmd.ExecuteReader())
+        //        {
+        //            if (dataReader.Read())
+        //            {
+        //                ProjectCoordinator pc = new ProjectCoordinator
+        //                {
+        //                    CoordinatorId = dataReader.GetInt32(0),
+        //                    Initials = dataReader.GetString("Initials")
+        //                };
+        //            }
+        //        }
 
-            }
-            return PC;
-        }
+        //    }
+        //    return PC;
+        //}
 
         //Create, Delete og Update metoderne, som kan implementeres hvis ønsket
 
