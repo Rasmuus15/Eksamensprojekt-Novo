@@ -13,6 +13,7 @@ namespace NovoForecastingSystem.Models
         public DateOnly StartDate { get; set; }
         public DateOnly EndDate { get; set; }
         public ComplexityEnum ComplexityEnum { get; set; }
+        public Phase Phase { get; set; }
         private JobRoleEnum jobRoleEnum;
        public ProjectCoordinator projectCoordinator   { get; set; }
     }
