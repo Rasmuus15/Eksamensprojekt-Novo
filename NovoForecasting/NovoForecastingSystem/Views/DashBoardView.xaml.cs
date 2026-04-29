@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NovoForecastingSystem.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -25,6 +26,7 @@ namespace NovoForecastingSystem.Views
 
         private void CreateProject_Click(object sender, RoutedEventArgs e)
         {
+           
             CreateProjectWindow createProjectWindow = new CreateProjectWindow();
             createProjectWindow.DataContext = DataContext;
             createProjectWindow.ShowDialog();

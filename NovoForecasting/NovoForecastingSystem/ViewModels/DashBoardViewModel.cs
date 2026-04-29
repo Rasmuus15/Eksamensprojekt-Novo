@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Channels;
 using System.Windows;
 using System.Windows.Input;
 
@@ -38,17 +39,42 @@ namespace NovoForecastingSystem.ViewModels
 
         public ICommand NavigateToProject { get; }
         public ICommand CreateProjectCommand { get; }
+        public ICommand SelectProjectCoordinatorCommand { get; }
 
         private ProjectRepo projectRepo = new ProjectRepo();
 
         public ObservableCollection<Project> ProjectList { get; set; }
 
+        //ProjectCoordinator repository instans
+        private ProjectCoordinatorRepo projectCoordinatorRepo = new ProjectCoordinatorRepo();
+        //Den collection UI binder til med alle Project Coordinators
+        public ObservableCollection<ProjectCoordinator> ProjectCoordinatorList { get; } = new ObservableCollection<ProjectCoordinator>();
+
+        private ProjectCoordinator _selectedProjectCoordinator;
+        public ProjectCoordinator SelectedProjectCoordinator
+        {
+            get => _selectedProjectCoordinator;
+            set { _selectedProjectCoordinator = value; OnPropertyChanged(); }
+        }
+
+
         public DashBoardViewModel(NavigationStore navigationStore)
         {
-            ProjectList = new ObservableCollection<Project>(projectRepo.GetAllProjects());
+            //projectRepo.GetAllProjects();
+           
+            foreach (ProjectCoordinator pc in projectCoordinatorRepo.GetAllProjectCoordinators())
+            {
+                ProjectCoordinatorList.Add(pc);
+            }
+
             NavigateToProject = new NavigateCommand(new NavigationService(navigationStore, () => new ProjectViewModel(navigationStore)));
             CreateProjectCommand = new CreateProjectCommand();
+           
+           
+           
         }
+
+       
 
         public void CreateProject()
         {
@@ -81,6 +107,10 @@ namespace NovoForecastingSystem.ViewModels
             {
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
+            
         }
+
+        
+
     }
 }
