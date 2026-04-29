@@ -1,13 +1,20 @@
-﻿using LiveChartsCore;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 using NovoForecastingSystem.Models.Enums;
 using SkiaSharp;
+using NovoForecastingSystem.Models;
 
 namespace NovoForecastingSystem.Views.Charts.GanttChart
 {
-    public class GanttViewModel
+    public class GanttViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler? PropertyChanged;
+        private void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
         private static readonly string[] TaskNames =
         {
             "Go Live", "Approval", "Testing", "Installation",
@@ -38,13 +45,26 @@ namespace NovoForecastingSystem.Views.Charts.GanttChart
             SKColor.Parse("#2979FF"), // Concept Design  - blå
         };
 
-        public ISeries[] Series { get; }
-        public Axis[] YAxes { get; }
-        public Axis[] XAxes { get; }
+        public ISeries[] Series { get; private set; } = Array.Empty<ISeries>();
+        public Axis[] YAxes { get; private set; } = Array.Empty<Axis>();
+        public Axis[] XAxes { get; private set; } = Array.Empty<Axis>();
 
         public GanttViewModel() : this(Complexity.Low) { }
 
         public GanttViewModel(Complexity complexity)
+        {
+            BuildFor(complexity);
+        }
+
+        public void UpdateForComplexity(Complexity complexity)
+        {
+            BuildFor(complexity);
+            OnPropertyChanged(nameof(Series));
+            OnPropertyChanged(nameof(XAxes));
+            OnPropertyChanged(nameof(YAxes));
+        }
+
+        private void BuildFor(Complexity complexity)
         {
             double[] starts;
             int[] durations;
@@ -72,7 +92,6 @@ namespace NovoForecastingSystem.Views.Charts.GanttChart
             int count = TaskNames.Length;
             var seriesList = new List<ISeries>();
 
-            // 1) Transparent offset series to push bars to their start positions
             seriesList.Add(new StackedRowSeries<double>
             {
                 Values = starts,
@@ -82,7 +101,6 @@ namespace NovoForecastingSystem.Views.Charts.GanttChart
                 IsHoverable = false
             });
 
-            // 2) One colored series per task
             for (int i = 0; i < count; i++)
             {
                 int taskIndex = i;
@@ -98,8 +116,7 @@ namespace NovoForecastingSystem.Views.Charts.GanttChart
                     DataLabelsPaint = new SolidColorPaint(SKColors.White),
                     DataLabelsSize = 13,
                     DataLabelsPosition = LiveChartsCore.Measure.DataLabelsPosition.Middle,
-                    DataLabelsFormatter = point =>
-                        point.Model > 0 ? $"{point.Model}w" : string.Empty
+                    DataLabelsFormatter = point => point.Model > 0 ? $"{point.Model}w" : string.Empty
                 });
             }
 
@@ -107,22 +124,12 @@ namespace NovoForecastingSystem.Views.Charts.GanttChart
 
             YAxes = new[]
             {
-                new Axis
-                {
-                    Labels = TaskNames,
-                    TextSize = 14,
-                    ShowSeparatorLines = false
-                }
+                new Axis { Labels = TaskNames, TextSize = 14, ShowSeparatorLines = false }
             };
 
             XAxes = new[]
             {
-                new Axis
-                {
-                    MinLimit = 0,
-                    MaxLimit = maxLimit,
-                    TextSize = 12
-                }
+                new Axis { MinLimit = 0, MaxLimit = maxLimit, TextSize = 12 }
             };
         }
     }
