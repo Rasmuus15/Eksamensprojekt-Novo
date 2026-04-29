@@ -42,7 +42,7 @@
 
         <StackPanel Grid.Row="5" Margin="0,0,0,20">
             <TextBlock Text="Project Coordinator:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <ComboBox x:Name="ProjectCoordinatorComboBox" ItemsSource="{Binding ProjectCoordinatorList}" DisplayMemberPath="Initials" Height="40" VerticalContentAlignment="Center" Padding="10,0">
+            <ComboBox x:Name="ProjectCoordinatorComboBox" ItemsSource="{Binding ProjectCoordinatorList}" SelectedItem="{Binding SelectedProjectCoordinator, Mode=TwoWay}" DisplayMemberPath="Initials" SelectedValuePath="CoordinatorId" Height="40" VerticalContentAlignment="Center" Padding="10,0">
             </ComboBox>
         </StackPanel>
 
