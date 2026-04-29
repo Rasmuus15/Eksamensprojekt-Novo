@@ -1,4 +1,5 @@
 ﻿using NovoForecastingSystem.Commands;
+using NovoForecastingSystem.Models;
 using NovoForecastingSystem.Repos;
 using NovoForecastingSystem.Services;
 using NovoForecastingSystem.Stores;
@@ -14,9 +15,11 @@ namespace NovoForecastingSystem.ViewModels
 {
     public class ProjectViewModel : BaseViewModel
     {
+
         public ICommand NavigateToDashboardViewCommand { get; }
         public ICommand AddResourceCommand { get; }
         public ICommand EditProjectCommand { get; }
+
 
         public ProjectViewModel(NavigationStore? navigationStore = null)
         {
@@ -37,9 +40,6 @@ namespace NovoForecastingSystem.ViewModels
             editProjectWindow.Show();
         }
 
-        public void AddProjectCoordinator()
-        {
-
-        }
+        
     }
 }
