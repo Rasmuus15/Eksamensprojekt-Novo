@@ -12,7 +12,7 @@
              Background="#FAFAFA" FontFamily="Segoe UI">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="533"/>
+            <ColumnDefinition Width="350"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
