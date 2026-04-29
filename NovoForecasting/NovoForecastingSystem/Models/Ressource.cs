@@ -5,13 +5,13 @@ using JobRoleEnum = NovoForecastingSystem.Models.Enums.JobRole;
 
 namespace NovoForecastingSystem.Models
 {
-    public class Ressource
+    public class Resource
     {
         public string Initials { get; set; }
         public string Email { get; set; }
         public double FTE { get; set; }
         public bool Availability { get; set; }
-        private JobRoleEnum jobRoleEnum;
+        public JobRoleEnum jobRoleEnum;
 
     }
 }

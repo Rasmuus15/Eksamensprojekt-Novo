@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NovoForecastingSystem.Models;
+using NovoForecastingSystem.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,6 +23,25 @@ namespace NovoForecastingSystem.Views
         public DashBoardView()
         {
             InitializeComponent();
+        }
+
+        private void ProjectButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.DataContext is Project project)
+            {
+                if (DataContext is DashBoardViewModel viewModel)
+                {
+                    viewModel.OpenProject(project);
+                }
+            }
+        }
+
+        private void CreateProject_Click(object sender, RoutedEventArgs e)
+        {
+
+            CreateProjectWindow createProjectWindow = new CreateProjectWindow();
+            createProjectWindow.DataContext = DataContext;
+            createProjectWindow.ShowDialog();
         }
     }
 }

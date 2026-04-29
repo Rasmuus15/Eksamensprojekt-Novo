@@ -1,4 +1,4 @@
-﻿<Window x:Class="NovoForecastingSystem.Views.EditProject"
+﻿<Window x:Class="NovoForecastingSystem.Views.EditProjectWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -36,25 +36,14 @@
         <!-- Complexity -->
         <StackPanel Grid.Row="4" Margin="0,0,0,20">
             <TextBlock Text="Complexity:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <ComboBox Height="40" VerticalContentAlignment="Center" Padding="10,0">
-                <ComboBoxItem Content="Low"/>
-                <ComboBoxItem Content="Medium"/>
-                <ComboBoxItem Content="High"/>
+            <ComboBox x:Name="ComplexityComboBox" Height="40" VerticalContentAlignment="Center" Padding="10,0">
             </ComboBox>
         </StackPanel>
 
         <!-- Current Phase -->
         <StackPanel Grid.Row="5" Margin="0,0,0,20">
-            <TextBlock Text="Current Phase:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <ComboBox Height="40" VerticalContentAlignment="Center" Padding="10,0">
-                <ComboBoxItem Content="Concept Design"/>
-                <ComboBoxItem Content="Basic Design"/>
-                <ComboBoxItem Content="Detailed Design"/>
-                <ComboBoxItem Content="Manufacturing"/>
-                <ComboBoxItem Content="Installation"/>
-                <ComboBoxItem Content="Testing"/>
-                <ComboBoxItem Content="Approval"/>
-                <ComboBoxItem Content="Go Live"/>
+            <TextBlock Text="Phase Stage:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
+            <ComboBox x:Name="PhaseComboBox" Height="40" VerticalContentAlignment="Center" Padding="10,0">
             </ComboBox>
 
         </StackPanel>

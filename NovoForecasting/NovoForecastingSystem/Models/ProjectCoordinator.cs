@@ -7,5 +7,6 @@ namespace NovoForecastingSystem.Models
     public class ProjectCoordinator
     {
         public string Initials { get; set; }
+        public int CoordinatorId { get; set; } 
     }
 }

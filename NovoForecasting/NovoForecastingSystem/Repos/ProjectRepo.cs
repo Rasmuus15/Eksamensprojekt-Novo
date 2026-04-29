@@ -1,35 +1,113 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using NovoForecastingSystem.Models;
+using NovoForecastingSystem.Models.Enums;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
+
 
 namespace NovoForecastingSystem.Repos
 {
-    public class ProjectRepo
+    public class ProjectRepo : DatabaseConnector
     {
-        private List<Models.Project> project;
+        private List<Project> projects;
         public ProjectRepo()
         {
-            project = new List<Models.Project>();
+            projects = new List<Project>();
         }
-        public List<Models.Project> GetAllProjects()
+
+        public Project CreateProject(string projectName, string complexity, DateOnly startDate, DateOnly endDate, ProjectCoordinator projectCoordinator)
         {
+            int projectId = 0;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string insertProjectQuery = "INSERT INTO PROJECT (ProjectName, Complexity, CoordinatorId) VALUES (@ProjectName, @Complexity, @CoordinatorId); SELECT SCOPE_IDENTITY();";
+
+                using (SqlCommand cmd = new SqlCommand(insertProjectQuery, connection))
+                {
+                    cmd.Parameters.Add("@ProjectName", System.Data.SqlDbType.NVarChar, 255).Value = projectName;
+                    cmd.Parameters.Add("@Complexity", System.Data.SqlDbType.NVarChar, 50).Value = complexity;
+                    cmd.Parameters.Add("@CoordinatorId", System.Data.SqlDbType.Int).Value = projectCoordinator.CoordinatorId;
+                    projectId = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+
+                string insertLengthQuery = "INSERT INTO PROJECT_LENGTH (StartDate, ProjectId, EndDate) VALUES (@StartDate, @ProjectId, @EndDate);";
+                using (SqlCommand lengthCmd = new SqlCommand(insertLengthQuery, connection))
+                {
+                    lengthCmd.Parameters.Add("@StartDate", System.Data.SqlDbType.Date).Value = startDate;
+                    lengthCmd.Parameters.Add("@ProjectId", System.Data.SqlDbType.Int).Value = projectId;
+                    lengthCmd.Parameters.Add("@EndDate", System.Data.SqlDbType.Date).Value = endDate;
+                    lengthCmd.ExecuteNonQuery();
+                }
+                  
+                
+            }
+            Enum.TryParse<Complexity>(complexity, out Complexity complexityEnum);
+
+            Project project = (new Project
+            {
+                Id = projectId,
+                ProjectName = projectName,
+                ComplexityEnum = complexityEnum,
+                StartDate = startDate,
+                EndDate = endDate,
+                Phase = new Phase { phaseStage = PhaseStage.Installation, Lenght = DateTime.Now }
+            });
+            
+            projects.Add(project);
+
             return project;
         }
-        public void CreateProject(Models.Project newProject)
+
+
+
+        public List<Project> GetAllProjects()
         {
-            project.Add(newProject);
+            List<Project> projects = new List<Project>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Project INNER JOIN Project_Length ON Project.ProjectID = Project_Length.ProjectID", connection);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Enum.TryParse<Complexity>((string)reader["Complexity"], out Complexity complexityEnum);
+
+                        Project project = new Project()
+                        {
+                            Id = reader.GetInt32(0),
+                            ProjectName = (string)reader["ProjectName"],
+                            StartDate = DateOnly.FromDateTime((DateTime)reader["StartDate"]),
+                            EndDate = DateOnly.FromDateTime((DateTime)reader["EndDate"]),
+                            ComplexityEnum = complexityEnum,
+                            Phase = new Phase { phaseStage = PhaseStage.Installation, Lenght = DateTime.Now }
+                        };
+                        projects.Add(project);
+                    }
+                }
+            }
+            return projects;
         }
-        public void DeleteProject(Models.Project projectToDelete)
+
+        public void DeleteProject(Project projectToDelete)
         {
-            project.Remove(projectToDelete);
+            projects.Remove(projectToDelete);
         }
 
         public void EditProject(Models.Project oldProject, Models.Project newProject)
         {
-            int index = project.IndexOf(oldProject);
+            int index = projects.IndexOf(oldProject);
             if (index != -1)
             {
-                project[index] = newProject;
+                projects[index] = newProject;
             }
         }
 
