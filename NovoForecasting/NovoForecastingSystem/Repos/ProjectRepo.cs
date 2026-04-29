@@ -44,12 +44,7 @@ namespace NovoForecastingSystem.Repos
                     lengthCmd.ExecuteNonQuery();
                 }
                   
-                //using (SqlCommand pcCmd = new SqlCommand("INSERT INTO PROJECT (ProjectCoordinator) VALUES (@ProjectCoordinator);", connection))
-                //{
-                //    pcCmd.Parameters.Add("@ProjectCoordinator", System.Data.SqlDbType.NVarChar, 4).Value = projectCoordinator;
-                //    pcCmd.ExecuteNonQuery ();
-                //}
-
+                
             }
             Enum.TryParse<Complexity>(complexity, out Complexity complexityEnum);
 
