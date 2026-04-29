@@ -17,7 +17,7 @@ namespace NovoForecastingSystem.Repos
             projects = new List<Project>();
         }
 
-        public Project CreateProject(string projectName, string complexity, DateOnly startDate, DateOnly endDate, ProjectCoordinator projectCoordinator)
+        public Project CreateProject(string projectName, string complexity, DateOnly startDate, DateOnly endDate, int projectCoordinatorid)
         {
             int projectId = 0;
 
@@ -31,7 +31,7 @@ namespace NovoForecastingSystem.Repos
                 {
                     cmd.Parameters.Add("@ProjectName", System.Data.SqlDbType.NVarChar, 255).Value = projectName;
                     cmd.Parameters.Add("@Complexity", System.Data.SqlDbType.NVarChar, 50).Value = complexity;
-                    cmd.Parameters.Add("@CoordinatorId", System.Data.SqlDbType.Int).Value = projectCoordinator.CoordinatorId;
+                    cmd.Parameters.Add("@CoordinatorId", System.Data.SqlDbType.Int).Value = projectCoordinatorid;
                     projectId = Convert.ToInt32(cmd.ExecuteScalar());
                 }
 
@@ -62,9 +62,6 @@ namespace NovoForecastingSystem.Repos
 
             return project;
         }
-
-
-
         public List<Project> GetAllProjects()
         {
             List<Project> projects = new List<Project>();
@@ -73,7 +70,11 @@ namespace NovoForecastingSystem.Repos
             {
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Project INNER JOIN Project_Length ON Project.ProjectID = Project_Length.ProjectID", connection);
+                SqlCommand cmd = new SqlCommand(@"
+                    SELECT Project.*, Project_Length.StartDate, Project_Length.EndDate, PROJECT_COORDINATOR.Initials, PROJECT_COORDINATOR.CoordinatorId
+                    FROM Project 
+                    INNER JOIN Project_Length ON Project.ProjectID = Project_Length.ProjectID
+                    LEFT JOIN PROJECT_COORDINATOR ON Project.CoordinatorId = PROJECT_COORDINATOR.CoordinatorId", connection);
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -88,6 +89,11 @@ namespace NovoForecastingSystem.Repos
                             StartDate = DateOnly.FromDateTime((DateTime)reader["StartDate"]),
                             EndDate = DateOnly.FromDateTime((DateTime)reader["EndDate"]),
                             ComplexityEnum = complexityEnum,
+                            ProjectCoordinator = new ProjectCoordinator 
+                            { 
+                                CoordinatorId = reader["CoordinatorId"] != DBNull.Value ? (int)reader["CoordinatorId"] : 0,
+                                Initials = reader["Initials"] != DBNull.Value ? (string)reader["Initials"] : string.Empty
+                            },
                             Phase = new Phase { phaseStage = PhaseStage.Installation, Lenght = DateTime.Now }
                         };
                         projects.Add(project);

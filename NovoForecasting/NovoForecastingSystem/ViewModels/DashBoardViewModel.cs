@@ -99,7 +99,7 @@ namespace NovoForecastingSystem.ViewModels
                 }
 
                 ProjectRepo projectRepo = new ProjectRepo();
-                Project project = projectRepo.CreateProject(ProjectName, Complexity, startDate, endDate, projectCoordinator);
+                Project project = projectRepo.CreateProject(ProjectName, Complexity, startDate, endDate, projectCoordinator.CoordinatorId);
 
                 MessageBox.Show("Project successfully created in database!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
