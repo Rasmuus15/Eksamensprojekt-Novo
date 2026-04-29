@@ -14,5 +14,6 @@ namespace NovoForecastingSystem.Models
         public DateOnly EndDate { get; set; }
         public ComplexityEnum ComplexityEnum { get; set; }
         private JobRoleEnum jobRoleEnum;
+       public ProjectCoordinator projectCoordinator   { get; set; }
     }
 }

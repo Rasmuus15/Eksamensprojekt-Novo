@@ -54,6 +54,7 @@ namespace NovoForecastingSystem.ViewModels
         {
             DateOnly endDate = DateOnly.MinValue;
             DateOnly startDate = StartDate.HasValue ? DateOnly.FromDateTime(StartDate.Value) : DateOnly.MinValue;
+            ProjectCoordinator projectCoordinator = new ProjectCoordinator();
             try
             {
                 if (string.IsNullOrWhiteSpace(ProjectName))
@@ -70,7 +71,7 @@ namespace NovoForecastingSystem.ViewModels
                 }
 
                 ProjectRepo projectRepo = new ProjectRepo();
-                Project project = projectRepo.CreateProject(ProjectName, Complexity, startDate, endDate);
+                Project project = projectRepo.CreateProject(ProjectName, Complexity, startDate, endDate, projectCoordinator);
 
                 MessageBox.Show("Project successfully created in database!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 
