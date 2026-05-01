@@ -88,7 +88,7 @@ namespace NovoForecastingSystem.Repos
                             StartDate = DateOnly.FromDateTime((DateTime)reader["StartDate"]),
                             EndDate = DateOnly.FromDateTime((DateTime)reader["EndDate"]),
                             ComplexityEnum = complexityEnum,
-                            Phase = new Phase { phaseStage = PhaseStage.Installation, Lenght = DateTime.Now }
+                            Phase = new Phase { phaseStage = PhaseStage.ConceptDesign, Lenght = DateTime.Now }
                         };
                         projects.Add(project);
                     }

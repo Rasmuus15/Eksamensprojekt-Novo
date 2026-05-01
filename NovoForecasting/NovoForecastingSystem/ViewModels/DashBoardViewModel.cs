@@ -70,7 +70,7 @@ namespace NovoForecastingSystem.ViewModels
            
             foreach (ProjectCoordinator pc in projectCoordinatorRepo.GetAllProjectCoordinators())
             {
-                ProjectCoordinatorList.Add(pc);
+                ProjectCoordinatorList.Add(pc); 
             }
 
 
