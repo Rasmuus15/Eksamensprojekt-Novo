@@ -104,6 +104,18 @@ namespace NovoForecastingSystem.Repos
         //}
 
 
+        public void UpdateResourceProject(string email, int projectId)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE RESOURCE SET ProjectId = @ProjectId, Availability = 0 WHERE Email = @Email", connection);
+                cmd.Parameters.Add("@ProjectId", System.Data.SqlDbType.Int).Value = projectId;
+                cmd.Parameters.Add("@Email", System.Data.SqlDbType.NVarChar).Value = email;
+                cmd.ExecuteNonQuery();
+            }
+        }
+
         public List<Models.Resource> GetAllResources()
         {
             return resource;

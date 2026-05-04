@@ -35,10 +35,78 @@ namespace NovoForecastingSystem.ViewModels
             EditProjectCommand = new EditProjectCommand();
         }
 
+        public IEnumerable<NovoForecastingSystem.Models.Enums.PhaseStage> PhaseStages => Enum.GetValues<NovoForecastingSystem.Models.Enums.PhaseStage>();
+        public IEnumerable<NovoForecastingSystem.Models.Enums.JobRole> JobRoles => Enum.GetValues<NovoForecastingSystem.Models.Enums.JobRole>();
+
+        private NovoForecastingSystem.Models.Enums.PhaseStage? _selectedPhase;
+        public NovoForecastingSystem.Models.Enums.PhaseStage? SelectedPhase
+        {
+            get => _selectedPhase;
+            set { _selectedPhase = value; OnPropertyChanged(); }
+        }
+
+        private NovoForecastingSystem.Models.Enums.JobRole? _selectedRole;
+        public NovoForecastingSystem.Models.Enums.JobRole? SelectedRole
+        {
+            get => _selectedRole;
+            set
+            {
+                _selectedRole = value;
+                OnPropertyChanged();
+                UpdateEmails();
+            }
+        }
+
+        private List<string> _emails;
+        public List<string> Emails
+        {
+            get => _emails;
+            set { _emails = value; OnPropertyChanged(); }
+        }
+
+        private string _selectedEmail;
+        public string SelectedEmail
+        {
+            get => _selectedEmail;
+            set { _selectedEmail = value; OnPropertyChanged(); }
+        }
+
+        private void UpdateEmails()
+        {
+            if (SelectedRole.HasValue)
+            {
+                ResourceRepo repo = new ResourceRepo();
+                Emails = repo.PrintEmail(SelectedRole.Value.ToString());
+            }
+            else
+            {
+                Emails = new List<string>();
+            }
+        }
+
         public void AddResource()
         {
-            AddResourceWindow addResourceWindow = new AddResourceWindow();
-            addResourceWindow.Show();
+            if (!string.IsNullOrEmpty(SelectedEmail) && CurrentProject != null)
+            {
+                try
+                {
+                    ResourceRepo repo = new ResourceRepo();
+                    repo.UpdateResourceProject(SelectedEmail, CurrentProject.Id);
+                    MessageBox.Show("Resource added to project successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    SelectedEmail = null;
+                    SelectedRole = null;
+                    SelectedPhase = null;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an email.");
+            }
         }
 
         public void EditProject()
