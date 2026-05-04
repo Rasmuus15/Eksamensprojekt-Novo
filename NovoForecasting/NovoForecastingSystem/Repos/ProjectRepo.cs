@@ -91,8 +91,8 @@ namespace NovoForecastingSystem.Repos
                             ComplexityEnum = complexityEnum,
                             ProjectCoordinator = new ProjectCoordinator 
                             { 
-                                CoordinatorId = reader["CoordinatorId"] != DBNull.Value ? (int)reader["CoordinatorId"] : 0,
-                                Initials = reader["Initials"] != DBNull.Value ? (string)reader["Initials"] : string.Empty
+                                CoordinatorId = (int)reader["CoordinatorId"],
+                                Initials = (string)reader["Initials"]
                             },
                             Phase = new Phase { phaseStage = PhaseStage.Installation, Lenght = DateTime.Now }
                         };
