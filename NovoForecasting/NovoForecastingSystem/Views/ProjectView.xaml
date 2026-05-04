@@ -149,7 +149,7 @@
                             <RowDefinition Height="600"/>
                         </Grid.RowDefinitions>
 
-                        <templates:FTEDemandByPhase_Role Grid.Row="1" Margin="0,10,0,0"/>
+                        <templates:FTEDemandByPhase_Role Grid.Row="1" Margin="0,10,0,0" Project="{Binding CurrentProject}"/>
                     </Grid>
 
                     <Grid Margin="20" Grid.Row="5">

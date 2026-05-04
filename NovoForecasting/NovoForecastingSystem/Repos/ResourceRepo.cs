@@ -116,6 +116,37 @@ namespace NovoForecastingSystem.Repos
             }
         }
 
+        public Dictionary<string, int> GetResourceCountByRoleForProject(int projectId)
+        {
+            var roleCounts = new Dictionary<string, int>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT JobRole, COUNT(*) as Count FROM RESOURCE WHERE ProjectId = @ProjectId GROUP BY JobRole";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.Add("@ProjectId", System.Data.SqlDbType.Int).Value = projectId;
+
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        string role = reader["JobRole"]?.ToString() ?? "";
+                        if (!string.IsNullOrEmpty(role))
+                        {
+                            roleCounts[role] = Convert.ToInt32(reader["Count"]);
+                        }
+                    }
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("An error occurred while retrieving resource counts: " + ex.Message);
+                }
+            }
+            return roleCounts;
+        }
+
         public List<Models.Resource> GetAllResources()
         {
             return resource;
