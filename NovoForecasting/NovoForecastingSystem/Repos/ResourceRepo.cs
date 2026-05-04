@@ -32,7 +32,7 @@ namespace NovoForecastingSystem.Repos
                 SqlCommand cmd = new SqlCommand("FindEmails", connection);
 
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("JobRole", jobRole);
+                cmd.Parameters.Add("@JobRole", System.Data.SqlDbType.NVarChar).Value = jobRole;
 
                 try
                 {
