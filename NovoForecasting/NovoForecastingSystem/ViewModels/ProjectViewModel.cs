@@ -1,5 +1,6 @@
 ﻿using NovoForecastingSystem.Commands;
 using NovoForecastingSystem.Models;
+using NovoForecastingSystem.Models.Enums;
 using NovoForecastingSystem.Repos;
 using NovoForecastingSystem.Services;
 using NovoForecastingSystem.Stores;
@@ -10,6 +11,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
+using static SkiaSharp.HarfBuzz.SKShaper;
 
 namespace NovoForecastingSystem.ViewModels
 {
@@ -18,6 +20,8 @@ namespace NovoForecastingSystem.ViewModels
         public ICommand NavigateToDashboardViewCommand { get; }
         public ICommand AddResourceCommand { get; }
         public ICommand EditProjectCommand { get; }
+        public ICommand DeleteProjectCommand { get; }
+        private readonly NavigationStore _navigationStore;
 
         private Project _currentProject;
         public Project CurrentProject
@@ -28,14 +32,16 @@ namespace NovoForecastingSystem.ViewModels
 
         public ProjectViewModel(Project project, NavigationStore navigationStore)
         {
+            _navigationStore = navigationStore;
             CurrentProject = project;
 
             NavigateToDashboardViewCommand = new NavigateCommand(new NavigationService(navigationStore, () => new DashBoardViewModel(navigationStore)));
             AddResourceCommand = new AddResourceCommand();
             EditProjectCommand = new EditProjectCommand();
+            DeleteProjectCommand = new DeleteProjectCommand();
         }
 
-        public IEnumerable<NovoForecastingSystem.Models.Enums.PhaseStage> PhaseStages => Enum.GetValues<NovoForecastingSystem.Models.Enums.PhaseStage>();
+        public IEnumerable<PhaseStage> PhaseStages => Enum.GetValues<NovoForecastingSystem.Models.Enums.PhaseStage>();
         public IEnumerable<NovoForecastingSystem.Models.Enums.JobRole> JobRoles => Enum.GetValues<NovoForecastingSystem.Models.Enums.JobRole>();
 
         private NovoForecastingSystem.Models.Enums.PhaseStage? _selectedPhase;
@@ -114,6 +120,18 @@ namespace NovoForecastingSystem.ViewModels
             MessageBox.Show("Test");
         }
 
-        
+        public void DeleteProject()
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this project", "Delete Project", MessageBoxButton.YesNo);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                ProjectRepo projectRepo = new ProjectRepo();
+                projectRepo.DeleteProject(CurrentProject);
+                _navigationStore.CurrentViewModel = new DashBoardViewModel(_navigationStore);
+
+            }
+
+        }
     }
 }

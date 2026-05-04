@@ -54,7 +54,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="Add_Button" Grid.Column="0" Command="{Binding AddResourceCommand}" CommandParameter="{Binding}" Click="Add_Button_Click" Content="Add" Foreground="White" Background="#2563EB" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand">
+            <Button x:Name="Add_Button" Grid.Column="0" Command="{Binding AddResourceCommand}" CommandParameter="{Binding}" Click="Close_Button_Click" Content="Add" Foreground="White" Background="#2563EB" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="8">

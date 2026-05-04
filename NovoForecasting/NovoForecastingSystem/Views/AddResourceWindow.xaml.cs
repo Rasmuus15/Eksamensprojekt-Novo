@@ -29,10 +29,5 @@ namespace NovoForecastingSystem.Views
         {
             this.Close();
         }
-
-        private void Add_Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
     }
 }
