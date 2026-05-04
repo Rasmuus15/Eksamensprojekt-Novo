@@ -15,7 +15,6 @@ namespace NovoForecastingSystem.ViewModels
 {
     public class ProjectViewModel : BaseViewModel
     {
-
         public ICommand NavigateToDashboardViewCommand { get; }
         public ICommand AddResourceCommand { get; }
         public ICommand EditProjectCommand { get; }
@@ -27,9 +26,10 @@ namespace NovoForecastingSystem.ViewModels
             set { _currentProject = value; OnPropertyChanged(); }
         }
 
-        public ProjectViewModel(Project project, NavigationStore? navigationStore = null)
+        public ProjectViewModel(Project project, NavigationStore navigationStore)
         {
             CurrentProject = project;
+
             NavigateToDashboardViewCommand = new NavigateCommand(new NavigationService(navigationStore, () => new DashBoardViewModel(navigationStore)));
             AddResourceCommand = new AddResourceCommand();
             EditProjectCommand = new EditProjectCommand();
@@ -43,8 +43,7 @@ namespace NovoForecastingSystem.ViewModels
 
         public void EditProject()
         {
-            EditProjectWindow editProjectWindow = new EditProjectWindow();
-            editProjectWindow.Show();
+            MessageBox.Show("Test");
         }
 
         
