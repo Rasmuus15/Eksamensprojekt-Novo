@@ -28,8 +28,9 @@ namespace NovoForecastingSystem.Views
             AddResourceWindow addResourceWindow = new AddResourceWindow();
             addResourceWindow.DataContext = this.DataContext;
             addResourceWindow.ShowDialog();
+            
+            fteDemandCtrl.GenerateDemands();
         }
-
 
     }
 }

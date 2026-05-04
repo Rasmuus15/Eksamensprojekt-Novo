@@ -11,16 +11,37 @@ using NovoForecastingSystem.Repos;
 
 namespace NovoForecastingSystem.Views.Templates
 {
-    public class FteDemandRow
+    public class FteDemandRow : System.ComponentModel.INotifyPropertyChanged
     {
-        public string Role { get; set; }
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+
+        private string _role;
+        public string Role
+        {
+            get => _role;
+            set
+            {
+                if (_role != value)
+                {
+                    _role = value;
+                    PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs(nameof(Role)));
+                }
+            }
+        }
 
         private Dictionary<string, string> _phases = new Dictionary<string, string>();
 
         public string this[string phase]
         {
             get => _phases.ContainsKey(phase) ? _phases[phase] : string.Empty;
-            set => _phases[phase] = value;
+            set
+            {
+                if (!_phases.ContainsKey(phase) || _phases[phase] != value)
+                {
+                    _phases[phase] = value;
+                    PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs(System.Windows.Data.Binding.IndexerName));
+                }
+            }
         }
     }
 
@@ -63,42 +84,71 @@ namespace NovoForecastingSystem.Views.Templates
             }
         }
 
-        private void GenerateDemands()
+        public void GenerateDemands()
         {
             if (Project == null || FteDemands == null) return;
             
             ResourceRepo repo = new ResourceRepo();
             var currentCounts = repo.GetResourceCountByRoleForProject(Project.Id);
             
-            FteDemands.Clear();
+            if (FteDemands.Count == 0) LoadDefaultRoles();
 
-            foreach (JobRole role in Enum.GetValues(typeof(JobRole)))
+            foreach (var row in FteDemands)
             {
-                var row = new FteDemandRow
+                string roleName = row.Role;
+                // e.g. "Process Engineer" -> "ProcessEngineer"
+                string roleKey = roleName.Replace(" ", ""); 
+                
+                // fallback parse
+                if (!Enum.TryParse(roleKey, out JobRole parsedRole))
                 {
-                    Role = FormatCamelCase(role.ToString())
-                };
-                
-                string roleKey = role.ToString();
+                    continue;
+                }
+
                 int currentlyAssigned = currentCounts.ContainsKey(roleKey) ? currentCounts[roleKey] : 0;
+                var phaseDemands = new Dictionary<string, int>();
+                var assignedDemands = new Dictionary<string, int>();
                 
+                // Pass 1: Allocate up to the required amount so they fill phases properly
                 foreach (PhaseStage phase in Enum.GetValues(typeof(PhaseStage)))
                 {
-                    int required = CalculateDemand(role, phase, Project.ComplexityEnum);
+                    int required = CalculateDemand(parsedRole, phase, Project.ComplexityEnum);
+                    phaseDemands[phase.ToString()] = required;
                     
-                    if (required > 0)
+                    int assignedToThisPhase = Math.Min(currentlyAssigned, required);
+                    assignedDemands[phase.ToString()] = assignedToThisPhase;
+                    currentlyAssigned -= assignedToThisPhase;
+                }
+
+                // Pass 2: Allocate any remaining/extra people to phases that need them
+                if (currentlyAssigned > 0)
+                {
+                    bool assignedExtra = false;
+                    foreach (PhaseStage phase in Enum.GetValues(typeof(PhaseStage)))
                     {
-                        int assignedToThisPhase = Math.Min(currentlyAssigned, required);
-                        currentlyAssigned -= assignedToThisPhase;
-                        row[phase.ToString()] = $"{assignedToThisPhase} / {required}";
+                        if (currentlyAssigned > 0 && phaseDemands[phase.ToString()] > 0)
+                        {
+                            assignedDemands[phase.ToString()] += currentlyAssigned;
+                            currentlyAssigned = 0;
+                            assignedExtra = true;
+                            break; // Stop after assigning extras to the first required phase
+                        }
                     }
-                    else
+
+                    // Fallback: if no phase required this role but we have them, assign to first phase
+                    if (!assignedExtra && currentlyAssigned > 0)
                     {
-                        row[phase.ToString()] = "0 / 0"; 
+                        var firstPhase = ((PhaseStage[])Enum.GetValues(typeof(PhaseStage)))[0].ToString();
+                        assignedDemands[firstPhase] += currentlyAssigned;
+                        currentlyAssigned = 0;
                     }
                 }
-                
-                FteDemands.Add(row);
+
+                // Finally write to the UI row
+                foreach (PhaseStage phase in Enum.GetValues(typeof(PhaseStage)))
+                {
+                    row[phase.ToString()] = $"{assignedDemands[phase.ToString()]} / {phaseDemands[phase.ToString()]}";
+                }
             }
         }
 
