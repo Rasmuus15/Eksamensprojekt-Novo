@@ -1,9 +1,11 @@
 ﻿using NovoForecastingSystem.Commands;
 using NovoForecastingSystem.Models;
+using NovoForecastingSystem.Models.Enums;
 using NovoForecastingSystem.Repos;
 using NovoForecastingSystem.Services;
 using NovoForecastingSystem.Stores;
 using NovoForecastingSystem.Views;
+using NovoForecastingSystem.Views.Charts.GanttChart;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
