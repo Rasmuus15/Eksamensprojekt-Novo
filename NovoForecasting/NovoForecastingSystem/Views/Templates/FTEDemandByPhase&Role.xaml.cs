@@ -52,16 +52,6 @@ namespace NovoForecastingSystem.Views.Templates
             }
         }
 
-        public static List<string> AvailableRoles { get; } = new List<string>();
-
-        static FTEDemandByPhase_Role()
-        {
-            foreach (JobRole role in Enum.GetValues(typeof(JobRole)))
-            {
-                AvailableRoles.Add(Regex.Replace(role.ToString(), "([A-Z])", " $1").Trim());
-            }
-        }
-
         public FTEDemandByPhase_Role()
         {
             InitializeComponent();
