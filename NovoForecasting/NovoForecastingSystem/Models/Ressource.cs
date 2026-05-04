@@ -12,6 +12,5 @@ namespace NovoForecastingSystem.Models
         public double FTE { get; set; }
         public bool Availability { get; set; }
         public JobRoleEnum jobRoleEnum;
-
     }
 }

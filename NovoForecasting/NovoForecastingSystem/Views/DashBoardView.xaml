@@ -51,7 +51,8 @@
                                             Background="Transparent" 
                                             BorderThickness="0" 
                                             Padding="0" 
-                                            HorizontalContentAlignment="Stretch">
+                                            HorizontalContentAlignment="Stretch"
+                                            Cursor="Hand">
                                         <templates:ProjectsTemplate DataContext="{Binding}"/>
                                     </Button>
                                 </DataTemplate>

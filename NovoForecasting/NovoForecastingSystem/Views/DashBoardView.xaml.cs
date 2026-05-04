@@ -29,9 +29,9 @@ namespace NovoForecastingSystem.Views
         {
             if (sender is Button button && button.DataContext is Project project)
             {
-                if (DataContext is DashBoardViewModel viewModel)
+                if (DataContext is DashBoardViewModel dvm)
                 {
-                    viewModel.OpenProject(project);
+                    dvm.OpenProject(project);
                 }
             }
         }
