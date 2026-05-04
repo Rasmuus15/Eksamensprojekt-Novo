@@ -23,10 +23,13 @@ namespace NovoForecastingSystem.Views
             InitializeComponent();
         }
 
-        private void EditProject_Click(object sender, RoutedEventArgs e)
+        private void AddResource_Click(object sender, RoutedEventArgs e)
         {
-            EditProjectWindow editProjectWindow = new EditProjectWindow();
-            editProjectWindow.Show();
+            AddResourceWindow addResourceWindow = new AddResourceWindow();
+            addResourceWindow.DataContext = this.DataContext;
+            addResourceWindow.ShowDialog();
         }
+
+
     }
 }

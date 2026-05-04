@@ -106,6 +106,11 @@ namespace NovoForecastingSystem.ViewModels
 
                 ProjectList.Add(project);
 
+                ProjectName = string.Empty;
+                StartDate = null;
+                Complexity = null;
+                SelectedProjectCoordinator = null;
+
             }
             catch (Exception ex)
             {
