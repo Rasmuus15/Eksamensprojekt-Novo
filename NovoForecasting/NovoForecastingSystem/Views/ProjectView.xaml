@@ -52,7 +52,7 @@
                             </TextBlock>
                         </StackPanel>
 
-                        <Button Grid.Column="1" Margin="5,5,5,5" Content="📝 Edit Project" Background="#4a5565" Foreground="White" Cursor="Hand" Command="{Binding EditProjectCommand}" CommandParameter="{Binding}">
+                        <Button Grid.Column="1" Margin="5,5,5,5" Content="📝 Edit Project" Background="#4a5565" Foreground="White" Cursor="Hand" Click="EditProject_Click">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5"/>

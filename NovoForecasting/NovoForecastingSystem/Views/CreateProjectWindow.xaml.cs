@@ -28,14 +28,8 @@ namespace NovoForecastingSystem.Views
             ComplexityComboBox.ItemsSource = Enum.GetValues(typeof(Complexity));
         }
 
-        private void Cancel_Click(object sender, RoutedEventArgs e)
+        private void Close_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-        }
-
-        private void CreateProject_Click(object sender, RoutedEventArgs e)
-        {
-            //lukker vindue efter projekt er oprettet
             this.Close();
         }
 
