@@ -40,12 +40,12 @@ namespace NovoForecastingSystem.Views.Charts.GanttChart
             SKColor.Parse("#2979FF"),
         };
 
-        // Backing fields
+
         private ISeries[] _series;
         private Axis[] _xAxes;
         private Complexity _complexity;
 
-        // Notifying properties
+
         public ISeries[] Series
         {
             get => _series;
@@ -58,7 +58,6 @@ namespace NovoForecastingSystem.Views.Charts.GanttChart
             private set { _xAxes = value; OnPropertyChanged(); }
         }
 
-        // YAxes never change, so no notification needed
         public Axis[] YAxes { get; } = new[]
         {
             new Axis
