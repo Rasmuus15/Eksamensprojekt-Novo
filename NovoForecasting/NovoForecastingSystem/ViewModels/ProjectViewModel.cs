@@ -21,12 +21,13 @@ namespace NovoForecastingSystem.ViewModels
         public ICommand NavigateToDashboardViewCommand { get; }
         public ICommand AddResourceCommand { get; }
         public ICommand EditProjectCommand { get; }
+        public GanttViewModel GanttVM { get; } = new GanttViewModel();
 
         private Project _currentProject;
         public Project CurrentProject
         {
             get => _currentProject;
-            set { _currentProject = value; OnPropertyChanged(); }
+            set { _currentProject = value; OnPropertyChanged(); GanttVM.Complexity = value.ComplexityEnum;}
         }
 
         public ProjectViewModel(Project project, NavigationStore? navigationStore = null)

@@ -131,15 +131,15 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <Grid.DataContext>
-                            <charts:GanttViewModel/>
-                        </Grid.DataContext>
-
                         <TextBlock Text="Project Timeline" FontSize="25" FontWeight="Bold" Margin="20,0,0,0"/>
 
-                        <Border Grid.Row="1" CornerRadius="6" Background="White" Padding="12" Margin="15,15,15,15" BorderThickness="1" BorderBrush="Gray">
-
-                            <lvc:CartesianChart Series="{Binding Series}" YAxes="{Binding YAxes}" XAxes="{Binding XAxes}" LegendPosition="Hidden" TooltipPosition="Hidden"/>
+                        <Border Grid.Row="1">
+                            <lvc:CartesianChart
+                                Series="{Binding GanttVM.Series}"
+                                YAxes="{Binding GanttVM.YAxes}"
+                                XAxes="{Binding GanttVM.XAxes}"
+                                LegendPosition="Hidden"
+                                TooltipPosition="Hidden"/>
                         </Border>
                     </Grid>
 
