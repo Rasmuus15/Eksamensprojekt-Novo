@@ -4,6 +4,7 @@ using NovoForecastingSystem.Repos;
 using NovoForecastingSystem.Services;
 using NovoForecastingSystem.Stores;
 using NovoForecastingSystem.Views;
+using NovoForecastingSystem.Views.Charts.GanttChart;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
@@ -19,12 +20,13 @@ namespace NovoForecastingSystem.ViewModels
         public ICommand NavigateToDashboardViewCommand { get; }
         public ICommand AddResourceCommand { get; }
         public ICommand EditProjectCommand { get; }
+        public GanttViewModel GanttVM { get; } = new GanttViewModel();
 
         private Project _currentProject;
         public Project CurrentProject
         {
             get => _currentProject;
-            set { _currentProject = value; OnPropertyChanged(); }
+            set { _currentProject = value; OnPropertyChanged(); GanttVM.Complexity = value.ComplexityEnum;}
         }
 
         public ProjectViewModel(Project project, NavigationStore? navigationStore = null)
