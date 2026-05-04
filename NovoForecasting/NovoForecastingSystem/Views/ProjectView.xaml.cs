@@ -23,6 +23,13 @@ namespace NovoForecastingSystem.Views
             InitializeComponent();
         }
 
+        private void AddResource_Click(object sender, RoutedEventArgs e)
+        {
+            AddResourceWindow addResourceWindow = new AddResourceWindow();
+            addResourceWindow.DataContext = this.DataContext;
+            addResourceWindow.ShowDialog();
+        }
+
 
     }
 }
