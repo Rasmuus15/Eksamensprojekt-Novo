@@ -129,9 +129,8 @@ namespace NovoForecastingSystem.ViewModels
                 ProjectRepo projectRepo = new ProjectRepo();
                 projectRepo.DeleteProject(CurrentProject);
                 _navigationStore.CurrentViewModel = new DashBoardViewModel(_navigationStore);
-
+                MessageBox.Show($"Deleted Project {CurrentProject.ProjectName}");
             }
-
         }
     }
 }
