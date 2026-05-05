@@ -55,7 +55,7 @@ namespace NovoForecastingSystem.Repos
                 ComplexityEnum = complexityEnum,
                 StartDate = startDate,
                 EndDate = endDate,
-                Phase = new Phase { phaseStage = PhaseStage.Installation, Lenght = DateTime.Now }
+                Phase = new Phase { phaseStage = PhaseStage.BasicDesign, Lenght = DateTime.Now }
             });
             
             projects.Add(project);
@@ -80,7 +80,10 @@ namespace NovoForecastingSystem.Repos
                 {
                     while (reader.Read())
                     {
+                        
                         Enum.TryParse<Complexity>((string)reader["Complexity"], out Complexity complexityEnum);
+
+                        DateTime startDate = (DateTime)reader["StartDate"];
 
                         Project project = new Project()
                         {
@@ -89,13 +92,18 @@ namespace NovoForecastingSystem.Repos
                             StartDate = DateOnly.FromDateTime((DateTime)reader["StartDate"]),
                             EndDate = DateOnly.FromDateTime((DateTime)reader["EndDate"]),
                             ComplexityEnum = complexityEnum,
-                            ProjectCoordinator = new ProjectCoordinator 
-                            { 
+                            ProjectCoordinator = new ProjectCoordinator
+                            {
                                 CoordinatorId = (int)reader["CoordinatorId"],
                                 Initials = (string)reader["Initials"]
                             },
-                            Phase = new Phase { phaseStage = PhaseStage.Installation, Lenght = DateTime.Now }
+                            Phase = new Phase
+                            { 
+                              phaseStage = Phase.ReturnPhase(complexityEnum, (DateTime.Now - startDate).Days),
+                              Lenght = DateTime.Now
+                            } //phaseStage = Metode
                         };
+                        int id = project.StartDate.Day - DateTime.UtcNow.Day;
                         projects.Add(project);
                     }
                 }
