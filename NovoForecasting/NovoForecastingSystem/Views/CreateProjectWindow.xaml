@@ -55,7 +55,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Content="Create Project" Command="{Binding CreateProjectCommand}" CommandParameter="{Binding}" Foreground="White" Background="#2563EB" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand" Grid.ColumnSpan="2" Margin="0,0,14,0" VerticalAlignment="Top" Click="CreateProject_Click">
+            <Button Grid.Column="0" Content="Create Project" Command="{Binding CreateProjectCommand}" CommandParameter="{Binding}" Foreground="White" Background="#2563EB" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand" Grid.ColumnSpan="2" Margin="0,0,14,0" VerticalAlignment="Top" Click="Close_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="8">
@@ -65,7 +65,7 @@
                 </Button.Template>
             </Button>
 
-            <Button Grid.Column="2" Content="Cancel" Click="Cancel_Click" Foreground="#334155" Background="#E2E8F0" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand">
+            <Button Grid.Column="2" Content="Cancel" Click="Close_Click" Foreground="#334155" Background="#E2E8F0" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="8">

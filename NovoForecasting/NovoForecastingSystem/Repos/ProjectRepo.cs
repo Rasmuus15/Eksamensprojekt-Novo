@@ -106,6 +106,20 @@ namespace NovoForecastingSystem.Repos
         public void DeleteProject(Project projectToDelete)
         {
             projects.Remove(projectToDelete);
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("DeleteProject", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@ProjectId", projectToDelete.Id);
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         public void EditProject(Models.Project oldProject, Models.Project newProject)

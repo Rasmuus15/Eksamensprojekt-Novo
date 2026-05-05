@@ -24,5 +24,10 @@ namespace NovoForecastingSystem.Views
             PhaseComboBox.ItemsSource = Enum.GetValues(typeof(PhaseStage));
             ComplexityComboBox.ItemsSource = Enum.GetValues(typeof(Complexity));
         }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

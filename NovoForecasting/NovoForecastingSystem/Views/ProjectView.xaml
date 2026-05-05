@@ -37,6 +37,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition Width="113"/>
+                            <ColumnDefinition Width="113"/>
                             <ColumnDefinition Width="125"/>
                         </Grid.ColumnDefinitions>
 
@@ -52,7 +53,7 @@
                             </TextBlock>
                         </StackPanel>
 
-                        <Button Grid.Column="1" Margin="5,5,5,5" Content="📝 Edit Project" Background="#4a5565" Foreground="White" Cursor="Hand" Command="{Binding EditProjectCommand}" CommandParameter="{Binding}">
+                        <Button Grid.Column="1" Margin="5,5,5,5" Content="🗑 Delete Project" Background="#E7000B" Foreground="White" Cursor="Hand" Command="{Binding DeleteProjectCommand}" CommandParameter="{Binding}">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5"/>
@@ -60,7 +61,15 @@
                             </Button.Resources>
                         </Button>
 
-                        <Button Grid.Column="2" Margin="5,5,5,5" Content="+ Add Resources" Background="#FF0056FF" Foreground="White" Cursor="Hand" Click="AddResource_Click">
+                        <Button Grid.Column="2" Margin="5,5,5,5" Content="📝 Edit Project" Background="#4a5565" Foreground="White" Cursor="Hand" Click="EditProject_Click">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+
+                        <Button Grid.Column="3" Margin="5,5,5,5" Content="+ Add Resources" Background="#FF0056FF" Foreground="White" Cursor="Hand" Click="AddResource_Click">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5"/>

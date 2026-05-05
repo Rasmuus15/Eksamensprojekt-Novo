@@ -29,6 +29,12 @@ namespace NovoForecastingSystem.Views
             addResourceWindow.DataContext = this.DataContext;
             addResourceWindow.ShowDialog();
         }
+        private void EditProject_Click(object sender, RoutedEventArgs e)
+        {
+            EditProjectWindow editProjectWindow = new EditProjectWindow();
+            editProjectWindow.DataContext = this.DataContext;
+            editProjectWindow.Show();
+        }
 
 
     }
