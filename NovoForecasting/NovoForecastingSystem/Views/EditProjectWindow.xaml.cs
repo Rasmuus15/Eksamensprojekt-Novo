@@ -1,4 +1,5 @@
-﻿using NovoForecastingSystem.Models.Enums;
+﻿using NovoForecastingSystem.Models;
+using NovoForecastingSystem.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,11 +22,11 @@ namespace NovoForecastingSystem.Views
         public EditProjectWindow()
         {
             InitializeComponent();
-            PhaseComboBox.ItemsSource = Enum.GetValues(typeof(PhaseStage));
             ComplexityComboBox.ItemsSource = Enum.GetValues(typeof(Complexity));
+            PhaseComboBox.ItemsSource = Enum.GetValues(typeof(PhaseStage));
         }
 
-        private void Cancel_Click(object sender, RoutedEventArgs e)
+        private void Close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

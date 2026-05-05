@@ -17,7 +17,7 @@ namespace NovoForecastingSystem.Models
         {
             get
             {
-                if (_endDate == DateOnly.MinValue && StartDate != DateOnly.MinValue)
+                if (StartDate != DateOnly.MinValue)
                 {
                     if (ComplexityEnum == ComplexityEnum.Low) return StartDate.AddDays(81 * 7);
                     else if (ComplexityEnum == ComplexityEnum.Medium) return StartDate.AddDays(108 * 7);

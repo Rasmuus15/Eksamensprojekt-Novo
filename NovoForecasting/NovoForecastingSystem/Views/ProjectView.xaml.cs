@@ -35,7 +35,5 @@ namespace NovoForecastingSystem.Views
             editProjectWindow.DataContext = this.DataContext;
             editProjectWindow.Show();
         }
-
-
     }
 }
