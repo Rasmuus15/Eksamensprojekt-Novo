@@ -6,7 +6,12 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Views\Icon\NovoLogo.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Views\Icon\NovoLogo.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.1.0-dev-292" />
