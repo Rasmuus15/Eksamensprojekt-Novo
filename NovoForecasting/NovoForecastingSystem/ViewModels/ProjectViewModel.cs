@@ -29,30 +29,20 @@ namespace NovoForecastingSystem.ViewModels
             get => _currentProject;
             set { _currentProject = value; OnPropertyChanged(); }
         }
+        
+        // Add Resource Window properties and backing fields
+        public IEnumerable<PhaseStage> PhaseStages => Enum.GetValues<PhaseStage>();
+        public IEnumerable<JobRole> JobRoles => Enum.GetValues<JobRole>();
 
-        public ProjectViewModel(Project project, NavigationStore navigationStore)
-        {
-            _navigationStore = navigationStore;
-            CurrentProject = project;
-
-            NavigateToDashboardViewCommand = new NavigateCommand(new NavigationService(navigationStore, () => new DashBoardViewModel(navigationStore)));
-            AddResourceCommand = new AddResourceCommand();
-            EditProjectCommand = new EditProjectCommand();
-            DeleteProjectCommand = new DeleteProjectCommand();
-        }
-
-        public IEnumerable<PhaseStage> PhaseStages => Enum.GetValues<NovoForecastingSystem.Models.Enums.PhaseStage>();
-        public IEnumerable<NovoForecastingSystem.Models.Enums.JobRole> JobRoles => Enum.GetValues<NovoForecastingSystem.Models.Enums.JobRole>();
-
-        private NovoForecastingSystem.Models.Enums.PhaseStage? _selectedPhase;
-        public NovoForecastingSystem.Models.Enums.PhaseStage? SelectedPhase
+        private PhaseStage? _selectedPhase;
+        public PhaseStage? SelectedPhase
         {
             get => _selectedPhase;
             set { _selectedPhase = value; OnPropertyChanged(); }
         }
 
-        private NovoForecastingSystem.Models.Enums.JobRole? _selectedRole;
-        public NovoForecastingSystem.Models.Enums.JobRole? SelectedRole
+        private JobRole? _selectedRole;
+        public JobRole? SelectedRole
         {
             get => _selectedRole;
             set
@@ -75,6 +65,29 @@ namespace NovoForecastingSystem.ViewModels
         {
             get => _selectedEmail;
             set { _selectedEmail = value; OnPropertyChanged(); }
+        }
+
+        // Edit project properties and backing fields
+        public string ProjectName
+        {
+            get => CurrentProject.ProjectName;
+            set { CurrentProject.ProjectName = value; OnPropertyChanged(); }
+        }
+        public DateTime StartDate
+        {
+            get => CurrentProject.StartDate.ToDateTime(TimeOnly.FromDateTime(DateTime.Now));
+            set { CurrentProject.StartDate = DateOnly.FromDateTime(value); OnPropertyChanged(); }
+        }
+
+        public ProjectViewModel(Project project, NavigationStore navigationStore)
+        {
+            _navigationStore = navigationStore;
+            CurrentProject = project;
+
+            NavigateToDashboardViewCommand = new NavigateCommand(new NavigationService(navigationStore, () => new DashBoardViewModel(navigationStore)));
+            AddResourceCommand = new AddResourceCommand();
+            EditProjectCommand = new EditProjectCommand();
+            DeleteProjectCommand = new DeleteProjectCommand();
         }
 
         private void UpdateEmails()
@@ -128,7 +141,9 @@ namespace NovoForecastingSystem.ViewModels
             {
                 ProjectRepo projectRepo = new ProjectRepo();
                 projectRepo.DeleteProject(CurrentProject);
+
                 _navigationStore.CurrentViewModel = new DashBoardViewModel(_navigationStore);
+
                 MessageBox.Show($"Deleted Project {CurrentProject.ProjectName}");
             }
         }

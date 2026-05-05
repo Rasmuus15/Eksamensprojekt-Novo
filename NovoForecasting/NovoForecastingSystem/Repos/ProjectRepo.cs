@@ -122,7 +122,7 @@ namespace NovoForecastingSystem.Repos
             }
         }
 
-        public void EditProject(Models.Project oldProject, Models.Project newProject)
+        public void EditProject(Project oldProject, Project newProject)
         {
             int index = projects.IndexOf(oldProject);
             if (index != -1)

@@ -23,13 +23,13 @@
         <!-- Project Name -->
         <StackPanel Grid.Row="1" Margin="0,0,0,20">
             <TextBlock Text="Project Name:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <TextBox Height="40" VerticalContentAlignment="Center" Padding="10,0"/>
+            <TextBox Height="40" VerticalContentAlignment="Center" Padding="10,0" Text="{Binding ProjectName}"/>
         </StackPanel>
 
         <!-- Start Date -->
         <StackPanel Grid.Row="2" Margin="0,0,0,15">
             <TextBlock Text="Start Date:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <DatePicker Height="40" VerticalContentAlignment="Center" Padding="10,0">
+            <DatePicker Height="40" VerticalContentAlignment="Center" Padding="10,0" SelectedDate="{Binding StartDate, UpdateSourceTrigger=PropertyChanged}">
             </DatePicker>
         </StackPanel>
 
