@@ -29,7 +29,7 @@ namespace NovoForecastingSystem.ViewModels
             get => _currentProject;
             set { _currentProject = value; OnPropertyChanged(); }
         }
-        
+
         // Add Resource Window properties and backing fields
         public IEnumerable<PhaseStage> PhaseStages => Enum.GetValues<PhaseStage>();
         public IEnumerable<JobRole> JobRoles => Enum.GetValues<JobRole>();
@@ -73,10 +73,20 @@ namespace NovoForecastingSystem.ViewModels
             get => CurrentProject.ProjectName;
             set { CurrentProject.ProjectName = value; OnPropertyChanged(); }
         }
-        public DateTime StartDate
+        public DateTime? StartDate
         {
             get => CurrentProject.StartDate.ToDateTime(TimeOnly.FromDateTime(DateTime.Now));
-            set { CurrentProject.StartDate = DateOnly.FromDateTime(value); OnPropertyChanged(); }
+            set { CurrentProject.StartDate = DateOnly.FromDateTime(value.Value); OnPropertyChanged(); }
+        }
+        public Complexity? SelectedComplexity
+        {
+            get => CurrentProject.ComplexityEnum;
+            set { CurrentProject.ComplexityEnum = value.Value; OnPropertyChanged(); }
+        }
+        public PhaseStage SelectedPhaseEditProject
+        {
+            get => CurrentProject.Phase.phaseStage;
+            set { CurrentProject.Phase.phaseStage = value; OnPropertyChanged(); }
         }
 
         public ProjectViewModel(Project project, NavigationStore navigationStore)
@@ -130,12 +140,33 @@ namespace NovoForecastingSystem.ViewModels
 
         public void EditProject()
         {
-            MessageBox.Show("Test");
-        }
+            try
+            {
+                if (string.IsNullOrWhiteSpace(ProjectName))
+                {
+                    MessageBox.Show("Please enter a project name.");
+                    return;
+                }
 
+                if (StartDate.HasValue && SelectedComplexity.HasValue)
+                {
+                    ProjectRepo projectRepo = new ProjectRepo();
+                    projectRepo.EditProject(CurrentProject);
+                }
+
+                // Updates the view trough the OnPropertyChanged event in BaseViewModel
+                OnPropertyChanged(nameof(CurrentProject));
+
+                MessageBox.Show("Project edited");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
+        }
         public void DeleteProject()
         {
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this project", "Delete Project", MessageBoxButton.YesNo);
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this project", "Delete Project", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             if (result == MessageBoxResult.Yes)
             {

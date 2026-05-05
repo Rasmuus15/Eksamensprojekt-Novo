@@ -36,14 +36,14 @@
         <!-- Complexity -->
         <StackPanel Grid.Row="4" Margin="0,0,0,20">
             <TextBlock Text="Complexity:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <ComboBox x:Name="ComplexityComboBox" Height="40" VerticalContentAlignment="Center" Padding="10,0">
+            <ComboBox x:Name="ComplexityComboBox" Height="40" VerticalContentAlignment="Center" Padding="10,0" SelectedValue="{Binding SelectedComplexity}">
             </ComboBox>
         </StackPanel>
 
         <!-- Current Phase -->
         <StackPanel Grid.Row="5" Margin="0,0,0,20">
             <TextBlock Text="Phase Stage:" FontWeight="SemiBold" Foreground="#334155" Margin="0,0,0,8"/>
-            <ComboBox x:Name="PhaseComboBox" Height="40" VerticalContentAlignment="Center" Padding="10,0">
+            <ComboBox x:Name="PhaseComboBox" Height="40" VerticalContentAlignment="Center" Padding="10,0" SelectedValue="{Binding SelectedPhaseEditProject}">
             </ComboBox>
 
         </StackPanel>
@@ -56,7 +56,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Content="Save Changes" Command="{Binding EditProjectCommand}" CommandParameter="{Binding}" Foreground="White" Background="#2563EB" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand">
+            <Button Grid.Column="0" Content="Save Changes" Command="{Binding EditProjectCommand}" CommandParameter="{Binding}" Foreground="White" Background="#2563EB" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand" Click="Close_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="8">
@@ -66,7 +66,7 @@
                 </Button.Template>
             </Button>
 
-            <Button Grid.Column="2" Content="Cancel" Foreground="#334155" Background="#E2E8F0" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand" Click="Cancel_Click">
+            <Button Grid.Column="2" Content="Cancel" Foreground="#334155" Background="#E2E8F0" BorderThickness="0" Height="44" FontSize="15" FontWeight="SemiBold" Cursor="Hand" Click="Close_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="8">

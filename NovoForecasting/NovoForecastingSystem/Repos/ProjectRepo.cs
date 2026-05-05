@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using NovoForecastingSystem.Models;
 using NovoForecastingSystem.Models.Enums;
+using NovoForecastingSystem.Views;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -43,8 +44,8 @@ namespace NovoForecastingSystem.Repos
                     lengthCmd.Parameters.Add("@EndDate", System.Data.SqlDbType.Date).Value = endDate;
                     lengthCmd.ExecuteNonQuery();
                 }
-                  
-                
+
+
             }
             Enum.TryParse<Complexity>(complexity, out Complexity complexityEnum);
 
@@ -57,15 +58,13 @@ namespace NovoForecastingSystem.Repos
                 EndDate = endDate,
                 Phase = new Phase { phaseStage = PhaseStage.Installation, Length = DateTime.Now }
             });
-            
+
             projects.Add(project);
 
             return project;
         }
         public List<Project> GetAllProjects()
         {
-            List<Project> projects = new List<Project>();
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -89,8 +88,8 @@ namespace NovoForecastingSystem.Repos
                             StartDate = DateOnly.FromDateTime((DateTime)reader["StartDate"]),
                             EndDate = DateOnly.FromDateTime((DateTime)reader["EndDate"]),
                             ComplexityEnum = complexityEnum,
-                            ProjectCoordinator = new ProjectCoordinator 
-                            { 
+                            ProjectCoordinator = new ProjectCoordinator
+                            {
                                 CoordinatorId = (int)reader["CoordinatorId"],
                                 Initials = (string)reader["Initials"]
                             },
@@ -122,14 +121,31 @@ namespace NovoForecastingSystem.Repos
             }
         }
 
-        public void EditProject(Project oldProject, Project newProject)
+        public void EditProject(Project projectToEdit)
         {
-            int index = projects.IndexOf(oldProject);
-            if (index != -1)
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                projects[index] = newProject;
-            }
-        }
+                connection.Open();
 
+                string updateProjectQuery = $"UPDATE PROJECT SET ProjectName = @ProjectName, Complexity = @Complexity WHERE ProjectId = {projectToEdit.Id};";
+
+                using (SqlCommand cmd = new SqlCommand(updateProjectQuery, connection))
+                {
+                    cmd.Parameters.Add("@ProjectName", System.Data.SqlDbType.NVarChar, 255).Value = projectToEdit.ProjectName;
+                    cmd.Parameters.Add("@Complexity", System.Data.SqlDbType.NVarChar, 50).Value = projectToEdit.ComplexityEnum.ToString();
+                    cmd.ExecuteNonQuery();
+                }
+
+                string updateLengthQuery = $"UPDATE PROJECT_LENGTH SET StartDate = @StartDate, EndDate = @EndDate WHERE ProjectId = {projectToEdit.Id};";
+
+                using (SqlCommand lengthCmd = new SqlCommand(updateLengthQuery, connection))
+                {
+                    lengthCmd.Parameters.Add("@StartDate", System.Data.SqlDbType.Date).Value = projectToEdit.StartDate;
+                    lengthCmd.Parameters.Add("@EndDate", System.Data.SqlDbType.Date).Value = projectToEdit.EndDate;
+                    lengthCmd.ExecuteNonQuery();
+                }
+            }
+
+        }
     }
 }
