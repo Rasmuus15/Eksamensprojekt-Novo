@@ -10,15 +10,12 @@ participant ":System" as S
 
 'Commands'
 L -> S: OpretProjekt(projektNavn, kompleksitet, antalTimer, startDato, slutDato, )
-note right: Opretter projekt
 S --> L: System opretter projekt
 
 
 S --> L: System opretter fase
-note right: System opretter fase
 
 L -> S: TilføjRessource(initialer, mail, rolle, ledighed)
-note right: Tilføjer ressource til fase
 S --> L: System tilføjer ressource
 
 @enduml
