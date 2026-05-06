@@ -82,12 +82,13 @@ namespace NovoForecastingSystem.Repos
                     {
                         Enum.TryParse<Complexity>((string)reader["Complexity"], out Complexity complexityEnum);
                         Enum.TryParse<PhaseStage>((string)reader["PhaseStage"], out PhaseStage phaseStage);
+                        DateOnly StartDate = DateOnly.FromDateTime((DateTime)reader["StartDate"]);
 
                         Project project = new Project()
                         {
                             Id = reader.GetInt32(0),
                             ProjectName = (string)reader["ProjectName"],
-                            StartDate = DateOnly.FromDateTime((DateTime)reader["StartDate"]),
+                            StartDate = StartDate,
                             EndDate = DateOnly.FromDateTime((DateTime)reader["EndDate"]),
                             ComplexityEnum = complexityEnum,
                             ProjectCoordinator = new ProjectCoordinator
@@ -100,6 +101,7 @@ namespace NovoForecastingSystem.Repos
                                 phaseStage = phaseStage
                             }
                         };
+                        Phase.ReturnPhase(complexityEnum, (DateTime.Now - StartDate.ToDateTime(TimeOnly.MinValue)).Days);
                         projects.Add(project);
                     }
                 }
