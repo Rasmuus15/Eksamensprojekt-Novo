@@ -56,7 +56,7 @@ namespace NovoForecastingSystem.Repos
                 ComplexityEnum = complexityEnum,
                 StartDate = startDate,
                 EndDate = endDate,
-                Phase = new Phase { phaseStage = PhaseStage.BasicDesign, Lenght = DateTime.Now }
+                Phase = new Phase { phaseStage = PhaseStage.BasicDesign, Length = DateTime.Now }
             });
 
             projects.Add(project);
@@ -99,7 +99,7 @@ namespace NovoForecastingSystem.Repos
                             Phase = new Phase
                             { 
                               phaseStage = Phase.ReturnPhase(complexityEnum, (DateTime.Now - startDate).Days),
-                              Lenght = DateTime.Now
+                              Length = DateTime.Now
                             } //phaseStage = Metode
                         };
                         int id = project.StartDate.Day - DateTime.UtcNow.Day;
