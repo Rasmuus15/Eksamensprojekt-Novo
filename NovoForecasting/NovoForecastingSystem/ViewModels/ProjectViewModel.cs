@@ -23,6 +23,7 @@ namespace NovoForecastingSystem.ViewModels
         public ICommand EditProjectCommand { get; }
         public ICommand DeleteProjectCommand { get; }
         private readonly NavigationStore _navigationStore;
+        public GanttViewModel GanttVM { get; } = new GanttViewModel();
 
         private Project _currentProject;
         public Project CurrentProject

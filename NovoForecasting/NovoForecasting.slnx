@@ -1,4 +1,6 @@
 <Solution>
   <Project Path="NovoForecastingSystem/NovoForecastingSystem.csproj" />
-  <Project Path="ProjectTest/ProjectTest.csproj" Id="40e32d7f-678c-431b-aebe-9e276939b8b6" />
+  <Project Path="ProjectTest/ProjectTest.csproj" Id="40e32d7f-678c-431b-aebe-9e276939b8b6">
+    <Build Solution="Debug|*" Project="false" />
+  </Project>
 </Solution>
