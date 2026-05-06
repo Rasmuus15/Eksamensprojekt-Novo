@@ -56,7 +56,7 @@ namespace NovoForecastingSystem.Repos
                 ComplexityEnum = complexityEnum,
                 StartDate = startDate,
                 EndDate = endDate,
-                Phase = new Phase { phaseStage = PhaseStage.BasicDesign, Length = DateTime.Now }
+                Phase = new Phase { phaseStage = PhaseStage.ConceptDesign, Length = DateTime.Now }
             });
 
             projects.Add(project);
