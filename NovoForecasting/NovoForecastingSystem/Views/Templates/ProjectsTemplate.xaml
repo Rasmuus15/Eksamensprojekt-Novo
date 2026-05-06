@@ -25,22 +25,22 @@
                     <ColumnDefinition />
                     <ColumnDefinition Width="59" />
                 </Grid.ColumnDefinitions>
-                <!--Title-->
+                <!--  Title  -->
                 <TextBlock
                     Grid.Row="0"
                     Grid.ColumnSpan="2"
                     Margin="10,10,0,0"
-                    Text="{Binding ProjectName}"
-                    FontWeight="Bold"/>
+                    FontWeight="Bold"
+                    Text="{Binding ProjectName}" />
                 <TextBlock
                     Grid.Row="1"
                     Margin="8,1,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
+                    FontSize="10"
                     Foreground="Gray"
                     Text="📋"
-                    TextWrapping="Wrap"
-                    FontSize="10"/>
+                    TextWrapping="Wrap" />
                 <TextBlock
                     Grid.Row="1"
                     Margin="22,0,0,0"
@@ -49,16 +49,16 @@
                     Foreground="Gray"
                     Text="Phase"
                     TextWrapping="Wrap" />
-                <!--Phase nr.-->
-                <TextBlock 
+                <!--  Phase nr.  -->
+                <TextBlock
                     x:Name="PhaseStageNumberTxt"
                     Grid.Row="1"
+                    Margin="57,1,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    Text="{Binding Phase.DisplayPhaseStage, Mode=OneWay}"
                     Foreground="Gray"
-                    TextWrapping="Wrap" 
-                    Margin="57,1,0,0" />
+                    Text="{Binding Phase.DisplayPhaseStage, Mode=OneWay}"
+                    TextWrapping="Wrap" />
                 <TextBlock
                     Grid.Row="1"
                     Grid.ColumnSpan="2"
@@ -70,7 +70,13 @@
                     Text="_________________________________"
                     TextWrapping="Wrap" />
 
-                <TextBlock x:Name="PhaseTxt" Grid.Row="1" Text="{Binding Phase.phaseStage}" FontSize="8" Foreground="#94A3B8" Margin="23,19,3,49"/>
+                <TextBlock
+                    x:Name="PhaseTxt"
+                    Grid.Row="1"
+                    Margin="23,19,3,49"
+                    FontSize="8"
+                    Foreground="#94A3B8"
+                    Text="{Binding Phase.phaseStage}" />
 
                 <TextBlock
                     Grid.Row="1"
@@ -90,7 +96,7 @@
                     Foreground="Gray"
                     Text="End:"
                     TextWrapping="Wrap" />
-                <!--Start dato-->
+                <!--  Start dato  -->
                 <TextBlock
                     Grid.Row="1"
                     Grid.Column="1"
@@ -102,7 +108,7 @@
                     Foreground="Black"
                     Text="{Binding StartDate}"
                     TextWrapping="Wrap" />
-                <!--slut dato-->
+                <!--  slut dato  -->
                 <TextBlock
                     Grid.Row="1"
                     Grid.Column="1"
@@ -114,43 +120,56 @@
                     Foreground="Black"
                     Text="{Binding EndDate}"
                     TextWrapping="Wrap" />
-                <Border Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" CornerRadius="4" Margin="0,8,0,8" Width="50">
+                <Border
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Width="50"
+                    Margin="0,8,0,8"
+                    HorizontalAlignment="Left"
+                    CornerRadius="4">
                     <Border.Style>
                         <Style TargetType="Border">
-                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Background" Value="Transparent" />
 
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding ComplexityEnum}" Value="Low">
-                                    <Setter Property="Background" Value="#dbfce7"/>
+                                    <Setter Property="Background" Value="#dbfce7" />
                                 </DataTrigger>
 
                                 <DataTrigger Binding="{Binding ComplexityEnum}" Value="Medium">
-                                    <Setter Property="Background" Value="#fef9c2"/>
+                                    <Setter Property="Background" Value="#fef9c2" />
                                 </DataTrigger>
 
                                 <DataTrigger Binding="{Binding ComplexityEnum}" Value="High">
-                                    <Setter Property="Background" Value="#ffe2e2"/>
+                                    <Setter Property="Background" Value="#ffe2e2" />
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
                     </Border.Style>
 
-                    <TextBlock x:Name="ComplexityTxtBx" Text="{Binding ComplexityEnum}" FontSize="11" FontWeight="SemiBold" Height="16" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock
+                        x:Name="ComplexityTxtBx"
+                        Height="16"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontSize="11"
+                        FontWeight="SemiBold"
+                        Text="{Binding ComplexityEnum}">
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
-                                <Setter Property="Foreground" Value="Transparent"/>
+                                <Setter Property="Foreground" Value="Transparent" />
 
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding ComplexityEnum}" Value="Low">
-                                        <Setter Property="Foreground" Value="#108b43"/>
+                                        <Setter Property="Foreground" Value="#108b43" />
                                     </DataTrigger>
 
                                     <DataTrigger Binding="{Binding ComplexityEnum}" Value="Medium">
-                                        <Setter Property="Foreground" Value="#a96508"/>
+                                        <Setter Property="Foreground" Value="#a96508" />
                                     </DataTrigger>
 
                                     <DataTrigger Binding="{Binding ComplexityEnum}" Value="High">
-                                        <Setter Property="Foreground" Value="#c10007"/>
+                                        <Setter Property="Foreground" Value="#c10007" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -158,6 +177,7 @@
                     </TextBlock>
                 </Border>
                 <ProgressBar
+                    x:Name="Phase_ComboBox"
                     Grid.Row="1"
                     Grid.ColumnSpan="2"
                     Width="227"
@@ -167,8 +187,8 @@
                     VerticalAlignment="Top"
                     Foreground="Blue"
                     LargeChange="0"
-                    Maximum="167"
-                    Value="20">
+                    Maximum="8"
+                    Value="{Binding Phase.DisplayComboBox, Mode=OneWay}">
 
                     <ProgressBar.Resources>
                         <Style TargetType="ProgressBar">
@@ -176,11 +196,15 @@
                                 <Setter.Value>
                                     <ControlTemplate TargetType="ProgressBar">
                                         <Grid>
-                                            <!-- Baggrund -->
-                                            <Border Background="#ddd" CornerRadius="5"/>
+                                            <!--  Baggrund  -->
+                                            <Border Background="#ddd" CornerRadius="5" />
 
-                                            <!-- Progress -->
-                                            <Border Background="Blue" CornerRadius="5" Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Value}" HorizontalAlignment="Left"/>
+                                            <!--  Progress  -->
+                                            <Border
+                                                Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Value}"
+                                                HorizontalAlignment="Left"
+                                                Background="Blue"
+                                                CornerRadius="5" />
                                         </Grid>
                                     </ControlTemplate>
                                 </Setter.Value>
