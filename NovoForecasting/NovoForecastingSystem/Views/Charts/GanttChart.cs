@@ -3,11 +3,12 @@ using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 using NovoForecastingSystem.Models.Enums;
 using SkiaSharp;
-using NovoForecastingSystem.Models;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace NovoForecastingSystem.Views.Charts.GanttChart
 {
-    public class GanttViewModel
+    public class GanttViewModel : INotifyPropertyChanged
     {
         private static readonly string[] TaskNames =
         {
@@ -29,51 +30,92 @@ namespace NovoForecastingSystem.Views.Charts.GanttChart
 
         private static readonly SKColor[] Colors =
         {
-            SKColor.Parse("#FF0000"), // Go Live         - rød
-            SKColor.Parse("#00BFA5"), // Approval        - teal
-            SKColor.Parse("#7C4DFF"), // Testing         - lilla/blå
-            SKColor.Parse("#FF4081"), // Installation    - pink
-            SKColor.Parse("#FF6D00"), // Manufacturing   - orange
-            SKColor.Parse("#AA00FF"), // Detailed Design - lilla
-            SKColor.Parse("#00C853"), // Basic Design    - grøn
-            SKColor.Parse("#2979FF"), // Concept Design  - blå
+            SKColor.Parse("#FF0000"),
+            SKColor.Parse("#00BFA5"),
+            SKColor.Parse("#7C4DFF"),
+            SKColor.Parse("#FF4081"),
+            SKColor.Parse("#FF6D00"),
+            SKColor.Parse("#AA00FF"),
+            SKColor.Parse("#00C853"),
+            SKColor.Parse("#2979FF"),
         };
 
-        public ISeries[] Series { get; }
-        public Axis[] YAxes { get; }
-        public Axis[] XAxes { get; }
+
+        private ISeries[] _series;
+        private Axis[] _xAxes;
+        private Complexity _complexity;
+
+
+        public ISeries[] Series
+        {
+            get => _series;
+            private set { _series = value; OnPropertyChanged(); }
+        }
+
+        public Axis[] XAxes
+        {
+            get => _xAxes;
+            private set { _xAxes = value; OnPropertyChanged(); }
+        }
+
+        public Axis[] YAxes { get; } = new[]
+        {
+            new Axis
+            {
+                Labels = TaskNames,
+                TextSize = 14,
+                ShowSeparatorLines = false
+            }
+        };
+
+        public Complexity Complexity
+        {
+            get => _complexity;
+            set
+            {
+                if (_complexity == value) return;
+                _complexity = value;
+                OnPropertyChanged();
+                BuildChart(_complexity);
+            }
+        }
 
         public GanttViewModel() : this(Complexity.Low) { }
 
         public GanttViewModel(Complexity complexity)
         {
+            _complexity = complexity;
+            BuildChart(complexity);
+        }
+
+        private void BuildChart(Complexity complexity)
+        {
             double[] starts;
             int[] durations;
             int maxLimit;
 
-            if (complexity == Complexity.Low)
+            switch (complexity)
             {
-                starts = StartsLow;
-                durations = DurationsLow;
-                maxLimit = MaxLimitLow;
-            }
-            else if (complexity == Complexity.Medium)
-            {
-                starts = StartsMedium;
-                durations = DurationsMedium;
-                maxLimit = MaxLimitMedium;
-            }
-            else
-            {
-                starts = StartsHigh;
-                durations = DurationsHigh;
-                maxLimit = MaxLimitHigh;
+                case Complexity.Medium:
+                    starts = StartsMedium;
+                    durations = DurationsMedium;
+                    maxLimit = MaxLimitMedium;
+                    break;
+                case Complexity.High:
+                    starts = StartsHigh;
+                    durations = DurationsHigh;
+                    maxLimit = MaxLimitHigh;
+                    break;
+                default:
+                    starts = StartsLow;
+                    durations = DurationsLow;
+                    maxLimit = MaxLimitLow;
+                    break;
             }
 
             int count = TaskNames.Length;
             var seriesList = new List<ISeries>();
 
-            // 1) Transparent offset series to push bars to their start positions
             seriesList.Add(new StackedRowSeries<double>
             {
                 Values = starts,
@@ -83,7 +125,6 @@ namespace NovoForecastingSystem.Views.Charts.GanttChart
                 IsHoverable = false
             });
 
-            // 2) One colored series per task
             for (int i = 0; i < count; i++)
             {
                 int taskIndex = i;
@@ -106,26 +147,6 @@ namespace NovoForecastingSystem.Views.Charts.GanttChart
 
             Series = seriesList.ToArray();
 
-            YAxes = new[]
-            {
-                new Axis
-                {
-                    Labels = TaskNames,
-                    TextSize = 14,
-                    ShowSeparatorLines = false
-                }
-            };
-
-            int _maxlimit = 81;
-            if (complexity == Complexity.Medium)
-            {
-                _maxlimit = 108;
-            }
-            else if (complexity == Complexity.High)
-            {
-                _maxlimit = 137;
-            }
-            
             XAxes = new[]
             {
                 new Axis
@@ -136,5 +157,9 @@ namespace NovoForecastingSystem.Views.Charts.GanttChart
                 }
             };
         }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string? name = null)
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
 }

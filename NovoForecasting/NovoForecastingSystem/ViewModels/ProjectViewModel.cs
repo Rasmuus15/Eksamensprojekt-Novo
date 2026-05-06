@@ -5,6 +5,7 @@ using NovoForecastingSystem.Repos;
 using NovoForecastingSystem.Services;
 using NovoForecastingSystem.Stores;
 using NovoForecastingSystem.Views;
+using NovoForecastingSystem.Views.Charts.GanttChart;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
@@ -27,7 +28,7 @@ namespace NovoForecastingSystem.ViewModels
         public Project CurrentProject
         {
             get => _currentProject;
-            set { _currentProject = value; OnPropertyChanged(); }
+            set { _currentProject = value; OnPropertyChanged(); GanttVM.Complexity = value.ComplexityEnum;}
         }
 
         // Add Resource Window properties and backing fields
