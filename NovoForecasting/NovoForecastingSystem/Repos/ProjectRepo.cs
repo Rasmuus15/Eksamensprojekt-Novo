@@ -26,12 +26,13 @@ namespace NovoForecastingSystem.Repos
             {
                 connection.Open();
 
-                string insertProjectQuery = "INSERT INTO PROJECT (ProjectName, Complexity, CoordinatorId) VALUES (@ProjectName, @Complexity, @CoordinatorId); SELECT SCOPE_IDENTITY();";
+                string insertProjectQuery = "INSERT INTO PROJECT (ProjectName, Complexity, PhaseStage, CoordinatorId) VALUES (@ProjectName, @Complexity, @PhaseStage, @CoordinatorId); SELECT SCOPE_IDENTITY();";
 
                 using (SqlCommand cmd = new SqlCommand(insertProjectQuery, connection))
                 {
                     cmd.Parameters.Add("@ProjectName", System.Data.SqlDbType.NVarChar, 255).Value = projectName;
                     cmd.Parameters.Add("@Complexity", System.Data.SqlDbType.NVarChar, 50).Value = complexity;
+                    cmd.Parameters.Add("@PhaseStage", System.Data.SqlDbType.NVarChar, 50).Value = PhaseStage.ConceptDesign.ToString();
                     cmd.Parameters.Add("@CoordinatorId", System.Data.SqlDbType.Int).Value = projectCoordinatorid;
                     projectId = Convert.ToInt32(cmd.ExecuteScalar());
                 }
@@ -56,7 +57,7 @@ namespace NovoForecastingSystem.Repos
                 ComplexityEnum = complexityEnum,
                 StartDate = startDate,
                 EndDate = endDate,
-                Phase = new Phase { phaseStage = PhaseStage.ConceptDesign, Length = DateTime.Now }
+                Phase = new Phase { phaseStage = PhaseStage.ConceptDesign }
             });
 
             projects.Add(project);
@@ -79,10 +80,8 @@ namespace NovoForecastingSystem.Repos
                 {
                     while (reader.Read())
                     {
-                        
                         Enum.TryParse<Complexity>((string)reader["Complexity"], out Complexity complexityEnum);
-
-                        DateTime startDate = (DateTime)reader["StartDate"];
+                        Enum.TryParse<PhaseStage>((string)reader["PhaseStage"], out PhaseStage phaseStage);
 
                         Project project = new Project()
                         {
@@ -97,12 +96,10 @@ namespace NovoForecastingSystem.Repos
                                 Initials = (string)reader["Initials"]
                             },
                             Phase = new Phase
-                            { 
-                              phaseStage = Phase.ReturnPhase(complexityEnum, (DateTime.Now - startDate).Days),
-                              Length = DateTime.Now
-                            } //phaseStage = Metode
+                            {
+                                phaseStage = phaseStage
+                            }
                         };
-                        int id = project.StartDate.Day - DateTime.UtcNow.Day;
                         projects.Add(project);
                     }
                 }
@@ -135,12 +132,13 @@ namespace NovoForecastingSystem.Repos
             {
                 connection.Open();
 
-                string updateProjectQuery = $"UPDATE PROJECT SET ProjectName = @ProjectName, Complexity = @Complexity WHERE ProjectId = {projectToEdit.Id};";
+                string updateProjectQuery = $"UPDATE PROJECT SET ProjectName = @ProjectName, Complexity = @Complexity, PhaseStage = @PhaseStage WHERE ProjectId = {projectToEdit.Id};";
 
                 using (SqlCommand cmd = new SqlCommand(updateProjectQuery, connection))
                 {
                     cmd.Parameters.Add("@ProjectName", System.Data.SqlDbType.NVarChar, 255).Value = projectToEdit.ProjectName;
                     cmd.Parameters.Add("@Complexity", System.Data.SqlDbType.NVarChar, 50).Value = projectToEdit.ComplexityEnum.ToString();
+                    cmd.Parameters.Add("@PhaseStage", System.Data.SqlDbType.NVarChar, 50).Value = projectToEdit.Phase.phaseStage.ToString();
                     cmd.ExecuteNonQuery();
                 }
 

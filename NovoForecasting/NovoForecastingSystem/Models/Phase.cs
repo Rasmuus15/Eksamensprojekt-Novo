@@ -11,7 +11,7 @@ namespace NovoForecastingSystem.Models
 {
     public class Phase
     {
-        public DateTime Length { get; set; }
+        public DateOnly Length { get; set; }
         public PhaseEnum phaseStage { get; set; }
 
         public int currentPhase;
