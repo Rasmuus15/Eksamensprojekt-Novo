@@ -134,7 +134,7 @@
                             <StackPanel>
                                 <TextBlock Text="Software Engineer" FontSize="14" FontWeight="SemiBold" Foreground="#A855F7" Margin="0,0,0,10"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                    <TextBlock Text="{Binding ProcessEngineers.Count}" FontSize="36" FontWeight="Bold" Foreground="#0F172A"/>
+                                    <TextBlock Text="{Binding SoftwareEngineers.Count}" FontSize="36" FontWeight="Bold" Foreground="#0F172A"/>
                                     <TextBlock Text=" /" FontSize="24" FontWeight="SemiBold" Foreground="#64748B" VerticalAlignment="Bottom" Margin="5,0,0,6"/>
                                     <TextBlock Text="30" FontSize="24" FontWeight="SemiBold" Foreground="#64748B" VerticalAlignment="Bottom" Margin="10,0,0,6"/>
                                 </StackPanel>
