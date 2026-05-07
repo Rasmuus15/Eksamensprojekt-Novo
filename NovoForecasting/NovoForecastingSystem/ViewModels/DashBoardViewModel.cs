@@ -50,8 +50,13 @@ namespace NovoForecastingSystem.ViewModels
         //Den collection UI binder til med alle Project Coordinators
 
         public ObservableCollection<ProjectCoordinator> ProjectCoordinatorList { get; set; }
+
         private ResourceRepo resourceRepo = new ResourceRepo();
-        private List<Resource> ResourceList { get; set; }
+
+        public ObservableCollection<Resource> ProcessEngineers { get; set; }
+        public ObservableCollection<Resource> ChemicalEngineers { get; set; }
+        public ObservableCollection<Resource> SoftwareEngineers { get; set; }
+
 
         private ProjectCoordinator _selectedProjectCoordinator;
         public ProjectCoordinator SelectedProjectCoordinator
@@ -67,7 +72,11 @@ namespace NovoForecastingSystem.ViewModels
 
             ProjectList = new ObservableCollection<Project>(projectRepo.GetAllProjects());
             ProjectCoordinatorList = new ObservableCollection<ProjectCoordinator>(projectCoordinatorRepo.GetAllProjectCoordinators());
-            ResourceList = new List<Resource>(resourceRepo.GetAllResources());
+
+            ProcessEngineers = new ObservableCollection<Resource>(resourceRepo.GetResourcesByRole(JobRole.ProcessEngineer));
+            ChemicalEngineers = new ObservableCollection<Resource>(resourceRepo.GetResourcesByRole(JobRole.ChemicalEngineer));
+            SoftwareEngineers = new ObservableCollection<Resource>(resourceRepo.GetResourcesByRole(JobRole.SoftwareEngineer));
+
             CreateProjectCommand = new CreateProjectCommand();
         }
 

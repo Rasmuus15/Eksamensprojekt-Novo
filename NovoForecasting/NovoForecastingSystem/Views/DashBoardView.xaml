@@ -98,8 +98,9 @@
                             <StackPanel>
                                 <TextBlock Text="Process Engineer" FontSize="14" FontWeight="SemiBold" Foreground="#2563EB" Margin="0,0,0,10"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                    <TextBlock Text="0" FontSize="36" FontWeight="Bold" Foreground="#0F172A"/>
-                                    <TextBlock Text=" / 1" FontSize="24" FontWeight="SemiBold" Foreground="#64748B" VerticalAlignment="Bottom" Margin="5,0,0,6"/>
+                                    <TextBlock Text="{Binding ProcessEngineers.Count}" FontSize="36" FontWeight="Bold" Foreground="#0F172A"/>
+                                    <TextBlock Text=" /" FontSize="24" FontWeight="SemiBold" Foreground="#64748B" VerticalAlignment="Bottom" Margin="5,0,0,6"/>
+                                    <TextBlock Text="50" FontSize="24" FontWeight="SemiBold" Foreground="#64748B" VerticalAlignment="Bottom" Margin="10,0,0,6"/>
                                 </StackPanel>
                                 <TextBlock Text="allocated / demand (all projects)" FontSize="12" Foreground="#94A3B8" TextWrapping="Wrap"/>
                             </StackPanel>
@@ -115,8 +116,9 @@
                             <StackPanel>
                                 <TextBlock Text="Chemical Engineer" FontSize="14" FontWeight="SemiBold" Foreground="#10B981" Margin="0,0,0,10"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                    <TextBlock Text="0" FontSize="36" FontWeight="Bold" Foreground="#0F172A"/>
-                                    <TextBlock Text=" / 1" FontSize="24" FontWeight="SemiBold" Foreground="#64748B" VerticalAlignment="Bottom" Margin="5,0,0,6"/>
+                                    <TextBlock Text="{Binding ChemicalEngineers.Count}" FontSize="36" FontWeight="Bold" Foreground="#0F172A"/>
+                                    <TextBlock Text=" /" FontSize="24" FontWeight="SemiBold" Foreground="#64748B" VerticalAlignment="Bottom" Margin="5,0,0,6"/>
+                                    <TextBlock Text="24" FontSize="24" FontWeight="SemiBold" Foreground="#64748B" VerticalAlignment="Bottom" Margin="10,0,0,6"/>
                                 </StackPanel>
                                 <TextBlock Text="allocated / demand (all projects)" FontSize="12" Foreground="#94A3B8" TextWrapping="Wrap"/>
                             </StackPanel>
@@ -132,8 +134,9 @@
                             <StackPanel>
                                 <TextBlock Text="Software Engineer" FontSize="14" FontWeight="SemiBold" Foreground="#A855F7" Margin="0,0,0,10"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                    <TextBlock Text="0" FontSize="36" FontWeight="Bold" Foreground="#0F172A"/>
-                                    <TextBlock Text=" / 0" FontSize="24" FontWeight="SemiBold" Foreground="#64748B" VerticalAlignment="Bottom" Margin="5,0,0,6"/>
+                                    <TextBlock Text="{Binding ProcessEngineers.Count}" FontSize="36" FontWeight="Bold" Foreground="#0F172A"/>
+                                    <TextBlock Text=" /" FontSize="24" FontWeight="SemiBold" Foreground="#64748B" VerticalAlignment="Bottom" Margin="5,0,0,6"/>
+                                    <TextBlock Text="30" FontSize="24" FontWeight="SemiBold" Foreground="#64748B" VerticalAlignment="Bottom" Margin="10,0,0,6"/>
                                 </StackPanel>
                                 <TextBlock Text="allocated / demand (all projects)" FontSize="12" Foreground="#94A3B8" TextWrapping="Wrap"/>
                             </StackPanel>

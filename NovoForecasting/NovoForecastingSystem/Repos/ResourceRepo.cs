@@ -14,7 +14,7 @@ namespace NovoForecastingSystem.Repos
 {
     public class ResourceRepo : DatabaseConnector
     {
-        private List<Resource> resources;
+        public List<Resource> resources;
         public List<Resource> ProcessEngineers;
         public List<Resource> ChemicalEngineers;
         public List<Resource> SoftwareEngineer;
@@ -22,9 +22,6 @@ namespace NovoForecastingSystem.Repos
         public ResourceRepo()
         {
             resources = new List<Resource>();
-            ProcessEngineers = new List<Resource>();
-            ChemicalEngineers = new List<Resource>();
-            SoftwareEngineer = new List<Resource>();
         }
 
 
@@ -74,19 +71,20 @@ namespace NovoForecastingSystem.Repos
             }
         }
 
-        public List<Resource> GetAllResources()
+        public List<Resource> GetResourcesByRole(JobRole role)
         {
+            List<Resource> resourcesByRole = new List<Resource>();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-
-                SqlCommand cmd = new SqlCommand(@"SELECT * FROM resource", connection);
+                SqlCommand cmd = new SqlCommand(@"SELECT * FROM resource WHERE JobRole = @JobRole AND Availability = 0", connection);
+                cmd.Parameters.AddWithValue("@JobRole", role.ToString());
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        Enum.TryParse<JobRole>((string)reader["PhaseStage"], out JobRole jobRole);
+                        Enum.TryParse<JobRole>((string)reader["JobRole"], out JobRole jobRole);
                         Resource resource = new Resource()
                         {
                             Id = reader.GetInt32(0),
@@ -95,11 +93,11 @@ namespace NovoForecastingSystem.Repos
                             Availability = (bool)reader["Availability"],
                             JobRoleEnum = jobRole
                         };
-                        resources.Add(resource);
+                        resourcesByRole.Add(resource);
                     }
                 }
-                return resource;
             }
+            return resourcesByRole;
         }
     }
 }
