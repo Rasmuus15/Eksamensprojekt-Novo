@@ -1,10 +1,10 @@
-<diagram program="umletino" version="15.1"><zoom_level>11</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>55</x><y>341</y><w>220</w><h>209</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>830</x><y>0</y><w>200</w><h>190</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
 PROJECT_COORDINATOR
 --
 __&lt;&lt;PK&gt;&gt; CoordinatorId : Int__
 Initials : NVarChar(4)
 --
-&lt;&lt;PK&gt;&gt; PK_ProjectCoordinator()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>341</y><w>341</w><h>209</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
+&lt;&lt;PK&gt;&gt; PK_ProjectCoordinator()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>400</x><y>260</y><w>310</w><h>190</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
 PROJECT
 --
 __&lt;&lt;PK&gt;&gt; ProjectId : Int__
@@ -13,7 +13,7 @@ Complexity : NVarChar(50)
 /&lt;&lt;FK&gt;&gt; CoordinatorId/
 --
 &lt;&lt;PK&gt;&gt; PK_Project()
-&lt;&lt;FK&gt;&gt; FK_Project_ProjectCoordinator(CoordinatorId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>286</x><y>649</y><w>275</w><h>209</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
+&lt;&lt;FK&gt;&gt; FK_Project_ProjectCoordinator(CoordinatorId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>400</x><y>490</y><w>250</w><h>190</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
 PROJECT_LENGTH
 --
 __&lt;&lt;PK&gt;&gt; ProjectLengthId : Int__
@@ -22,7 +22,7 @@ EndDate : Date
 /&lt;&lt;FK&gt;&gt; ProjectId : Int /
 --
 &lt;&lt;PK&gt;&gt; PK_ProjectLength()
-&lt;&lt;FK&gt;&gt; FK_ProjectLength_Project(ProjectId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>473</x><y>11</y><w>286</w><h>209</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
+&lt;&lt;FK&gt;&gt; FK_ProjectLength_Project(ProjectId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>400</x><y>0</y><w>260</w><h>190</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
 RESOURCE
 --
 __&lt;&lt;PK&gt;&gt; ResourceId: Int__
@@ -33,7 +33,7 @@ Availability : Bit
 /&lt;&lt;FK&gt;&gt; ProjectId : Int /
 --
 &lt;&lt;PK&gt;&gt; PK_Resource()
-&lt;&lt;FK&gt;&gt; FK_Resource_Project(ProjectId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>638</x><y>649</y><w>286</w><h>209</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
+&lt;&lt;FK&gt;&gt; FK_Resource_Project(ProjectId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>770</x><y>490</y><w>260</w><h>190</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
 PROJECT_ROLE_REQUIREMENT
 --
 __&lt;&lt;PK&gt;&gt; ProjectRoleRequirementId: Int__
@@ -42,7 +42,7 @@ RequiredRessources : Int
 /&lt;&lt;FK&gt;&gt; ProjectId : Int /
 --
 &lt;&lt;PK&gt;&gt; PK_ProjectRoleRequirement()
-&lt;&lt;FK&gt;&gt; FK_ProjectLength_Project(ProjectId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>913</x><y>341</y><w>286</w><h>209</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
+&lt;&lt;FK&gt;&gt; FK_ProjectLength_Project(ProjectId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>770</x><y>260</y><w>260</w><h>190</h></coordinates><panel_attributes>&lt;&lt;table&gt;&gt;
 PHASE
 --
 __&lt;&lt;PK&gt;&gt; PhaseId: Int__
@@ -51,27 +51,27 @@ Phase : NVarChar(20)
 /&lt;&lt;FK&gt;&gt; ProjectId : Int /
 --
 &lt;&lt;PK&gt;&gt; PK_Phase()
-&lt;&lt;FK&gt;&gt; FK_Phase_Project(ProjectId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>264</x><y>429</y><w>198</w><h>44</h></coordinates><panel_attributes>lt=-
+&lt;&lt;FK&gt;&gt; FK_Phase_Project(ProjectId)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>700</x><y>180</y><w>190</w><h>100</h></coordinates><panel_attributes>lt=-
 m1=1
-m2=*</panel_attributes><additional_attributes>10;10;160;10</additional_attributes></element><element><id>Relation</id><coordinates><x>528</x><y>539</y><w>110</w><h>132</h></coordinates><panel_attributes>lt=-
+m2=*</panel_attributes><additional_attributes>170;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>440</y><w>100</w><h>70</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=1
 m1pos=-20,-7
 m2pos=-9,-5
 
-</panel_attributes><additional_attributes>80;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>605</x><y>539</y><w>77</w><h>132</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes>10;10;80;50</additional_attributes></element><element><id>Relation</id><coordinates><x>700</x><y>440</y><w>90</w><h>70</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=*
 m1pos=3,-10
-</panel_attributes><additional_attributes>10;10;50;100</additional_attributes></element><element><id>Relation</id><coordinates><x>770</x><y>418</y><w>165</w><h>55</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes>10;10;70;50</additional_attributes></element><element><id>Relation</id><coordinates><x>700</x><y>330</y><w>90</w><h>50</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=*
 m1pos=-15,-14
 m2pos=10,-12
 
-</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element><element><id>Relation</id><coordinates><x>594</x><y>209</y><w>44</w><h>154</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes>10;20;70;20</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>180</y><w>40</w><h>100</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=*
 m1pos=3,-1
 
-</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element></diagram>

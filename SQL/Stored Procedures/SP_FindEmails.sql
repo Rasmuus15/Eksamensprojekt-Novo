@@ -7,5 +7,5 @@ CREATE PROCEDURE FindEmails
 AS 
 BEGIN 
 SELECT Email FROM RESOURCE
-WHERE JobRole = @JobRole AND Availability = 0
+WHERE JobRole = @JobRole AND Availability = 1
 END;
