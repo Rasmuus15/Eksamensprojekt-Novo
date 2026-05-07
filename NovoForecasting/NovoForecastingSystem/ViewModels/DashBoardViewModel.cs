@@ -48,7 +48,10 @@ namespace NovoForecastingSystem.ViewModels
         //ProjectCoordinator repository instans
         private ProjectCoordinatorRepo projectCoordinatorRepo = new ProjectCoordinatorRepo();
         //Den collection UI binder til med alle Project Coordinators
+
         public ObservableCollection<ProjectCoordinator> ProjectCoordinatorList { get; set; }
+        private ResourceRepo resourceRepo = new ResourceRepo();
+        private List<Resource> ResourceList { get; set; }
 
         private ProjectCoordinator _selectedProjectCoordinator;
         public ProjectCoordinator SelectedProjectCoordinator
@@ -64,6 +67,7 @@ namespace NovoForecastingSystem.ViewModels
 
             ProjectList = new ObservableCollection<Project>(projectRepo.GetAllProjects());
             ProjectCoordinatorList = new ObservableCollection<ProjectCoordinator>(projectCoordinatorRepo.GetAllProjectCoordinators());
+            ResourceList = new List<Resource>(resourceRepo.GetAllResources());
             CreateProjectCommand = new CreateProjectCommand();
         }
 
@@ -118,8 +122,5 @@ namespace NovoForecastingSystem.ViewModels
             }
 
         }
-
-
-
     }
 }

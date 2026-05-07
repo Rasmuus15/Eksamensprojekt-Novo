@@ -130,7 +130,7 @@
                     <Border Grid.Column="4" Background="White" BorderBrush="#E9D5FF" BorderThickness="2" CornerRadius="12" Padding="20">
                         <Grid>
                             <StackPanel>
-                                <TextBlock Text="Automation Engineer" FontSize="14" FontWeight="SemiBold" Foreground="#A855F7" Margin="0,0,0,10"/>
+                                <TextBlock Text="Software Engineer" FontSize="14" FontWeight="SemiBold" Foreground="#A855F7" Margin="0,0,0,10"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                                     <TextBlock Text="0" FontSize="36" FontWeight="Bold" Foreground="#0F172A"/>
                                     <TextBlock Text=" / 0" FontSize="24" FontWeight="SemiBold" Foreground="#64748B" VerticalAlignment="Bottom" Margin="5,0,0,6"/>

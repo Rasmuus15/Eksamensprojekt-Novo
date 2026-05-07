@@ -6,6 +6,7 @@ using NovoForecastingSystem.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Controls;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
@@ -13,11 +14,17 @@ namespace NovoForecastingSystem.Repos
 {
     public class ResourceRepo : DatabaseConnector
     {
-        private List<Models.Resource> resource;
+        private List<Resource> resources;
+        public List<Resource> ProcessEngineers;
+        public List<Resource> ChemicalEngineers;
+        public List<Resource> SoftwareEngineer;
 
         public ResourceRepo()
         {
-            resource = new List<Models.Resource>(); 
+            resources = new List<Resource>();
+            ProcessEngineers = new List<Resource>();
+            ChemicalEngineers = new List<Resource>();
+            SoftwareEngineer = new List<Resource>();
         }
 
 
@@ -42,7 +49,7 @@ namespace NovoForecastingSystem.Repos
                         {
                             EmailList.Add(reader["Email"].ToString()); //Tilføjer en ny kolonne (Email) til EmailListe
                         }
-                        
+
                     }
                     reader.Close();
                 }
@@ -51,57 +58,8 @@ namespace NovoForecastingSystem.Repos
                     Console.WriteLine("An error occurred while retrieving waste data: " + ex.Message);
                 }
             }
-                return EmailList;
-         }
-
-        
-
-
-
-
-
-        //public void AddResource(Object Phase, Object JobRole)
-        //{
-        //    using (SqlConnection connection = new SqlConnection(connectionString))
-        //    {
-        //        connection.Open();
-
-        //        string insertProjectQuery = "";
-        //        int projectId = 0;
-
-        //        using (SqlCommand cmd = new SqlCommand(insertProjectQuery, connection))
-        //        {
-        //            cmd.Parameters.AddWithValue("@ProjectName", projectName);
-        //            cmd.Parameters.AddWithValue("@Complexity", (object)complexity ?? DBNull.Value);
-
-        //            object result = cmd.ExecuteScalar();
-        //            if (result != null)
-        //            {
-        //                projectId = Convert.ToInt32(result);
-        //            }
-        //        }
-
-        //        if (startDate.HasValue && projectId > 0)
-        //        {
-        //            string insertLengthQuery = "INSERT INTO PROJECT_LENGTH (StartDate, ProjectId) VALUES (@StartDate, @ProjectId);";
-        //            using (SqlCommand lengthCmd = new SqlCommand(insertLengthQuery, connection))
-        //            {
-        //                lengthCmd.Parameters.AddWithValue("@StartDate", startDate.Value);
-        //                lengthCmd.Parameters.AddWithValue("@ProjectId", projectId);
-        //                lengthCmd.ExecuteNonQuery();
-        //            }
-        //        }
-        //        project.Add(new Models.Project
-        //        {
-        //            ProjectName = projectName,
-        //            StartDate = startDate ?? default(DateTime)
-        //        });
-
-
-
-        //    }
-
-        //}
+            return EmailList;
+        }
 
 
         public void UpdateResourceProject(string email, int projectId)
@@ -116,9 +74,32 @@ namespace NovoForecastingSystem.Repos
             }
         }
 
-        public List<Models.Resource> GetAllResources()
+        public List<Resource> GetAllResources()
         {
-            return resource;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand cmd = new SqlCommand(@"SELECT * FROM resource", connection);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Enum.TryParse<JobRole>((string)reader["PhaseStage"], out JobRole jobRole);
+                        Resource resource = new Resource()
+                        {
+                            Id = reader.GetInt32(0),
+                            Initials = (string)reader["Initials"],
+                            Email = (string)reader["Email"],
+                            Availability = (bool)reader["Availability"],
+                            JobRoleEnum = jobRole
+                        };
+                        resources.Add(resource);
+                    }
+                }
+                return resource;
+            }
         }
     }
 }
