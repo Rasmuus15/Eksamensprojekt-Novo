@@ -12,7 +12,7 @@ namespace NovoForecastingSystem.Views.Charts.LineChart
 
     public class LineChartViewModel
     {
-        // Dato-punkter pr. serie (21 Mandage)
+        
         private static readonly double?[] BlueValues =
             { null, 3, 3, null, null, null, null, null, null, null, null};
 
@@ -29,7 +29,7 @@ namespace NovoForecastingSystem.Views.Charts.LineChart
 
         public LineChartViewModel()
         {
-            // Ugedage som X-labels
+            
             string[] labels = { "Jan", "Feb", "Mar",  "Apr",  "May",  "Jun",  "Jul",  "Aug",  "Sep",  "Oct",  "Nov",  "Dec"};
             for (int i = 0; i < 12; i++) ;
 
@@ -58,16 +58,16 @@ namespace NovoForecastingSystem.Views.Charts.LineChart
                 }
             };
 
-            // Threshold-linjer (vandret) som i billedet
+            
             Sections = new[]
             {
-                new RectangularSection   // Lyserød linje øverst
+                new RectangularSection   
                 {
                     Yi = 7, Yj = 7,
                     Fill = new SolidColorPaint(SKColors.Pink) { StrokeThickness = 1.5f },
                     Stroke = new SolidColorPaint(SKColors.Pink) { StrokeThickness = 1.5f },
                 },
-                new RectangularSection   // Grøn/teal linje
+                new RectangularSection   
                 {
                     Yi = 5.5, Yj = 5.5,
                     Fill = new SolidColorPaint(SKColors.MediumAquamarine) { StrokeThickness = 1.5f },
@@ -89,11 +89,11 @@ namespace NovoForecastingSystem.Views.Charts.LineChart
             {
                 Name = name,
                 Values = points,
-                GeometrySize = 10,                          // Prikstørrelse
-                LineSmoothness = 100,                         // Lige linjer
+                GeometrySize = 10,                          
+                LineSmoothness = 100,                        
                 EnableNullSplitting = false,
                 Stroke = new SolidColorPaint(color) { StrokeThickness = 2 },
-                Fill = null,                                // Ingen fyld under linjen
+                Fill = null,                               
                 GeometryFill = new SolidColorPaint(color),
                 GeometryStroke = new SolidColorPaint(color),
             };
