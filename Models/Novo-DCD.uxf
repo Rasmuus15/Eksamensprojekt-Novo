@@ -35,7 +35,6 @@ GoLive
 --
 + Initials : string
 + Email : string
-+ FTE : double
 + Availability : bool
 - jobRole : JobRole
 --</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>230</x><y>90</y><w>100</w><h>30</h></coordinates><panel_attributes>MainWindow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>230</x><y>190</y><w>100</w><h>30</h></coordinates><panel_attributes>CreateProject</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1580</x><y>420</y><w>30</w><h>200</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;10;180</additional_attributes></element><element><id>Relation</id><coordinates><x>1290</x><y>540</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=-&gt;</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>1290</x><y>140</y><w>50</w><h>320</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
