@@ -38,7 +38,7 @@ PROJECT_ROLE_REQUIREMENT
 --
 __&lt;&lt;PK&gt;&gt; ProjectRoleRequirementId: Int__
 JobRole: NVarChar(50)
-RequiredRessources : Int
+RequiredResources : Int
 /&lt;&lt;FK&gt;&gt; ProjectId : Int /
 --
 &lt;&lt;PK&gt;&gt; PK_ProjectRoleRequirement()
