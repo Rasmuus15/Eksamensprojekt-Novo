@@ -14,13 +14,13 @@ namespace NovoForecastingSystem.Views.Charts.LineChart
     {
         
         private static readonly double?[] BlueValues =
-            { null, 3, 3, null, null, null, null, null, null, null, null};
+            { 5, 9, 12, 19, 27, 39, 50, 38, 25, 27, 15, 9};
 
         private static readonly double?[] PurpleValues =
-            { 2, null, 2, 2, null, 4, 4, 4, 4, 4, 4, 4};
+            { 1, 5, 8, 11, 16, 26, 30, 23, 20, 23, 15, 7};
 
         private static readonly double?[] GreenValues =
-            { 1, null, null, null, 3, null, 3, 3, null};
+            { 2, 6, 9, 10, 15, 22, 24, 24, 19, 15, 17, 11};
 
         public ISeries[] Series { get; set; }
         public Axis[] XAxes { get; set; }
@@ -36,7 +36,7 @@ namespace NovoForecastingSystem.Views.Charts.LineChart
             Series = new ISeries[]
             {
                 MakeLineSeries("Process Engineer",    BlueValues,   SKColors.CornflowerBlue),
-                MakeLineSeries("Automation Engineer",  PurpleValues, SKColors.MediumPurple),
+                MakeLineSeries("Software Engineer",  PurpleValues, SKColors.MediumPurple),
                 MakeLineSeries("Chemical Engineer",   GreenValues,  SKColors.MediumSeaGreen)
             };
 
@@ -54,7 +54,7 @@ namespace NovoForecastingSystem.Views.Charts.LineChart
                 new Axis
                 {
                     MinLimit = 0,
-                    MaxLimit = 20
+                    MaxLimit = 60
                 }
             };
 
